@@ -1,0 +1,12 @@
+// @import "./global.scss";
+
+// @import "./Home/HeaderMarque.scss";
+// @import "./Home/MarqueeAndAbout.scss";
+// @import "./Home/ChaiTypes.scss";
+// @import "./Home/AssamTeaSectionCard.scss"
+
+@use "./global";
+@use "./Home/HeaderMarque";
+@use "./Home/MarqueeAndAbout";
+@use "./Home/ChaiTypes";
+@use "./Home/AssamTeaSectionCard";
