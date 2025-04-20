@@ -3,14 +3,15 @@ import ContainerWrapper from "../common/ContainerWrapper";
 import { Box, Button, Typography, IconButton } from "@mui/material";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import INSTAGRAM_IMAGE from "../../assets/mock/Instagram.png";
+import R1 from "../../assets/reviews/R1.png";
+import R2 from "../../assets/reviews/R2.png";
+import R3 from "../../assets/reviews/R3.png";
 
-const Card = () => {
+const Card = ({ image }) => {
   return (
     <Box width={287} height={287} borderRadius={"0.75rem"}>
-      <img src={INSTAGRAM_IMAGE} alt="insta" className="object_fit_cover" />
+      <img src={image} alt="insta" className="h-100 w-100 object_fit_cover" />
     </Box>
   );
 };
@@ -94,7 +95,7 @@ const responsive = {
 };
 
 const InstagramSection = () => {
-  const cards = Array.from({ length: 10 });
+  const cards = [INSTAGRAM_IMAGE, R1, R2, R3, INSTAGRAM_IMAGE, R1, R2, R3];
 
   return (
     <ContainerWrapper>
@@ -117,16 +118,16 @@ const InstagramSection = () => {
       <Box pl={"110px"} mt={"4rem"}>
         <Carousel
           responsive={responsive}
-          infinite
+          // infinite
           arrows={false}
           customLeftArrow={<CustomLeftArrow />}
           customRightArrow={<CustomRightArrow />}
           renderButtonGroupOutside
           itemClass="carousel-item-padding"
         >
-          {cards.map((_, idx) => (
+          {cards.map((image, idx) => (
             <Box key={idx} mr={"1.5rem"}>
-              <Card />
+              <Card image={image} />
             </Box>
           ))}
         </Carousel>

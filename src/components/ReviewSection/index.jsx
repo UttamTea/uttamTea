@@ -3,6 +3,10 @@ import React from "react";
 import ContainerWrapper from "../common/ContainerWrapper";
 import Carousel from "react-multi-carousel";
 import REVIEW_IMG from "../../assets/mock/Review.png";
+import IG1 from "../../assets/instagram/Ig1.png";
+import IG2 from "../../assets/instagram/Ig2.png";
+import IG3 from "../../assets/instagram/Ig3.png";
+import IG4 from "../../assets/instagram/Ig4.png";
 const responsive = {
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
@@ -20,10 +24,15 @@ const responsive = {
     partialVisibilityGutter: 24,
   },
 };
-const Card = () => {
+const Card = ({ image }) => {
   return (
     <Box width={252} height={446} borderRadius={"0.75rem"}>
-      <img src={REVIEW_IMG} alt="insta" className="object_fit_cover" />
+      <img
+        src={image}
+        alt="insta"
+        className="w-100 h-100 object_fit_cover"
+        style={{ borderRadius: "12px" }}
+      />
     </Box>
   );
 };
@@ -87,7 +96,8 @@ const CustomRightArrow = ({ onClick }) => (
   </IconButton>
 );
 const ReviewSection = () => {
-  const cards = Array.from({ length: 10 });
+  const cards = [REVIEW_IMG, IG1, IG2, IG3, IG4];
+
   return (
     <ContainerWrapper>
       <Box px={"110px"} mt={"140px"}>
@@ -147,16 +157,21 @@ const ReviewSection = () => {
       <Box pl={"110px"} mt={"4.5rem"}>
         <Carousel
           responsive={responsive}
-          infinite
+          // infinite
           arrows={false}
           customLeftArrow={<CustomLeftArrow />}
           customRightArrow={<CustomRightArrow />}
           renderButtonGroupOutside
           itemClass="carousel-item-padding"
         >
-          {cards.map((_, idx) => (
+          {/* {cards.map((_, idx) => (
             <Box key={idx} mr={"1.5rem"}>
               <Card />
+            </Box>
+          ))} */}
+          {cards.map((image, idx) => (
+            <Box key={idx} mr={"1.5rem"}>
+              <Card image={image} />
             </Box>
           ))}
         </Carousel>
