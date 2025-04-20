@@ -37,6 +37,7 @@ const BestSellingProduct = () => {
           sx={{
             background:
               "linear-gradient(136deg, rgba(255, 255, 255, 0.50) 0%, rgba(153, 153, 153, 0.20) 100%)",
+            backdropFilter: "blur(10px)",
           }}
           maxWidth={"369px"}
         >

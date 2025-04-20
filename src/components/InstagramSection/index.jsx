@@ -132,7 +132,7 @@ const InstagramSection = () => {
         </Carousel>
 
         {/* Custom Arrow Controls Below */}
-        <Box display="flex" justifyContent="center" mt={4}>
+        <Box display="flex" justifyContent="center" mt={4} pr={"110px"}>
           <CustomLeftArrow
             onClick={() =>
               document

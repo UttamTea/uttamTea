@@ -90,6 +90,9 @@ const FAQSection = () => {
                 backgroundColor: "#fff",
                 transition: "all 0.3s ease",
                 overflow: "hidden",
+                pt: "18px",
+                px: "18px",
+                pb: "18px",
               }}
             >
               <AccordionSummary

@@ -2,7 +2,9 @@ import React from "react";
 import ContainerWrapper from "../common/ContainerWrapper";
 import { Box, Button, Grid, Typography } from "@mui/material";
 import PIYALA_CHAI from "../../assets/images/PiyalaChai.png";
+import { useNavigate } from "react-router-dom";
 const Card = ({ bgColor, title, img, description }) => {
+  const navigate = useNavigate();
   return (
     <Box
       width={"100%"}
@@ -36,7 +38,11 @@ const Card = ({ bgColor, title, img, description }) => {
           >
             {description}
           </Typography>
-          <Button variant="black" sx={{ mt: "3rem" }}>
+          <Button
+            variant="black"
+            sx={{ mt: "3rem" }}
+            onClick={() => navigate("/product/112")}
+          >
             Shop Now
           </Button>
         </Box>
@@ -44,10 +50,10 @@ const Card = ({ bgColor, title, img, description }) => {
     </Box>
   );
 };
-const AssamTeaSection = () => {
+const AssamTeaSection = ({ marginTop = "140px" }) => {
   return (
     <ContainerWrapper>
-      <Box mt={"140px"} mb={"5.2rem"}>
+      <Box mt={marginTop} mb={"5.2rem"}>
         <Grid container>
           <Grid item size={{ xs: 12, md: 6 }}>
             <Card

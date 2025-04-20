@@ -1,3 +1,5 @@
+// TopMarquee.scss
+
 .marquee-container {
   width: 100%;
   overflow: hidden;
@@ -6,18 +8,29 @@
   padding: 10px 0;
   transform: rotate(-0.676deg);
   margin-bottom: 10px;
-
+  
   .marquee-content {
     display: flex;
     align-items: center;
     white-space: nowrap;
     animation: marquee-scroll 60s linear infinite;
+  }
+}
 
-    // Using package icons to match the image
-    &::before {
-      content: "📦";
-      margin: 0 10px;
-    }
+.marquee-item {
+  display: inline-flex;
+  align-items: center;
+  
+  .marquee-icon {
+    font-size: 20px;
+    margin: 0 2rem;
+  }
+  
+  .marquee-text {
+    font-family:"Literata";
+    font-weight: 400;
+    font-size: 1.5rem;
+    color: #383838;
   }
 }
 
@@ -29,35 +42,78 @@
     transform: translateX(-100%);
   }
 }
-.marquee-container_bottom {
-    width: 100%;
-    overflow: hidden;
-    display: flex;
-    background-color: #C88E64;
-    padding: 10px 0;
-    transform: rotate(-0.016deg);
+// .marquee-container_bottom {
+//     width: 100%;
+//     overflow: hidden;
+//     display: flex;
+//     background-color: #C88E64;
+//     padding: 10px 0;
+//     transform: rotate(-0.016deg);
     
   
-    .marquee-content {
-      display: flex;
-      align-items: center;
-      white-space: nowrap;
-      animation: marquee-scroll_bottom 60s linear infinite;
+//     .marquee-content {
+//       display: flex;
+//       align-items: center;
+//       white-space: nowrap;
+//       animation: marquee-scroll_bottom 60s linear infinite;
   
-      // Using package icons to match the image
-      &::before {
-        content: "📦";
-        margin: 0 10px;
-      }
-    }
+//       // Using package icons to match the image
+//       &::before {
+//         content: "📦";
+//         margin: 0 10px;
+//       }
+//     }
+//   }
+  
+//   @keyframes marquee-scroll_bottom {
+//     0% {
+//       transform: translateX(0);
+//     }
+//     100% {
+//       transform: translateX(-100%);
+//     }
+//   }
+  
+
+.marquee-container_bottom {
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  background: linear-gradient(0deg, #C88E64 0%, #C88E64 100%), #FFF;
+  padding: 10px 0;
+  transform: rotate(-0.016deg);
+  margin-bottom: 10px;
+  
+  .marquee-content_bottom {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    animation: marquee-scroll_bottom 60s linear infinite;
+  }
+}
+
+.marquee-item_bottom {
+  display: inline-flex;
+  align-items: center;
+  
+  .marquee-icon_bottom {
+    font-size: 20px;
+    margin: 0 2rem;
   }
   
-  @keyframes marquee-scroll_bottom {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-100%);
-    }
+  .marquee-text_bottom {
+    font-family:"Literata";
+    font-weight: 400;
+    font-size: 1.5rem;
+    color: #fff !important;
   }
-  
+}
+
+@keyframes marquee-scroll_bottom {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}

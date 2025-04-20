@@ -34,12 +34,12 @@ const HeaderNavBar = () => {
           alignItems={"center"}
           justifyContent={"space-between"}
         >
-          <Box display={"flex"} alignItems={"center"}>
+          <Box display={"flex"} alignItems={"center"} gap={"2rem"}>
             {TABS.map((item) => {
               return (
                 <Box
                   key={item.key}
-                  p={"0.75rem"}
+                  p={"0.5rem 1rem"}
                   width={"fit-content"}
                   bgcolor={selectedTab === item.key ? "#fff" : "transparent"}
                   onClick={() => setSelectedTab(item.key)}

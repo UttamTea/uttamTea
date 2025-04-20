@@ -84,6 +84,17 @@ const KnowYourTeasSection = () => {
   return (
     <ContainerWrapper>
       <Box px={"106px"} mt={"140px"} mb={"5.2rem"}>
+        <Typography
+          color="#121212"
+          fontSize={"2.5rem"}
+          lineHeight={"3rem"}
+          fontWeight={400}
+          textAlign={"center"}
+          fontFamily={"Literata"}
+          mb={"50px"}
+        >
+          Know your Teas
+        </Typography>
         <Box
           display={"flex"}
           alignItems={"center"}

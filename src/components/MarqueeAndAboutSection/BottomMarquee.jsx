@@ -1,22 +1,44 @@
 import React from "react";
-import { Box } from "@mui/material";
 
 const BottomMarquee = () => {
-  const marqueeContent =
-    "Over $100 Free Delivery Over $100 Free Delivery Over $100 Free Delivery";
+  // Improved content structure with spans for better styling control
+  const marqueeItems = [
+    { icon: "💝", text: "50,00 Happy Customers" },
+    { icon: "💝", text: "80+ years" },
+    { icon: "💝", text: "50,00 Happy Customers" },
+    { icon: "💝", text: "80+ years" },
+    { icon: "💝", text: "50,00 Happy Customers" },
+    { icon: "💝", text: "80+ years" },
+  ];
 
-  // Calculate how many times to duplicate content to fill the screen
-  // We'll duplicate it several times to ensure coverage across all screen sizes
-  const duplicatedContent = Array(10).fill(marqueeContent).join(" ");
+  // Create styled content with proper spacing
+  const createMarqueeContent = () => {
+    return marqueeItems.map((item, index) => (
+      <span key={index} className="marquee-item_bottom">
+        <span className="marquee-icon_bottom">{item.icon}</span>
+        <span className="marquee-text_bottom">{item.text}</span>
+      </span>
+    ));
+  };
+
+  // Repeat the content multiple times to ensure full screen coverage
+  const renderDuplicatedContent = () => {
+    // Create 5 sets of the content to ensure coverage
+    return Array(5)
+      .fill(null)
+      .map((_, index) => (
+        <React.Fragment key={index}>{createMarqueeContent()}</React.Fragment>
+      ));
+  };
 
   return (
-    <Box className="marquee-container_bottom">
-      <Box className="marquee-content">{duplicatedContent}</Box>
-      {/* Duplicate the content to create the infinite scroll effect */}
-      <Box className="marquee-content" aria-hidden="true">
-        {duplicatedContent}
-      </Box>
-    </Box>
+    <div className="marquee-container_bottom">
+      <div className="marquee-content_bottom">{renderDuplicatedContent()}</div>
+      {/* Duplicate for seamless infinite scroll */}
+      <div className="marquee-content_bottom" aria-hidden="true">
+        {renderDuplicatedContent()}
+      </div>
+    </div>
   );
 };
 
