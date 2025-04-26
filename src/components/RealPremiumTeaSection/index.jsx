@@ -2,8 +2,10 @@ import React from "react";
 import ContainerWrapper from "../common/ContainerWrapper";
 import { Box, Button, Typography } from "@mui/material";
 import PREMIUM_TEA_IMG from "../../assets/images/PremiumTea.svg";
+import { useNavigate } from "react-router-dom";
 
 const RealPremiumTeaSection = () => {
+  const navigate = useNavigate();
   return (
     <ContainerWrapper>
       <Box
@@ -35,7 +37,11 @@ const RealPremiumTeaSection = () => {
             Authentic Indian kadak chai, brewed with family secrets and timeless
             spice blends. Taste tradition in every sip.
           </Typography>
-          <Button variant="black" sx={{ marginTop: "2.25rem" }}>
+          <Button
+            variant="black"
+            sx={{ marginTop: "2.25rem" }}
+            onClick={() => navigate("/product/112")}
+          >
             Shop Now
           </Button>
         </Box>

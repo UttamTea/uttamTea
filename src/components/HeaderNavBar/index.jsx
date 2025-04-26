@@ -2,6 +2,7 @@ import { Box, Button, Typography } from "@mui/material";
 import React, { useState } from "react";
 import LOGO from "../../assets/logo.svg";
 import ContainerWrapper from "../common/ContainerWrapper";
+import { useNavigate } from "react-router-dom";
 const TABS = [
   {
     title: "Shop +",
@@ -21,6 +22,7 @@ const TABS = [
   },
 ];
 const HeaderNavBar = () => {
+  const navigate = useNavigate();
   const [selectedTab, setSelectedTab] = useState("shop");
   return (
     <ContainerWrapper>
@@ -67,7 +69,12 @@ const HeaderNavBar = () => {
 
           {/* Center - Logo */}
           <Box>
-            <img src={LOGO} alt="logo" />
+            <img
+              src={LOGO}
+              alt="logo"
+              onClick={() => navigate("/")}
+              style={{ cursor: "pointer" }}
+            />
           </Box>
 
           {/* Right - Buttons */}

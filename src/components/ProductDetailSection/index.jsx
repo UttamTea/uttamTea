@@ -6,6 +6,7 @@ import CartIcon from "../../assets/icons/CartIcon";
 import ProductTabsSection from "./ProductTabsSection";
 import RelatedProducts from "./RelatedProducts";
 import PIYALA_TEA_IMG from "../../assets/mock/PiyalaMock.png";
+import ComparisonTable from "../ComparisonTable";
 
 const ProductDetailSection = ({ data = PRODUCT_DATA[0] }) => {
   const [productData, setProductData] = useState(null);
@@ -17,6 +18,7 @@ const ProductDetailSection = ({ data = PRODUCT_DATA[0] }) => {
     discount: 0,
   });
   const [isHovered, setIsHovered] = useState(false);
+  const [selectedCard, setSelectedCard] = useState(0);
   useEffect(() => {
     if (data) {
       setProductData(data);
@@ -39,14 +41,16 @@ const ProductDetailSection = ({ data = PRODUCT_DATA[0] }) => {
           <Box display={"flex"} gap={"1rem"}>
             <Box>
               <Box
-                border={"1px solid #7F3B2D"}
+                onClick={() => setSelectedCard(0)}
+                border={selectedCard !== 0 ? "none" : "1px solid #7F3B2D"}
                 borderRadius={"1rem"}
                 bgcolor={"#F8F4EC"}
                 height={"5rem"}
                 width={"5rem"}
               ></Box>
               <Box
-                border={"1px solid #7F3B2D"}
+                onClick={() => setSelectedCard(1)}
+                border={selectedCard !== 1 ? "none" : "1px solid #7F3B2D"}
                 borderRadius={"1rem"}
                 bgcolor={"#F8F4EC"}
                 height={"5rem"}
@@ -54,7 +58,8 @@ const ProductDetailSection = ({ data = PRODUCT_DATA[0] }) => {
                 my={"0.75rem"}
               ></Box>
               <Box
-                border={"1px solid #7F3B2D"}
+                onClick={() => setSelectedCard(2)}
+                border={selectedCard !== 2 ? "none" : "1px solid #7F3B2D"}
                 borderRadius={"1rem"}
                 bgcolor={"#F8F4EC"}
                 height={"5rem"}
@@ -337,7 +342,10 @@ const ProductDetailSection = ({ data = PRODUCT_DATA[0] }) => {
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
               >
-                Add to Cart - ₹149
+                Add to Cart - ₹
+                {(itemCount * packagingDetails.newPrice).toLocaleString(
+                  "en-IN"
+                )}
               </Button>
             </Box>
           </Box>
@@ -345,6 +353,7 @@ const ProductDetailSection = ({ data = PRODUCT_DATA[0] }) => {
       </Grid>
       <ProductTabsSection data={productData} />
       <RelatedProducts />
+      <ComparisonTable />
     </Box>
   );
 };

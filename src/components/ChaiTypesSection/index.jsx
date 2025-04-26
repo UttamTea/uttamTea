@@ -2,6 +2,7 @@ import { Box, Button, Grid, Typography } from "@mui/material";
 import React from "react";
 import ContainerWrapper from "../common/ContainerWrapper";
 import PIYALA_CHAI_IMG from "../../assets/mock/piyalaChai.png";
+import { useNavigate } from "react-router-dom";
 
 const Card = ({
   background,
@@ -9,6 +10,7 @@ const Card = ({
   description = "Lorem ipsum dolor sit amet, consectetur",
   img,
 }) => {
+  const navigate = useNavigate();
   return (
     <Box
       display={"flex"}
@@ -50,7 +52,11 @@ const Card = ({
             {description}
           </Typography>
         </Box>
-        <Button variant="black" className="shopNowButton">
+        <Button
+          variant="black"
+          className="shopNowButton"
+          onClick={() => navigate("/product/112")}
+        >
           Shop Now
         </Button>
       </Box>

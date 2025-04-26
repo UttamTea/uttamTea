@@ -2,6 +2,7 @@ import React from "react";
 import ContainerWrapper from "../common/ContainerWrapper";
 import { Box, Button, Typography } from "@mui/material";
 import Star from "../common/Star";
+import { useNavigate } from "react-router-dom";
 
 const AmazonLogo = () => {
   return (
@@ -58,6 +59,7 @@ const AmazonLogo = () => {
   );
 };
 const HeroSection = () => {
+  const navigate = useNavigate();
   return (
     <ContainerWrapper>
       <Box px={"6.625rem"} mt={"3.25rem"}>
@@ -105,7 +107,9 @@ const HeroSection = () => {
               Authentic Indian kadak chai, brewed with family secrets and
               timeless spice blends. Taste tradition in every sip.
             </Typography>
-            <Button variant="black">Shop teas</Button>
+            <Button variant="black" onClick={() => navigate("/product/112")}>
+              Shop teas
+            </Button>
           </Box>
         </Box>
       </Box>

@@ -29,7 +29,7 @@ const MarqueeAndAboutSection = () => {
   //   </Box>
   // );
   return (
-    <Box mt={"104px"}>
+    <Box mt={"104px"} maxWidth={"100vw"} overflow={"hidden"}>
       {" "}
       <TopMarquee />
       <BottomMarquee />

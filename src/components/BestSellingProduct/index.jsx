@@ -2,7 +2,9 @@ import React from "react";
 import ContainerWrapper from "../common/ContainerWrapper";
 import { Box, Button, Typography } from "@mui/material";
 import BEST_SELLING from "../../assets/background/BestSelling.png";
+import { useNavigate } from "react-router-dom";
 const BestSellingProduct = () => {
+  const navigate = useNavigate();
   return (
     <ContainerWrapper>
       <Box mt={"140px"} width={"100%"} height={755} position={"relative"}>
@@ -98,7 +100,11 @@ const BestSellingProduct = () => {
               </Typography>
             </Box>
           </Box>
-          <Button variant="black" sx={{ mt: "1.125rem" }}>
+          <Button
+            variant="black"
+            sx={{ mt: "1.125rem" }}
+            onClick={() => navigate("/product/112")}
+          >
             Shop Now
           </Button>
         </Box>
