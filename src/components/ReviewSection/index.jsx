@@ -112,6 +112,7 @@ const ReviewSection = () => {
           Over
         </Typography>
         <Typography
+          mr={"-5rem"}
           fontSize={"130px"}
           fontWeight={700}
           fontFamily={"Literata"}

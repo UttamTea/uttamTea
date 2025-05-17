@@ -1,21 +1,24 @@
 import React from "react";
+import PACKAGE_ICON from "../../assets/icons/package.svg";
 
 const TopMarquee = () => {
   // Improved content structure with spans for better styling control
   const marqueeItems = [
-    { icon: "📦", text: "Over ₹100" },
-    { icon: "📦", text: "Free Delivery" },
-    { icon: "📦", text: "Over ₹100" },
-    { icon: "📦", text: "Free Delivery" },
-    { icon: "📦", text: "Over ₹100" },
-    { icon: "📦", text: "Free Delivery" },
+    { icon: PACKAGE_ICON, text: "Over ₹100" },
+    { icon: PACKAGE_ICON, text: "Free Delivery" },
+    { icon: PACKAGE_ICON, text: "Over ₹100" },
+    { icon: PACKAGE_ICON, text: "Free Delivery" },
+    { icon: PACKAGE_ICON, text: "Over ₹100" },
+    { icon: PACKAGE_ICON, text: "Free Delivery" },
   ];
 
   // Create styled content with proper spacing
   const createMarqueeContent = () => {
     return marqueeItems.map((item, index) => (
       <span key={index} className="marquee-item">
-        <span className="marquee-icon">{item.icon}</span>
+        <span className="marquee-icon">
+          <img src={item.icon} alt={item.text} />
+        </span>
         <span className="marquee-text">{item.text}</span>
       </span>
     ));

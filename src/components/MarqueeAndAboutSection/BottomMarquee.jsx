@@ -1,21 +1,24 @@
 import React from "react";
-
+import HEART_ICON from "../../assets/icons/Heart.svg";
 const BottomMarquee = () => {
   // Improved content structure with spans for better styling control
   const marqueeItems = [
-    { icon: "💝", text: "50,00 Happy Customers" },
-    { icon: "💝", text: "80+ years" },
-    { icon: "💝", text: "50,00 Happy Customers" },
-    { icon: "💝", text: "80+ years" },
-    { icon: "💝", text: "50,00 Happy Customers" },
-    { icon: "💝", text: "80+ years" },
+    { icon: HEART_ICON, text: "50,00 Happy Customers" },
+    { icon: HEART_ICON, text: "80+ years" },
+    { icon: HEART_ICON, text: "50,00 Happy Customers" },
+    { icon: HEART_ICON, text: "80+ years" },
+    { icon: HEART_ICON, text: "50,00 Happy Customers" },
+    { icon: HEART_ICON, text: "80+ years" },
   ];
 
   // Create styled content with proper spacing
   const createMarqueeContent = () => {
     return marqueeItems.map((item, index) => (
       <span key={index} className="marquee-item_bottom">
-        <span className="marquee-icon_bottom">{item.icon}</span>
+        <span className="marquee-icon_bottom">
+          {" "}
+          <img src={item.icon} alt={item.text} />
+        </span>
         <span className="marquee-text_bottom">{item.text}</span>
       </span>
     ));

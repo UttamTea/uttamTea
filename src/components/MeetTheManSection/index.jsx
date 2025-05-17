@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import MAN_IMG from "../../assets/mock/Man.png";
 import WOMAN_IMG from "../../assets/mock/Women.png";
 
+import ArrowCircleRightOutlinedIcon from "@mui/icons-material/ArrowCircleRightOutlined";
+
 const data = [
   {
     img: MAN_IMG,
@@ -18,24 +20,33 @@ const data = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est.",
   },
+  {
+    img: MAN_IMG,
+    name: "Mr. John Doe",
+    heading: "Meet the Man",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est.",
+  },
 ];
 
 const MeetTheManSection = () => {
   const [currentSelectedIndex, setCurrentSelectedIndex] = useState(0);
   const [fadeIn, setFadeIn] = useState(true);
+  const [isHovered, setIsHovered] = useState(false);
 
-  // Auto-slide every 3 seconds
   useEffect(() => {
+    if (isHovered) return; // pause auto-switching on hover
+
     const interval = setInterval(() => {
-      setFadeIn(false); // Trigger fade-out
+      setFadeIn(false);
       setTimeout(() => {
-        setCurrentSelectedIndex((prev) => (prev === 0 ? 1 : 0));
-        setFadeIn(true); // Trigger fade-in after change
-      }, 500); // Duration must match Fade timeout
+        setCurrentSelectedIndex((prev) => (prev + 1) % data.length);
+        setFadeIn(true);
+      }, 500);
     }, 5000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [isHovered]); // re-run effect when hover state changes
 
   return (
     <Box
@@ -54,6 +65,8 @@ const MeetTheManSection = () => {
         display={"flex"}
         justifyContent={"space-between"}
         gap={"44px"}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
       >
         <Fade in={fadeIn} timeout={500} key={currentSelectedIndex}>
           <Box display="flex" gap="44px">
@@ -70,14 +83,32 @@ const MeetTheManSection = () => {
               justifyContent={"space-between"}
             >
               <Box>
-                <Typography
-                  color="#383838"
-                  fontFamily={"Manrope"}
-                  fontWeight={400}
-                  fontSize={"1rem"}
+                <Box
+                  display={"flex"}
+                  justifyContent={"space-between"}
+                  alignItems={"center"}
                 >
-                  {data[currentSelectedIndex].heading}
-                </Typography>
+                  <Typography
+                    color="#383838"
+                    fontFamily={"Manrope"}
+                    fontWeight={400}
+                    fontSize={"1rem"}
+                  >
+                    {data[currentSelectedIndex].heading}
+                  </Typography>
+                  <ArrowCircleRightOutlinedIcon
+                    sx={{ cursor: "pointer" }}
+                    onClick={() => {
+                      setFadeIn(false);
+                      setTimeout(() => {
+                        setCurrentSelectedIndex(
+                          (prev) => (prev + 1) % data.length
+                        );
+                        setFadeIn(true);
+                      }, 300);
+                    }}
+                  />
+                </Box>
                 <Typography
                   fontFamily={"Literata"}
                   fontSize={"2.5rem"}
