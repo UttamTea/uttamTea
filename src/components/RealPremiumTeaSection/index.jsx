@@ -9,29 +9,29 @@ const RealPremiumTeaSection = () => {
   return (
     <ContainerWrapper>
       <Box
-        px={"106px"}
+        px={{ xs: "1rem", md: "106px" }}
         mt={"140px"}
-        display={"flex"}
+        display={{ xs: "block", md: "flex" }}
         justifyContent={"space-between"}
       >
         <Box>
           <Typography
-            fontSize={"3.5rem"}
+            fontSize={{ xs: "2.25rem", md: "3.5rem" }}
             color="#691E0F"
             fontWeight={400}
-            lineHeight={"60px"}
+            lineHeight={{ xs: "44px", md: "60px" }}
             fontFamily={"Literata"}
           >
             Real Premium
             <br /> Indian Tea
           </Typography>
           <Typography
-            mt={"1.5rem"}
-            fontSize={"1rem"}
+            mt={{ xs: "0.75rem", md: "1.5rem" }}
+            fontSize={{ xs: "0.875rem", md: "1rem" }}
             fontWeight={400}
             maxWidth={"385px"}
             fontFamily={"Manrope"}
-            lineHeight={"1.5rem"}
+            lineHeight={{ xs: "1.25rem", md: "1.5rem" }}
             color="#535353"
           >
             Authentic Indian kadak chai, brewed with family secrets and timeless
@@ -39,13 +39,13 @@ const RealPremiumTeaSection = () => {
           </Typography>
           <Button
             variant="black"
-            sx={{ marginTop: "2.25rem" }}
+            sx={{ marginTop: { xs: "1.5rem", md: "2.25rem" } }}
             onClick={() => navigate("/product/112")}
           >
-            Shop Now
+            Shop teas
           </Button>
         </Box>
-        <Box>
+        <Box mt={{ xs: "44px", md: "0" }}>
           <img
             src={PREMIUM_TEA_IMG}
             alt="premium tea"
