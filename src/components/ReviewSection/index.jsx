@@ -14,19 +14,23 @@ const responsive = {
     partialVisibilityGutter: 24,
   },
   tablet: {
-    breakpoint: { max: 1024, min: 768 },
+    breakpoint: { max: 1024, min: 900 },
     items: 2,
     partialVisibilityGutter: 24,
   },
   mobile: {
-    breakpoint: { max: 768, min: 0 },
-    items: 1,
+    breakpoint: { max: 900, min: 0 },
+    items: 1.5,
     partialVisibilityGutter: 24,
   },
 };
 const Card = ({ image }) => {
   return (
-    <Box width={252} height={446} borderRadius={"0.75rem"}>
+    <Box
+      width={{ xs: "100%", md: 252 }}
+      height={{ xs: 360, md: 446 }}
+      borderRadius={"0.75rem"}
+    >
       <img
         src={image}
         alt="insta"
@@ -100,42 +104,44 @@ const ReviewSection = () => {
 
   return (
     <ContainerWrapper>
-      <Box px={"110px"} mt={"140px"}>
+      <Box px={{ xs: "1rem", md: "110px" }} mt={{ xs: "70px", md: "140px" }}>
         <Typography
-          fontSize={"2.5rem"}
+          fontSize={{ xs: "1.75rem", md: "2.5rem" }}
           fontWeight={400}
           fontFamily={"Literata"}
           color="#383838"
-          lineHeight={"3rem"}
+          lineHeight={{ xs: "2rem", md: "3rem" }}
           textAlign={"center"}
+          ml={{ xs: "-1.5rem", md: "0" }}
         >
           Over
         </Typography>
         <Typography
-          mr={"-5rem"}
-          fontSize={"130px"}
+          mr={{ xs: "0", md: "-5rem" }}
+          fontSize={{ xs: "88px", md: "130px" }}
           fontWeight={700}
           fontFamily={"Literata"}
           color="#691E0F"
           lineHeight={"100%"}
           textAlign={"center"}
         >
-          10 M +
+          50 M +
         </Typography>
         <Typography
           mt={"1.5rem"}
-          fontSize={"2.5rem"}
+          fontSize={{ xs: "1.75rem", md: "2.5rem" }}
+          lineHeight={{ xs: "2rem", md: "3rem" }}
           fontWeight={400}
           fontFamily={"Literata"}
           color="#691E0F"
-          lineHeight={"3rem"}
           textAlign={"center"}
+          maxWidth={{ xs: 325, md: 1084 }}
         >
           Cups of Authentic Indian Tea Served
         </Typography>
         <Typography
-          my={"2.75rem"}
-          fontSize={"1rem"}
+          my={{ xs: "1.5rem", md: "2.75rem" }}
+          fontSize={{ xs: "0.75rem", md: "1rem" }}
           fontWeight={400}
           fontFamily={"Manrope"}
           color="#383838"
@@ -145,40 +151,38 @@ const ReviewSection = () => {
           Lorem ipsum dolor sit amet, consectetur adipiscing elit,{" "}
         </Typography>
         <Typography
-          fontSize={"2.5rem"}
+          fontSize={{ xs: "1.75rem", md: "2.5rem" }}
+          lineHeight={{ xs: "2rem", md: "2rem" }}
           fontWeight={400}
           fontFamily={"Literata"}
           color="#121212"
-          lineHeight={"2rem"}
           textAlign={"center"}
         >
           Don&apos;t Just Take Our Word For It
         </Typography>
       </Box>
-      <Box pl={"110px"} mt={"4.5rem"}>
+      <Box
+        pl={{ xs: "1rem", md: "110px" }}
+        mt={{ xs: "2.25rem", md: "4.5rem" }}
+      >
         <Carousel
           responsive={responsive}
-          // infinite
           arrows={false}
           customLeftArrow={<CustomLeftArrow />}
           customRightArrow={<CustomRightArrow />}
           renderButtonGroupOutside
           itemClass="carousel-item-padding"
+          swipeable={false}
+          draggable={false}
         >
-          {/* {cards.map((_, idx) => (
-            <Box key={idx} mr={"1.5rem"}>
-              <Card />
-            </Box>
-          ))} */}
           {cards.map((image, idx) => (
-            <Box key={idx} mr={"1.5rem"}>
+            <Box key={idx} mr={{ xs: "1rem", md: "1.5rem" }}>
               <Card image={image} />
             </Box>
           ))}
         </Carousel>
 
-        {/* Custom Arrow Controls Below */}
-        <Box display="flex" justifyContent="center" mt={4}>
+        <Box display="flex" justifyContent="center" mt={{ xs: 2, md: 4 }}>
           <CustomLeftArrow
             onClick={() =>
               document

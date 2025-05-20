@@ -2,22 +2,61 @@ import React from "react";
 import ContainerWrapper from "../common/ContainerWrapper";
 import { Box, Button, Typography } from "@mui/material";
 import BEST_SELLING from "../../assets/background/BestSelling.png";
+import BEST_SELLING_RESP from "../../assets/background/BestSellingResp.png";
+
 import { useNavigate } from "react-router-dom";
 const BestSellingProduct = () => {
   const navigate = useNavigate();
   return (
     <ContainerWrapper>
-      <Box mt={"140px"} width={"100%"} height={755} position={"relative"}>
+      <Box
+        mt={{ xs: "70px", md: "140px" }}
+        width={"100%"}
+        height={755}
+        position={"relative"}
+        px={{ xs: "1rem", md: "0" }}
+      >
+        <Typography
+          display={{ xs: "block", md: "none" }}
+          fontSize={"1.75rem"}
+          lineHeight={"2rem"}
+          fontFamily={"Literata"}
+          color="#691E0F"
+          fontWeight={400}
+          mb={"1.75rem"}
+        >
+          Best Selling Product
+        </Typography>
         <Box
-          position={"absolute"}
+          position={{ xs: "relative", md: "absolute" }}
           top={0}
           left={0}
           height={"auto"}
           width={"100%"}
+          display={{ xs: "none", md: "block" }}
         >
           <img src={BEST_SELLING} alt="best selling" />
         </Box>
-        <Box position={"absolute"} left={"110px"} top={"72px"}>
+        <Box
+          position={{ xs: "relative", md: "absolute" }}
+          top={0}
+          left={0}
+          height={"auto"}
+          width={"100%"}
+          display={{ xs: "block", md: "none" }}
+        >
+          <img
+            src={BEST_SELLING_RESP}
+            alt="best selling"
+            style={{ width: "100%", height: "auto" }}
+          />
+        </Box>
+        <Box
+          display={{ xs: "none", md: "block" }}
+          position={"absolute"}
+          left={"110px"}
+          top={"72px"}
+        >
           <Typography
             fontSize={"2.5rem"}
             fontFamily={"Literata"}
@@ -29,6 +68,7 @@ const BestSellingProduct = () => {
           </Typography>
         </Box>
         <Box
+          display={{ xs: "none", md: "block" }}
           position={"absolute"}
           bottom={"20%"}
           left={"32%"}

@@ -26,22 +26,23 @@ const WatchHowUttamTeaSection = () => {
       pb={"5.2rem"}
     >
       <ContainerWrapper>
-        <Box px={"106px"} mt={"140px"}>
+        <Box px={{ xs: "1rem", md: "106px" }} mt={{ xs: "70px", md: "140px" }}>
           <Typography
             color="#121212"
             fontFamily={"Literata"}
             fontWeight={400}
-            lineHeight={"3rem"}
+            lineHeight={{ xs: "2rem", md: "3rem" }}
             textAlign={"center"}
             marginX={"auto"}
-            fontSize={"2.5rem"}
+            fontSize={{ xs: "28px", md: "2.5rem" }}
+            px={{ xs: "16px", md: "0" }}
           >
             Watch how Uttam Tea is Prepared
           </Typography>
           <Box
-            mt={"2.5rem"}
+            mt={{ xs: "28px", md: "2.5rem" }}
             borderRadius={"1.5rem"}
-            height={"686px"}
+            height={{ xs: "202px", md: "686px" }}
             overflow={"hidden"}
             position="relative"
           >

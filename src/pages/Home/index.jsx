@@ -24,11 +24,11 @@ const Home = () => {
       <MarqueeAndAboutSection />
       {/* <ChaiTypesSection /> */}
       <RealPremiumTeaSection />
-      {/* <WatchHowUttamTeaSection />
-      <MeetTheManSection />
+      <WatchHowUttamTeaSection />
+      {/* <MeetTheManSection /> */}
       <ReviewSection />
       <BestSellingProduct />
-      <InstagramSection />
+      {/* <InstagramSection />
       <KnowYourTeasSection />
       <AssamTeaSection />
       <FAQSection />
