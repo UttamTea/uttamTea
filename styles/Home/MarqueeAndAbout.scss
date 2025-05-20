@@ -32,6 +32,18 @@
     font-size: 1.5rem;
     color: #383838;
   }
+  @media screen and (max-width:900px) {
+    .marquee-text{
+      font-size: 1.25rem;
+    }
+    .marquee-icon{
+      margin: 0 1.5rem;
+      img{
+        height: 23px;
+        width: 23px;
+      }
+    }
+  }
 }
 
 @keyframes marquee-scroll {
@@ -107,6 +119,19 @@
     font-weight: 400;
     font-size: 1.5rem;
     color: #fff !important;
+  }
+  @media screen and (max-width:900px) {
+    .marquee-text_bottom{
+      font-size: 1.25rem;
+    }
+    .marquee-icon_bottom{
+      margin: 0 1.5rem;
+
+      img{
+        height: 23px;
+        width: 23px;
+      }
+    }
   }
 }
 

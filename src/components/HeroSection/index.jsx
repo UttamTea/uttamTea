@@ -62,7 +62,10 @@ const HeroSection = () => {
   const navigate = useNavigate();
   return (
     <ContainerWrapper>
-      <Box px={"6.625rem"} mt={"3.25rem"}>
+      <Box
+        px={{ xs: "1rem", md: "6.625rem" }}
+        mt={{ xs: "2.5rem", md: "3.25rem" }}
+      >
         <Box>
           <Box display={"flex"} alignItems={"center"} gap={"0.625rem"}>
             <Box mb={"0.5rem"} display={"flex"} alignItems={"center"}>
@@ -85,10 +88,10 @@ const HeroSection = () => {
           </Box>
           <Box>
             <Typography
-              fontSize={"76px"}
+              fontSize={{ xs: "2.5rem", md: "76px" }}
               color="#691E0F"
               fontFamily={"Literata"}
-              lineHeight={"84px"}
+              lineHeight={{ xs: "48px", md: "84px" }}
               fontWeight={600}
               maxWidth={498}
             >
@@ -96,13 +99,13 @@ const HeroSection = () => {
             </Typography>
             <Typography
               mt={"1.25rem"}
-              mb={"2.5rem"}
-              fontSize={"1.25rem"}
+              mb={{ xs: "2rem", md: "2.5rem" }}
+              fontSize={{ xs: "1rem", md: "1.25rem" }}
               fontFamily={"Manrope"}
               color="#535353"
               fontWeight={400}
-              lineHeight={"150%"}
-              maxWidth={489}
+              lineHeight={{ xs: "1.5rem", md: "150%" }}
+              maxWidth={{ xs: 312, md: 489 }}
             >
               Authentic Indian kadak chai, brewed with family secrets and
               timeless spice blends. Taste tradition in every sip.

@@ -66,7 +66,7 @@ const Card = ({
 const ChaiTypesSection = () => {
   return (
     <ContainerWrapper>
-      <Box px={"110px"} mt={"140px"}>
+      <Box px={{ xs: "1rem", md: "110px" }} mt={"140px"}>
         <Grid container spacing={"1.5rem"}>
           <Grid item size={{ xs: 12, md: 4 }}>
             <Card

@@ -17,7 +17,7 @@ const TopMarquee = () => {
     return marqueeItems.map((item, index) => (
       <span key={index} className="marquee-item">
         <span className="marquee-icon">
-          <img src={item.icon} alt={item.text} />
+          <img src={item.icon} alt={item.text} className="icon" />
         </span>
         <span className="marquee-text">{item.text}</span>
       </span>

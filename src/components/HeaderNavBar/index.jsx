@@ -3,6 +3,9 @@ import React, { useState } from "react";
 import LOGO from "../../assets/logo.svg";
 import ContainerWrapper from "../common/ContainerWrapper";
 import { useNavigate } from "react-router-dom";
+import HAMBURGER_ICON from "../../assets/icons/Hamburger.svg";
+import RESP_LOGO from "../../assets/logoResp.svg";
+import CART_ICON_RESP from "../../assets/icons/CartResp.svg";
 const TABS = [
   {
     title: "Shop +",
@@ -26,20 +29,20 @@ const HeaderNavBar = () => {
   const [selectedTab, setSelectedTab] = useState("shop");
   return (
     <ContainerWrapper>
-      <Box mx={"1.25rem"} mt={"2.5rem"}>
+      <Box mx={{ xs: "0", md: "1.25rem" }} mt={{ xs: "0", md: "2.5rem" }}>
         <Box
           width={"100%"}
-          bgcolor={"#7F3B2D"}
-          p={"0.75rem 5.625rem"}
+          bgcolor={"#007F3D"}
+          p={{ xs: "0.625rem 1rem", md: "0.75rem 5.625rem" }}
           display={"flex"}
-          borderRadius={"1.25rem"}
+          borderRadius={{ xs: "0", md: "1.25rem" }}
           alignItems={"center"}
-          justifyContent={"center"} // changed from space-between
+          justifyContent={{ xs: "space-between", md: "center" }} // changed from space-between
           position="relative"
         >
           {/* Left - Tabs */}
           <Box
-            display={"flex"}
+            display={{ xs: "none", md: "flex" }}
             alignItems={"center"}
             gap={"2rem"}
             position="absolute"
@@ -66,11 +69,26 @@ const HeaderNavBar = () => {
               </Box>
             ))}
           </Box>
+          <Box display={{ xs: "flex", md: "none" }}>
+            <img
+              src={HAMBURGER_ICON}
+              alt="hamburger"
+              style={{ height: "24px", width: "24px" }}
+            />
+          </Box>
 
           {/* Center - Logo */}
-          <Box>
+          <Box display={{ xs: "none", md: "flex" }}>
             <img
               src={LOGO}
+              alt="logo"
+              onClick={() => navigate("/")}
+              style={{ cursor: "pointer" }}
+            />
+          </Box>
+          <Box display={{ xs: "flex", md: "none" }}>
+            <img
+              src={RESP_LOGO}
               alt="logo"
               onClick={() => navigate("/")}
               style={{ cursor: "pointer" }}
@@ -79,16 +97,23 @@ const HeaderNavBar = () => {
 
           {/* Right - Buttons */}
           <Box
-            display={"flex"}
+            display={{ xs: "none", md: "flex" }}
             alignItems={"center"}
             position="absolute"
             right="5.625rem"
           >
             <Button variant="transparent">Login</Button>
-            <Button variant="lightBrown">
+            <Button variant="darkGreen">
               <Box display={"flex"} alignItems={"center"} gap={"0.5rem"}>
-                {/* SVG code */}
                 Cart(0)
+              </Box>
+            </Button>
+          </Box>
+          <Box display={{ xs: "flex", md: "none" }}>
+            <Button variant="darkGreen" sx={{ padding: "8px 12px !important" }}>
+              <Box display={"flex"} alignItems={"center"} gap={"0.5rem"}>
+                <img src={CART_ICON_RESP} alt="cart" />
+                {0}
               </Box>
             </Button>
           </Box>
