@@ -52,24 +52,24 @@ const MeetTheManSection = () => {
     <Box
       bgcolor={"#7F3B2D"}
       width={"100%"}
-      display={"flex"}
+      display={{ xs: "block", md: "flex" }}
       justifyContent={"center"}
       alignItems={"center"}
-      px={"111px"}
-      py={"108px"}
+      px={{ xs: "1rem", md: "111px" }}
+      py={{ xs: "70px", md: "108px" }}
     >
       <Box
         borderRadius={"1.5rem"}
         bgcolor={"#fff"}
         p={"1.5rem"}
-        display={"flex"}
+        display={{ xs: "block", md: "flex" }}
         justifyContent={"space-between"}
         gap={"44px"}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
         <Fade in={fadeIn} timeout={500} key={currentSelectedIndex}>
-          <Box display="flex" gap="44px">
+          <Box display={{ xs: "block", md: "flex" }} gap="44px">
             <Box>
               <img
                 src={data[currentSelectedIndex].img}

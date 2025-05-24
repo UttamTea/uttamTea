@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import ContainerWrapper from "../common/ContainerWrapper";
 import { Box, Button, Typography, IconButton } from "@mui/material";
 import Carousel from "react-multi-carousel";
@@ -10,7 +10,11 @@ import R3 from "../../assets/reviews/R3.png";
 
 const Card = ({ image }) => {
   return (
-    <Box width={287} height={287} borderRadius={"0.75rem"}>
+    <Box
+      width={{ xs: 204, md: 287 }}
+      height={{ xs: 204, md: 287 }}
+      borderRadius={"0.75rem"}
+    >
       <img src={image} alt="insta" className="h-100 w-100 object_fit_cover" />
     </Box>
   );
@@ -29,18 +33,18 @@ const CustomLeftArrow = ({ onClick }) => (
       <path
         d="M21.5699 30.0698L15.4999 23.9998L21.5699 17.9298"
         stroke="#121212"
-        stroke-width="1.5"
-        stroke-miterlimit="10"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M32.5 24L15.67 24"
         stroke="#121212"
-        stroke-width="1.5"
-        stroke-miterlimit="10"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   </IconButton>
@@ -59,18 +63,18 @@ const CustomRightArrow = ({ onClick }) => (
       <path
         d="M26.4301 17.9302L32.5001 24.0002L26.4301 30.0702"
         stroke="#121212"
-        stroke-width="1.5"
-        stroke-miterlimit="10"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M15.5 24H32.33"
         stroke="#121212"
-        stroke-width="1.5"
-        stroke-miterlimit="10"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   </IconButton>
@@ -89,23 +93,24 @@ const responsive = {
   },
   mobile: {
     breakpoint: { max: 768, min: 0 },
-    items: 1,
+    items: 1.5,
     partialVisibilityGutter: 24,
   },
 };
 
 const InstagramSection = () => {
+  const carouselRef = useRef();
   const cards = [INSTAGRAM_IMAGE, R1, R2, R3, INSTAGRAM_IMAGE, R1, R2, R3];
 
   return (
     <ContainerWrapper>
-      <Box px={"110px"} mt={"140px"}>
+      <Box px={{ xs: "1rem", md: "110px" }} mt={{ xs: "40px", md: "140px" }}>
         <Typography
-          fontSize={"2.5rem"}
+          fontSize={{ xs: "28px", md: "2.5rem" }}
           fontWeight={400}
           fontFamily={"Literata"}
           color="#121212"
-          lineHeight={"3rem"}
+          lineHeight={{ xs: "2rem", md: "3rem" }}
           textAlign={"center"}
         >
           @UttamTea on Instagram
@@ -115,13 +120,13 @@ const InstagramSection = () => {
         </Box>
       </Box>
 
-      <Box pl={"110px"} mt={"4rem"}>
+      <Box pl={{ xs: "1rem", md: "110px" }} mt={"4rem"}>
         <Carousel
+          ref={carouselRef}
+          draggable={false}
+          swipeable={false}
           responsive={responsive}
-          // infinite
           arrows={false}
-          customLeftArrow={<CustomLeftArrow />}
-          customRightArrow={<CustomRightArrow />}
           renderButtonGroupOutside
           itemClass="carousel-item-padding"
         >
@@ -132,22 +137,14 @@ const InstagramSection = () => {
           ))}
         </Carousel>
 
-        {/* Custom Arrow Controls Below */}
-        <Box display="flex" justifyContent="center" mt={4} pr={"110px"}>
-          <CustomLeftArrow
-            onClick={() =>
-              document
-                .querySelector(".react-multi-carousel-list")
-                .scrollBy({ left: -300, behavior: "smooth" })
-            }
-          />
-          <CustomRightArrow
-            onClick={() =>
-              document
-                .querySelector(".react-multi-carousel-list")
-                .scrollBy({ left: 300, behavior: "smooth" })
-            }
-          />
+        <Box
+          display="flex"
+          justifyContent="center"
+          mt={4}
+          pr={{ xs: "1rem", md: "110px" }}
+        >
+          <CustomLeftArrow onClick={() => carouselRef.current?.previous()} />
+          <CustomRightArrow onClick={() => carouselRef.current?.next()} />
         </Box>
       </Box>
     </ContainerWrapper>

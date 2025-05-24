@@ -27,3 +27,11 @@
 .object_fit_cover{
     object-fit: cover;
 }
+.small_screen_hide{
+    display: flex;
+}
+@media screen and (max-width:900px) {
+    .small_screen_hide{
+        display: none;
+    }
+}

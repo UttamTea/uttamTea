@@ -42,7 +42,11 @@ const Card = ({ img, title, description }) => {
 const OtherBenefitsSection = () => {
   return (
     <ContainerWrapper>
-      <Box mt={"140px"} px={"6.25rem"} mb={"5.2rem"}>
+      <Box
+        mt={{ xs: "70px", md: "140px" }}
+        px={{ xs: "1rem", md: "6.25rem" }}
+        mb={"5.2rem"}
+      >
         <Box
           display={"flex"}
           justifyContent={"space-between"}

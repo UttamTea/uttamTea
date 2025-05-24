@@ -22,17 +22,17 @@ const Home = () => {
       <HeaderNavBar />
       <HeroSection />
       <MarqueeAndAboutSection />
-      {/* <ChaiTypesSection /> */}
+      <ChaiTypesSection />
       <RealPremiumTeaSection />
       <WatchHowUttamTeaSection />
-      {/* <MeetTheManSection /> */}
+      <MeetTheManSection />
       <ReviewSection />
       <BestSellingProduct />
-      {/* <InstagramSection />
+      <InstagramSection />
       <KnowYourTeasSection />
       <AssamTeaSection />
       <FAQSection />
-      <OtherBenefitsSection /> */}
+      <OtherBenefitsSection />
     </>
   );
 };

@@ -16,7 +16,7 @@ export const TeaCard = ({ title, description, img, bgColor }) => {
     >
       <Box display={"flex"} justifyContent={"center"} alignItems={"center"}>
         <Box>
-          <img src={img} alt="img" />
+          <img src={img} alt="img" className="w-100 h-auto" />
           <Box textAlign={"center"} mt={"-2rem"}>
             <Typography
               color="#121212"
