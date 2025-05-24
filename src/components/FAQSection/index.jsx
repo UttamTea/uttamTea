@@ -49,24 +49,26 @@ const FAQSection = () => {
 
   return (
     <ContainerWrapper>
-      <Box px="20px" mt="140px">
+      <Box px={{ xs: "0", md: "20px" }} mt={{ xs: "76px", md: "140px" }}>
         <Typography
-          fontSize={"2.5rem"}
+          px={{ xs: "1rem", md: "0" }}
+          fontSize={{ xs: "1.75rem", md: "2.5rem" }}
           color="#121212"
           fontFamily={"Literata"}
-          lineHeight={"3rem"}
+          lineHeight={{ xs: "2rem", md: "3rem" }}
           textAlign="center"
           fontWeight={400}
         >
           Frequently Asked Questions
         </Typography>
         <Typography
+          px={{ xs: "1rem", md: "0" }}
           color="#535353"
           fontFamily={"Manrope"}
-          fontSize={"1rem"}
-          lineHeight={"26px"}
+          fontSize={{ xs: "0.875rem", md: "1rem" }}
+          lineHeight={{ xs: "1.25rem", md: "26px" }}
           fontWeight={400}
-          mt={1}
+          mt={{ xs: "12px", md: 1 }}
           mb={4}
           textAlign={"center"}
           maxWidth={"589px"}
@@ -76,23 +78,28 @@ const FAQSection = () => {
           about Uttam Tea right here.
         </Typography>
 
-        <Box maxWidth="928px" mx="auto" mt={"72px"}>
+        <Box maxWidth="928px" mx="auto" mt={{ xs: "40px", md: "72px" }}>
           {faqData.map((faq, index) => (
             <Accordion
               key={index}
               expanded={expanded === `panel${index}`}
               onChange={handleChange(`panel${index}`)}
               sx={{
-                border: "1px solid #EDE5DB",
-                boxShadow: "0px 5px 16px 0px rgba(8, 15, 52, 0.06)",
-                mb: "0.75rem",
-                borderRadius: "14px",
-                backgroundColor: "#fff",
+                border: { xs: "none", md: "1px solid #EDE5DB" },
+                borderBottom: { xs: "1px solid #EDE5DB", md: "none" },
+                boxShadow: {
+                  xs: "none",
+                  md: "0px 5px 16px 0px rgba(8, 15, 52, 0.06)",
+                },
+                margin: { xs: "0 !important", md: "1rem !important" },
+                mb: { xs: "0", md: "0.75rem" },
+                borderRadius: { xs: "0", md: "14px" },
+                backgroundColor: { xs: "transparent", md: "#fff" },
                 transition: "all 0.3s ease",
                 overflow: "hidden",
                 pt: "18px",
-                px: "18px",
                 pb: "18px",
+                px: "18px",
               }}
             >
               <AccordionSummary
@@ -109,9 +116,9 @@ const FAQSection = () => {
                 id={`panel${index}bh-header`}
                 sx={{
                   fontWeight: 400,
-                  fontSize: "1.5rem",
+                  fontSize: { xs: "1.25rem", md: "1.5rem" },
                   fontFamily: "Literata",
-                  lineHeight: "26px",
+                  lineHeight: { xs: "1.5rem", md: "26px" },
                   //   padding: "20px",
                 }}
               >
@@ -121,9 +128,9 @@ const FAQSection = () => {
                 sx={{
                   color: "#535353",
                   fontWeight: 400,
-                  fontSize: "1rem",
+                  fontSize: { xs: "0.875rem ", md: "1rem" },
                   fontFamily: "Manrope",
-                  lineHeight: "24px",
+                  lineHeight: { xs: "22px", md: "24px" },
                   maxWidth: "715px",
                 }}
               >

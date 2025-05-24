@@ -61,7 +61,7 @@ const MeetTheManSection = () => {
       <Box
         borderRadius={"1.5rem"}
         bgcolor={"#fff"}
-        p={"1.5rem"}
+        p={{ xs: "1rem", md: "1.5rem" }}
         display={{ xs: "block", md: "flex" }}
         justifyContent={"space-between"}
         gap={"44px"}
@@ -82,7 +82,7 @@ const MeetTheManSection = () => {
               flexDirection={"column"}
               justifyContent={"space-between"}
             >
-              <Box>
+              <Box mt={{ xs: "28px", md: "0" }}>
                 <Box
                   display={"flex"}
                   justifyContent={"space-between"}
@@ -97,7 +97,10 @@ const MeetTheManSection = () => {
                     {data[currentSelectedIndex].heading}
                   </Typography>
                   <ArrowCircleRightOutlinedIcon
-                    sx={{ cursor: "pointer" }}
+                    sx={{
+                      cursor: "pointer",
+                      display: { xs: "none", md: "flex" },
+                    }}
                     onClick={() => {
                       setFadeIn(false);
                       setTimeout(() => {
@@ -111,10 +114,10 @@ const MeetTheManSection = () => {
                 </Box>
                 <Typography
                   fontFamily={"Literata"}
-                  fontSize={"2.5rem"}
+                  fontSize={{ xs: "28px", md: "2.5rem" }}
                   fontWeight={400}
                   color="#121212"
-                  my={"1.25rem"}
+                  my={{ xs: "0.75rem", md: "1.25rem" }}
                 >
                   {data[currentSelectedIndex].name}
                 </Typography>
@@ -128,7 +131,12 @@ const MeetTheManSection = () => {
                   {data[currentSelectedIndex].description}
                 </Typography>
               </Box>
-              <Box display={"flex"} alignItems={"center"} gap={"0.75rem"}>
+              <Box
+                display={"flex"}
+                alignItems={"center"}
+                gap={"0.75rem"}
+                my={{ xs: "1.25rem", md: "0" }}
+              >
                 {data.map((_, index) => (
                   <Box
                     key={index}

@@ -10,7 +10,7 @@ const RealPremiumTeaSection = () => {
     <ContainerWrapper>
       <Box
         px={{ xs: "1rem", md: "106px" }}
-        mt={"140px"}
+        mt={{ xs: "64px", md: "140px" }}
         display={{ xs: "block", md: "flex" }}
         justifyContent={"space-between"}
       >
@@ -29,7 +29,7 @@ const RealPremiumTeaSection = () => {
             mt={{ xs: "0.75rem", md: "1.5rem" }}
             fontSize={{ xs: "0.875rem", md: "1rem" }}
             fontWeight={400}
-            maxWidth={"385px"}
+            maxWidth={{ xs: "332px", md: "385px" }}
             fontFamily={"Manrope"}
             lineHeight={{ xs: "1.25rem", md: "1.5rem" }}
             color="#535353"
@@ -39,7 +39,7 @@ const RealPremiumTeaSection = () => {
           </Typography>
           <Button
             variant="black"
-            sx={{ marginTop: { xs: "1.5rem", md: "2.25rem" } }}
+            sx={{ marginTop: { xs: "1.75rem", md: "2.25rem" } }}
             onClick={() => navigate("/product/112")}
           >
             Shop teas

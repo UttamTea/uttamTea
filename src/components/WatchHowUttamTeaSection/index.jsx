@@ -49,6 +49,7 @@ const WatchHowUttamTeaSection = () => {
             <video
               ref={videoRef}
               src={TEST_VIDEO}
+              controls={false}
               className="h-auto w-100"
               style={{
                 borderRadius: "1.5rem",

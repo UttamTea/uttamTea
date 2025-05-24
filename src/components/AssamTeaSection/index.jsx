@@ -9,20 +9,22 @@ export const TeaCard = ({ title, description, img, bgColor }) => {
   return (
     <Box
       width={"100%"}
-      height={"720px"}
+      height={{ xs: "100%", md: "720px" }}
       className="teaCard_main_container"
       sx={{ background: bgColor }}
       borderRadius={"1.5rem"}
+      pt={{ xs: "2rem", md: "0" }}
     >
       <Box display={"flex"} justifyContent={"center"} alignItems={"center"}>
-        <Box>
-          <img src={img} alt="img" className="w-100 h-auto" />
-          <Box textAlign={"center"} mt={"-2rem"}>
+        <Box display={"flex"} flexDirection={"column"} alignItems={"center"}>
+          <img src={img} alt="img" className="assam_tea_images w-100 h-auto" />
+          <Box textAlign={"center"} mt={{ xs: "0", md: "-2rem" }}>
             <Typography
               color="#121212"
               fontFamily={"Literata"}
               fontWeight={400}
               fontSize={"2rem"}
+              mt={{ xs: "1.25rem", md: "0" }}
             >
               {title}
             </Typography>
@@ -36,7 +38,10 @@ export const TeaCard = ({ title, description, img, bgColor }) => {
             </Typography>
             <Button
               variant="black"
-              sx={{ marginTop: "28px" }}
+              sx={{
+                marginTop: { xs: "20px", md: "28px" },
+                marginBottom: { xs: "32px", md: "0" },
+              }}
               onClick={() => navigate("/product/112")}
             >
               {" "}
@@ -51,9 +56,9 @@ export const TeaCard = ({ title, description, img, bgColor }) => {
 const AssamTeaSection = ({ marginTop = "140px" }) => {
   return (
     <ContainerWrapper>
-      <Box mt={marginTop} mb={"5.2rem"}>
+      <Box mt={{ xs: "64px", md: "140px" }} mb={"5.2rem"}>
         <Grid container>
-          <Grid item size={{ xs: 12, md: 6 }}>
+          <Grid item size={{ xs: 12, md: 6 }} px={{ xs: "1rem", md: "0" }}>
             {/* <Card
               title={"Assam Tea"}
               description={"Lorem ipsum dolor sit amet, consectetur"}
@@ -67,7 +72,12 @@ const AssamTeaSection = ({ marginTop = "140px" }) => {
               bgColor={"linear-gradient(180deg, #FFF5E6 0%, #FAE3C2 100%)"}
             />
           </Grid>
-          <Grid item size={{ xs: 12, md: 6 }}>
+          <Grid
+            item
+            size={{ xs: 12, md: 6 }}
+            px={{ xs: "1rem", md: "0" }}
+            mt={{ xs: "1.25rem", md: "0" }}
+          >
             {/* <Card
               title={"Assam Tea"}
               description={"Lorem ipsum dolor sit amet, consectetur"}

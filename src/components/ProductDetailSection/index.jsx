@@ -35,10 +35,10 @@ const ProductDetailSection = ({ data = PRODUCT_DATA[0] }) => {
     }
   };
   return (
-    <Box mt={"92px"} px={"110px"}>
+    <Box mt={"92px"} px={{ xs: "1rem", md: "110px" }}>
       <Grid container spacing={"2rem"}>
         <Grid item size={{ xs: 12, md: 5.8 }}>
-          <Box display={"flex"} gap={"1rem"}>
+          <Box display={{ xs: "none", md: "flex" }} gap={"1rem"}>
             <Box>
               <Box
                 onClick={() => setSelectedCard(0)}
@@ -66,7 +66,6 @@ const ProductDetailSection = ({ data = PRODUCT_DATA[0] }) => {
                 width={"5rem"}
               ></Box>
             </Box>
-            {/* IMAGE */}
             <Box
               sx={{
                 background:
@@ -88,10 +87,10 @@ const ProductDetailSection = ({ data = PRODUCT_DATA[0] }) => {
         <Grid item size={{ xs: 12, md: 6 }}>
           <Box>
             <Typography
-              fontSize={"2.5rem"}
+              fontSize={{ xs: "28px", md: "2.5rem" }}
               color="#121212"
               fontFamily={"Literata"}
-              lineHeight={"120%"}
+              lineHeight={{ xs: "2rem", md: "120%" }}
               fontWeight={400}
             >
               {productData?.name}
@@ -114,7 +113,7 @@ const ProductDetailSection = ({ data = PRODUCT_DATA[0] }) => {
                 mb={"0.5rem"}
                 fontSize={"0.875rem"}
                 fontFamily={"Manrope"}
-                color="#121212"
+                color={{ xs: "#535353", md: "#121212" }}
                 fontWeight={400}
               >
                 {productData?.rating}
@@ -171,13 +170,13 @@ const ProductDetailSection = ({ data = PRODUCT_DATA[0] }) => {
               display={"flex"}
               alignItems={"center"}
               justifyContent={"flex-start"}
-              gap={"0.75rem"}
+              gap={{ xs: "0.5rem", md: "0.75rem" }}
             >
               {productData?.sizes.map((item) => {
                 return (
                   <Box
                     key={item.id}
-                    px={"2.5rem"}
+                    px={{ xs: "1.25rem", md: "2.5rem" }}
                     py={"0.5rem"}
                     border={
                       item.id === selectedPacking
@@ -199,7 +198,7 @@ const ProductDetailSection = ({ data = PRODUCT_DATA[0] }) => {
                       color={selectedPacking === item.id ? "#fff" : "#383838"}
                       fontFamily={"Manrope"}
                       fontWeight={400}
-                      fontSize={"1rem"}
+                      fontSize={{ xs: "0.875rem", md: "1rem" }}
                       lineHeight={"1.5rem"}
                     >
                       {" "}

@@ -104,7 +104,7 @@ const InstagramSection = () => {
 
   return (
     <ContainerWrapper>
-      <Box px={{ xs: "1rem", md: "110px" }} mt={{ xs: "40px", md: "140px" }}>
+      <Box px={{ xs: "1rem", md: "110px" }} mt={{ xs: "76px", md: "140px" }}>
         <Typography
           fontSize={{ xs: "28px", md: "2.5rem" }}
           fontWeight={400}
@@ -115,19 +115,24 @@ const InstagramSection = () => {
         >
           @UttamTea on Instagram
         </Typography>
-        <Box display={"flex"} justifyContent={"center"} mt={"1.5rem"}>
+        <Box
+          display={"flex"}
+          justifyContent={"center"}
+          mt={{ xs: "1.25rem", md: "1.5rem" }}
+        >
           <Button variant="black">Follow Us</Button>
         </Box>
       </Box>
 
-      <Box pl={{ xs: "1rem", md: "110px" }} mt={"4rem"}>
+      <Box pl={{ xs: "1rem", md: "110px" }} mt={{ xs: "1.75rem", md: "4rem" }}>
         <Carousel
           ref={carouselRef}
-          draggable={false}
-          swipeable={false}
+          draggable={true}
+          swipeable={true}
           responsive={responsive}
           arrows={false}
           renderButtonGroupOutside
+          infinite
           itemClass="carousel-item-padding"
         >
           {cards.map((image, idx) => (
@@ -138,7 +143,7 @@ const InstagramSection = () => {
         </Carousel>
 
         <Box
-          display="flex"
+          display={{ xs: "none", md: "flex" }}
           justifyContent="center"
           mt={4}
           pr={{ xs: "1rem", md: "110px" }}

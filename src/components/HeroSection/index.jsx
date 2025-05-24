@@ -68,7 +68,12 @@ const HeroSection = () => {
       >
         <Box>
           <Box display={"flex"} alignItems={"center"} gap={"0.625rem"}>
-            <Box mb={"0.5rem"} display={"flex"} alignItems={"center"}>
+            <Box
+              mb={"0.5rem"}
+              display={"flex"}
+              alignItems={"center"}
+              gap={{ xs: "4px", md: "0" }}
+            >
               <Star />
               <Star />
               <Star />
@@ -77,7 +82,7 @@ const HeroSection = () => {
             </Box>
             <Typography
               mb={"0.5rem"}
-              fontSize={"0.875rem"}
+              fontSize={{ xs: "0.75rem", md: "0.875rem" }}
               fontFamily={"Manrope"}
               color="#121212"
               fontWeight={400}
@@ -94,6 +99,7 @@ const HeroSection = () => {
               lineHeight={{ xs: "48px", md: "84px" }}
               fontWeight={600}
               maxWidth={498}
+              mt={{ xs: "0.5rem", md: "0" }}
             >
               Brewing Bold Flavors Since 1940
             </Typography>

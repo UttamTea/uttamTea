@@ -10,9 +10,9 @@ const BestSellingProduct = () => {
   return (
     <ContainerWrapper>
       <Box
-        mt={{ xs: "70px", md: "140px" }}
+        mt={{ xs: "64px", md: "140px" }}
         width={"100%"}
-        height={755}
+        height={{ xs: "100%", md: 755 }}
         position={"relative"}
         px={{ xs: "1rem", md: "0" }}
       >
@@ -128,6 +128,76 @@ const BestSellingProduct = () => {
               px={"0.625rem"}
               bgcolor={"#fff"}
               borderRadius={"100px"}
+            >
+              <Typography
+                color="#121212"
+                fontWeight={400}
+                fontSize={"0.75rem"}
+                fontFamily={"Manrope"}
+                lineHeight={"165%"}
+              >
+                20% off
+              </Typography>
+            </Box>
+          </Box>
+          <Button
+            variant="black"
+            sx={{ mt: "1.125rem" }}
+            onClick={() => navigate("/product/112")}
+          >
+            Shop Now
+          </Button>
+        </Box>
+        <Box mt={"1.25rem"} display={{ xs: "block", md: "none" }}>
+          <Typography
+            color="Piyala Chai"
+            fontSize={"1.25rem"}
+            lineHeight={"28px"}
+            fontFamily={"Literata"}
+          >
+            Piyala Chai
+          </Typography>
+          <Typography
+            maxWidth={317}
+            fontSize={"0.75rem"}
+            fontFamily={"Manrope"}
+            lineHeight={"150%"}
+            mt={"0.75rem"}
+          >
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore
+          </Typography>
+          <Box
+            display={"flex"}
+            alignItems={"center"}
+            gap={"0.625rem"}
+            mt={"1.25rem"}
+          >
+            <Typography
+              color="#121212"
+              fontWeight={400}
+              fontSize={"1.5rem"}
+              fontFamily={"Literata"}
+            >
+              ₹149
+            </Typography>
+            <Typography
+              color="#121212"
+              fontWeight={200}
+              fontSize={"1.5rem"}
+              fontFamily={"Literata"}
+              sx={{
+                textDecoration: "line-through",
+              }}
+            >
+              ₹199{" "}
+            </Typography>
+            <Box
+              py={"0.5rem"}
+              px={"0.625rem"}
+              bgcolor={"#F8F4EC"}
+              borderRadius={"100px"}
+              border={"1px solid #EDE5DB"}
             >
               <Typography
                 color="#121212"

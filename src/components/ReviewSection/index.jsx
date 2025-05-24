@@ -71,7 +71,7 @@ const CustomLeftArrow = ({ onClick }) => (
 );
 
 const CustomRightArrow = ({ onClick }) => (
-  <IconButton onClick={onClick} sx={{ mx: 1 }}>
+  <IconButton onClick={onClick} sx={{ mx: { xs: -1, md: 1 } }}>
     <svg
       width="48"
       height="48"
@@ -112,7 +112,7 @@ const ReviewSection = () => {
           color="#383838"
           lineHeight={{ xs: "2rem", md: "3rem" }}
           textAlign={"center"}
-          ml={{ xs: "-1.5rem", md: "0" }}
+          ml={{ xs: "-2.5rem", md: "0" }}
         >
           Over
         </Typography>
@@ -120,7 +120,7 @@ const ReviewSection = () => {
           mr={{ xs: "0", md: "-5rem" }}
           fontSize={{ xs: "88px", md: "130px" }}
           fontWeight={700}
-          fontFamily={"Literata"}
+          fontFamily={"Manrope"}
           color="#691E0F"
           lineHeight={"100%"}
           textAlign={"center"}
@@ -172,8 +172,9 @@ const ReviewSection = () => {
           customRightArrow={<CustomRightArrow />}
           renderButtonGroupOutside
           itemClass="carousel-item-padding"
-          swipeable={false}
-          draggable={false}
+          swipeable={true}
+          draggable={true}
+          infinite
         >
           {cards.map((image, idx) => (
             <Box key={idx} mr={{ xs: "1rem", md: "1.5rem" }}>
@@ -182,7 +183,11 @@ const ReviewSection = () => {
           ))}
         </Carousel>
 
-        <Box display="flex" justifyContent="center" mt={{ xs: 2, md: 4 }}>
+        <Box
+          display={{ xs: "none", md: "flex" }}
+          justifyContent="center"
+          mt={{ xs: 2, md: 4 }}
+        >
           <CustomLeftArrow
             onClick={() =>
               document

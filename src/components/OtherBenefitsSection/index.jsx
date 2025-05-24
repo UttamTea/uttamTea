@@ -1,6 +1,6 @@
 import React from "react";
 import ContainerWrapper from "../common/ContainerWrapper";
-import { Box, Button, InputBase, Typography } from "@mui/material";
+import { Box, Button, Grid, InputBase, Typography } from "@mui/material";
 import NATURAL_IMG from "../../assets/icons/Natural.svg";
 import FAST_PACKAGING_IMG from "../../assets/icons/FastPackaging.svg";
 import FRESHLY_IMG from "../../assets/icons/Freshly.svg";
@@ -18,10 +18,10 @@ const Card = ({ img, title, description }) => {
       <img src={img} alt={img} />
       <Typography
         color="#121212"
-        fontSize={"1.5rem"}
+        fontSize={{ xs: "1.25rem", md: "1.5rem" }}
         fontWeight={400}
         fontFamily={"Literata"}
-        lineHeight={"28px"}
+        lineHeight={{ xs: "1.25rem", md: "28px" }}
         my={"0.75rem"}
       >
         {title}
@@ -43,12 +43,12 @@ const OtherBenefitsSection = () => {
   return (
     <ContainerWrapper>
       <Box
-        mt={{ xs: "70px", md: "140px" }}
+        mt={{ xs: "76px", md: "140px" }}
         px={{ xs: "1rem", md: "6.25rem" }}
         mb={"5.2rem"}
       >
         <Box
-          display={"flex"}
+          display={{ xs: "none", md: "flex" }}
           justifyContent={"space-between"}
           alignItems={"center"}
         >
@@ -79,14 +79,65 @@ const OtherBenefitsSection = () => {
             }
           />
         </Box>
-        <Box mt={"138px"}>
+        <Grid
+          container
+          columnSpacing={"1.25rem"}
+          rowSpacing={"50px"}
+          display={{ xs: "intial", md: "none" }}
+        >
+          <Grid item size={{ xs: 6, md: 0 }}>
+            <Box>
+              <Card
+                img={NATURAL_IMG}
+                title={"100% Natural"}
+                description={
+                  "No additives, just pure tea leaves and whole spices."
+                }
+              />
+            </Box>
+          </Grid>
+          <Grid item size={{ xs: 6, md: 0 }}>
+            <Box>
+              <Card
+                img={FAST_PACKAGING_IMG}
+                title={"Free Shipping"}
+                description={
+                  "Enjoy doorstep delivery with no extra cost, pan-India."
+                }
+              />
+            </Box>
+          </Grid>
+          <Grid item size={{ xs: 6, md: 0 }}>
+            <Box>
+              <Card
+                img={FRESHLY_IMG}
+                title={"Freshly Packed"}
+                description={
+                  "Sealed for freshness in small batches to retain full flavor."
+                }
+              />
+            </Box>
+          </Grid>
+          <Grid item size={{ xs: 6, md: 0 }}>
+            <Box>
+              <Card
+                img={KADAK_IMG}
+                title={"Kadak Flavour"}
+                description={
+                  "Strong, bold, and spiced — just like real Indian chai should be."
+                }
+              />
+            </Box>
+          </Grid>
+        </Grid>
+        <Box mt={{ xs: "76px", md: "138px" }}>
           <Box maxWidth={"598px"} mx={"auto"}>
             <Typography
-              fontSize={"2.5rem"}
+              fontSize={{ xs: "1.75rem", md: "2.5rem" }}
               color="#121212"
               fontFamily={"Literata"}
               fontWeight={400}
-              lineHeight={"3rem"}
+              lineHeight={{ xs: "2rem", md: "3rem" }}
               textAlign={"center"}
             >
               Get 20% off your first order
@@ -94,6 +145,7 @@ const OtherBenefitsSection = () => {
             <Typography
               mt={"0.75rem"}
               color="#535353"
+              fontSize={{ xs: "0.875rem", md: "1rem" }}
               fontFamily={"Manrope"}
               fontWeight={400}
               lineHeight={"1.5rem"}
@@ -117,7 +169,7 @@ const OtherBenefitsSection = () => {
                   flex: 1,
                   padding: "12px 20px",
                   fontFamily: "Manrope",
-                  fontSize: "16px",
+                  fontSize: { xs: "0.875rem", md: "16px" },
                 }}
                 inputProps={{ "aria-label": "email address" }}
               />
@@ -130,6 +182,7 @@ const OtherBenefitsSection = () => {
                   fontWeight: 600,
                   fontFamily: "Manrope",
                   textTransform: "none",
+                  fontSize: { xs: "14px", md: "1rem" },
                   "&:hover": {
                     backgroundColor: "#000",
                   },

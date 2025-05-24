@@ -50,7 +50,12 @@ const DATA = [
 const SelectedTeaCard = ({ index }) => {
   const itemData = DATA[index];
   return (
-    <Box display={"flex"} gap={"6rem"} mt={"4.5rem"}>
+    <Box
+      display={"flex"}
+      gap={"6rem"}
+      mt={"4.5rem"}
+      px={{ xs: "1rem", md: "0" }}
+    >
       <img src={itemData.img} className="small_screen_hide" />
       <Box maxWidth={"598px"}>
         <Typography
@@ -84,14 +89,14 @@ const KnowYourTeasSection = () => {
   return (
     <ContainerWrapper>
       <Box
-        px={{ xs: "1rem", md: "106px" }}
-        mt={{ xs: "70px", md: "140px" }}
+        px={{ xs: "0", md: "106px" }}
+        mt={{ xs: "76px", md: "140px" }}
         mb={"5.2rem"}
       >
         <Typography
           color="#121212"
-          fontSize={"2.5rem"}
-          lineHeight={"3rem"}
+          fontSize={{ xs: "1.75rem", md: "2.5rem" }}
+          lineHeight={{ xs: "2rem", md: "3rem" }}
           fontWeight={400}
           textAlign={"center"}
           fontFamily={"Literata"}
@@ -103,6 +108,7 @@ const KnowYourTeasSection = () => {
           display="flex"
           alignItems="center"
           gap="2.5rem"
+          className="hide-scrollbar"
           justifyContent={{ xs: "flex-start", md: "center" }}
           sx={{
             overflowX: "auto",
@@ -132,6 +138,8 @@ const KnowYourTeasSection = () => {
                   color={index === selectedTea ? "#691E0F" : "#6C6C6C"}
                   fontFamily={"Manrope"}
                   mt={"0.685rem"}
+                  textAlign={{ xs: "center", md: "start" }}
+                  whiteSpace={"nowrap"}
                 >
                   {item.title}
                 </Typography>
