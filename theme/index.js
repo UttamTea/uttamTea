@@ -168,6 +168,9 @@ let theme = createTheme({
               color: "#121212",
               border: "1px solid #121212",
             },
+            "@media (max-width:900px)": {
+              padding: "0.75rem 1rem !important",
+            },
           },
         },
         {

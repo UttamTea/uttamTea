@@ -14,7 +14,7 @@ const ProductDetailPage = () => {
       <ProductDetailSection />
       <MarqueeAndAboutSection />
       <ReviewSection />
-      {/* <OtherBenefitsSection /> */}
+      <OtherBenefitsSection />
     </>
   );
 };

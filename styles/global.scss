@@ -29,6 +29,12 @@
 .small_screen_hide {
   display: flex;
 }
+.react-multi-carousel-dot-list  {
+  margin-bottom: 5px; 
+  z-index: 1;
+}
+
+
 @media screen and (max-width: 900px) {
   .small_screen_hide {
     display: none;

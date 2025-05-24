@@ -4,17 +4,17 @@ import AssamTeaSection from "../AssamTeaSection";
 
 const RelatedProducts = () => {
   return (
-    <Box mt={"112px"}>
+    <Box mt={{ xs: "64px", md: "112px" }}>
       <Typography
-        fontSize={"2.5rem"}
-        lineHeight={"3rem"}
+        fontSize={{ xs: "1.75rem", md: "2.5rem" }}
+        lineHeight={{ xs: "2rem", md: "3rem" }}
         fontFamily={"Literata"}
         fontWeight={400}
         color="#121212"
       >
         Related Products
       </Typography>
-      <AssamTeaSection marginTop={"1.5rem"} />
+      <AssamTeaSection productDetail={true} />
     </Box>
   );
 };

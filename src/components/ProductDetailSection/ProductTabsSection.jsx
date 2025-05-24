@@ -3,7 +3,7 @@ import React, { useState } from "react";
 
 const tabStyles = {
   textTransform: "none",
-  fontSize: "1.25rem",
+  fontSize: { xs: "1rem", md: "1.25rem" },
   fontWeight: 400,
   color: "#6C6C6C",
   "&.Mui-selected": {
@@ -35,7 +35,7 @@ const ProductTabsSection = ({ data }) => {
   };
 
   return (
-    <Box maxWidth={804} mt={"112px"}>
+    <Box maxWidth={804} mt={{ xs: "48px", md: "112px" }}>
       <Tabs
         value={selectedTab}
         onChange={handleChange}
@@ -57,9 +57,9 @@ const ProductTabsSection = ({ data }) => {
         <Tab label="Shipping" sx={tabStyles} />
       </Tabs>
 
-      <Box mt={"1.5rem"}>
+      <Box mt={{ xs: "1.25rem", md: "1.5rem" }}>
         <Typography
-          fontSize="1rem"
+          fontSize={{ xs: "0.875rem", md: "1rem" }}
           fontWeight={400}
           color="#535353"
           lineHeight="26px"

@@ -1,4 +1,13 @@
-import { Box, Button, Chip, Grid, IconButton, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Chip,
+  Grid,
+  IconButton,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import React, { useEffect, useRef, useState } from "react";
 import Star from "../common/Star";
 import { PRODUCT_DATA } from "../../../constant";
@@ -7,8 +16,26 @@ import ProductTabsSection from "./ProductTabsSection";
 import RelatedProducts from "./RelatedProducts";
 import PIYALA_TEA_IMG from "../../assets/mock/PiyalaMock.png";
 import ComparisonTable from "../ComparisonTable";
+import PIYALA_CHAI_WITH_BG from "../../assets/images/PiyalaChaiWithBg.png";
+import ResponsiveProductCards from "./ResponsiveProductCards";
+
+const ResponsiveProductImageCard = () => {
+  return (
+    <Box width={"100%"}>
+      <img
+        src={PIYALA_CHAI_WITH_BG}
+        alt="piyala chai"
+        className="h-auto w-100"
+        style={{ minWidth: "340px", height: "424px" }}
+      />
+    </Box>
+  );
+};
 
 const ProductDetailSection = ({ data = PRODUCT_DATA[0] }) => {
+  const theme = useTheme();
+  const [currentSelectedCard, setCurrentSelectedCard] = useState(0);
+  const isMdUp = useMediaQuery(theme.breakpoints.up("md"));
   const [productData, setProductData] = useState(null);
   const [itemCount, setItemCount] = useState(1);
   const [selectedPacking, setSelectedPackaging] = useState("p1");
@@ -35,7 +62,7 @@ const ProductDetailSection = ({ data = PRODUCT_DATA[0] }) => {
     }
   };
   return (
-    <Box mt={"92px"} px={{ xs: "1rem", md: "110px" }}>
+    <Box mt={{ xs: "40px", md: "92px" }} px={{ xs: "1rem", md: "110px" }}>
       <Grid container spacing={"2rem"}>
         <Grid item size={{ xs: 12, md: 5.8 }}>
           <Box display={{ xs: "none", md: "flex" }} gap={"1rem"}>
@@ -82,6 +109,9 @@ const ProductDetailSection = ({ data = PRODUCT_DATA[0] }) => {
                 style={{ borderRadius: "1rem" }}
               />
             </Box>
+          </Box>
+          <Box display={{ xs: "block", md: "none" }}>
+            <ResponsiveProductCards />
           </Box>
         </Grid>
         <Grid item size={{ xs: 12, md: 6 }}>
@@ -282,7 +312,7 @@ const ProductDetailSection = ({ data = PRODUCT_DATA[0] }) => {
                 alignItems={"center"}
                 borderRadius={"100px"}
                 border={"1px solid #121212"}
-                padding={"0.75rem"}
+                padding={{ xs: "0.5rem", md: "0.75rem" }}
                 gap={"2rem"}
               >
                 <Box
@@ -337,7 +367,7 @@ const ProductDetailSection = ({ data = PRODUCT_DATA[0] }) => {
               <Button
                 variant="black"
                 sx={{ width: "100%" }}
-                startIcon={<CartIcon hovered={isHovered} />}
+                startIcon={isMdUp ? <CartIcon hovered={isHovered} /> : null}
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
               >

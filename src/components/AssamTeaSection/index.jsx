@@ -53,12 +53,22 @@ export const TeaCard = ({ title, description, img, bgColor }) => {
     </Box>
   );
 };
-const AssamTeaSection = ({ marginTop = "140px" }) => {
+const AssamTeaSection = ({ marginTop = "140px", productDetail = false }) => {
   return (
     <ContainerWrapper>
-      <Box mt={{ xs: "64px", md: "140px" }} mb={"5.2rem"}>
+      <Box
+        mt={{
+          xs: productDetail ? "28px" : "64px",
+          md: productDetail ? "1.5rem" : "140px",
+        }}
+        mb={"5.2rem"}
+      >
         <Grid container>
-          <Grid item size={{ xs: 12, md: 6 }} px={{ xs: "1rem", md: "0" }}>
+          <Grid
+            item
+            size={{ xs: 12, md: 6 }}
+            px={{ xs: productDetail ? 0 : "1rem", md: "0" }}
+          >
             {/* <Card
               title={"Assam Tea"}
               description={"Lorem ipsum dolor sit amet, consectetur"}
@@ -75,7 +85,7 @@ const AssamTeaSection = ({ marginTop = "140px" }) => {
           <Grid
             item
             size={{ xs: 12, md: 6 }}
-            px={{ xs: "1rem", md: "0" }}
+            px={{ xs: productDetail ? 0 : "1rem", md: "0" }}
             mt={{ xs: "1.25rem", md: "0" }}
           >
             {/* <Card
