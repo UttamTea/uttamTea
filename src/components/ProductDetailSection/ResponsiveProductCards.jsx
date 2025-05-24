@@ -52,7 +52,7 @@ const ResponsiveProductCards = () => {
       containerClass="carousel-container"
       swipeable={false}
       draggable={false}
-      dotListClass="react-multi-carousel-dot-list "
+      dotListClass="react-multi-carousel-dot-list"
       itemClass="carousel-item-padding-40-px"
     >
       <ResponsiveProductImageCard />

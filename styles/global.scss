@@ -29,11 +29,14 @@
 .small_screen_hide {
   display: flex;
 }
-.react-multi-carousel-dot-list  {
-  margin-bottom: 5px; 
-  z-index: 1;
+.carousel-container {
+  padding-bottom: 30px; /* Add space at the bottom for dots */
 }
 
+.react-multi-carousel-dot-list {
+  margin-bottom: 5px;
+  z-index: 1;
+}
 
 @media screen and (max-width: 900px) {
   .small_screen_hide {
