@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import ContainerWrapper from "../common/ContainerWrapper";
 import { Box, Button, Grid, InputBase, Typography } from "@mui/material";
 import NATURAL_IMG from "../../assets/icons/Natural.svg";
 import FAST_PACKAGING_IMG from "../../assets/icons/FastPackaging.svg";
 import FRESHLY_IMG from "../../assets/icons/Freshly.svg";
 import KADAK_IMG from "../../assets/icons/Kadak.svg";
+import { db } from "../../firebase";
+import { collection, addDoc, Timestamp } from "firebase/firestore";
 
 const Card = ({ img, title, description }) => {
   return (
@@ -40,6 +42,26 @@ const Card = ({ img, title, description }) => {
   );
 };
 const OtherBenefitsSection = () => {
+  const [email, setEmail] = useState("");
+
+  const handleSubscribe = async () => {
+    if (!email || !email.includes("@")) {
+      alert("Please enter a valid email address.");
+      return;
+    }
+
+    try {
+      await addDoc(collection(db, "subscribers"), {
+        email,
+        createdAt: Timestamp.now(),
+      });
+      alert("Thanks for subscribing!");
+      setEmail(""); // reset input
+    } catch (error) {
+      console.error("Error saving email to Firestore:", error);
+      alert("Something went wrong. Try again.");
+    }
+  };
   return (
     <ContainerWrapper>
       <Box
@@ -131,25 +153,21 @@ const OtherBenefitsSection = () => {
           </Grid>
         </Grid>
         <Box mt={{ xs: "76px", md: "138px" }}>
-          <Box maxWidth={"598px"} mx={"auto"}>
+          <Box maxWidth="598px" mx="auto">
             <Typography
               fontSize={{ xs: "1.75rem", md: "2.5rem" }}
               color="#121212"
-              fontFamily={"Literata"}
-              fontWeight={400}
-              lineHeight={{ xs: "2rem", md: "3rem" }}
-              textAlign={"center"}
+              fontFamily="Literata"
+              textAlign="center"
             >
               Get 20% off your first order
             </Typography>
             <Typography
-              mt={"0.75rem"}
+              mt="0.75rem"
               color="#535353"
               fontSize={{ xs: "0.875rem", md: "1rem" }}
-              fontFamily={"Manrope"}
-              fontWeight={400}
-              lineHeight={"1.5rem"}
-              textAlign={"center"}
+              fontFamily="Manrope"
+              textAlign="center"
             >
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             </Typography>
@@ -159,27 +177,28 @@ const OtherBenefitsSection = () => {
               sx={{
                 borderRadius: "999px",
                 overflow: "hidden",
-                backgroundColor: "#F9F6EE", // match your design background
+                backgroundColor: "#F9F6EE",
                 width: "100%",
               }}
             >
               <InputBase
                 placeholder="youremail@example.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 sx={{
                   flex: 1,
                   padding: "12px 20px",
                   fontFamily: "Manrope",
                   fontSize: { xs: "0.875rem", md: "16px" },
                 }}
-                inputProps={{ "aria-label": "email address" }}
               />
               <Button
+                onClick={handleSubscribe}
                 sx={{
                   backgroundColor: "#121212",
                   color: "#fff",
                   borderRadius: "100px",
                   padding: "12px 24px",
-                  fontWeight: 600,
                   fontFamily: "Manrope",
                   textTransform: "none",
                   fontSize: { xs: "14px", md: "1rem" },
