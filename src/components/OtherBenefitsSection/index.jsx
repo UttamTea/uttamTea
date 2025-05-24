@@ -45,6 +45,7 @@ const OtherBenefitsSection = () => {
   const [email, setEmail] = useState("");
 
   const handleSubscribe = async () => {
+    console.log("email", email);
     if (!email || !email.includes("@")) {
       alert("Please enter a valid email address.");
       return;
