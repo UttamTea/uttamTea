@@ -16,7 +16,7 @@ import FAQSection from "../../components/FAQSection";
 import OtherBenefitsSection from "../../components/OtherBenefitsSection";
 import { Box } from "@mui/material";
 import HeroBg from "../../assets/background/HeroSectionBg.png";
-import HeroBgPhone from "../../assets/background/HeroSectionBgPhone.png";
+import HeroBgPhone from "../../assets/background/HeroSectionBgPhone.webp";
 
 const Home = () => {
   return (
