@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import HAMBURGER_ICON from "../../assets/icons/Hamburger.svg";
 import RESP_LOGO from "../../assets/logoResp.svg";
 import CART_ICON_RESP from "../../assets/icons/CartResp.svg";
+import SideNavDrawer from "./SideNavDrawer";
 const TABS = [
   {
     title: "Shop +",
@@ -27,8 +28,13 @@ const TABS = [
 const HeaderNavBar = () => {
   const navigate = useNavigate();
   const [selectedTab, setSelectedTab] = useState("shop");
+  const [openDrawer, setOpenDrawer] = useState(false);
+  const handleHamburgerClick = () => {
+    setOpenDrawer(true);
+  };
   return (
     <ContainerWrapper>
+      <SideNavDrawer open={openDrawer} setOpen={setOpenDrawer} />
       <Box
         mx={{ xs: "0", md: "1.25rem" }}
         mt={{ xs: "0", md: "0" }}
@@ -73,7 +79,10 @@ const HeaderNavBar = () => {
               </Box>
             ))}
           </Box>
-          <Box display={{ xs: "flex", md: "none" }}>
+          <Box
+            display={{ xs: "flex", md: "none" }}
+            onClick={handleHamburgerClick}
+          >
             <img
               src={HAMBURGER_ICON}
               alt="hamburger"
