@@ -117,6 +117,22 @@ let theme = createTheme({
           },
         },
         {
+          props: { variant: "lighBrown" },
+          style: {
+            backgroundColor: "#A64D3B",
+            color: "#fff",
+            fontWeight: 400,
+            fontSize: "1.125rem",
+            borderRadius: "0.5rem",
+            padding: "0.5rem 1rem",
+            textTransform: "none",
+            fontFamily: "Manrope",
+            // "&:hover": {
+            //   backgroundColor: "rgba(140, 69, 255, 0.70)",
+            // },
+          },
+        },
+        {
           props: { variant: "transparent" },
           style: {
             backgroundColor: "transparent",
