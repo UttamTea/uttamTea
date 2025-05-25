@@ -5,7 +5,7 @@ import BottomMarquee from "./BottomMarquee";
 
 const MarqueeAndAboutSection = () => {
   return (
-    <Box mt={"104px"} maxWidth={"100vw"} overflow={"hidden"}>
+    <Box mt={0} maxWidth={"100vw"} overflow={"hidden"} bgcolor={"#f2ebdf"}>
       {" "}
       <TopMarquee />
       <BottomMarquee />

@@ -14,13 +14,27 @@ import KnowYourTeasSection from "../../components/KnowYourTeasSection";
 import AssamTeaSection from "../../components/AssamTeaSection";
 import FAQSection from "../../components/FAQSection";
 import OtherBenefitsSection from "../../components/OtherBenefitsSection";
+import { Box } from "@mui/material";
+import HeroBg from "../../assets/background/HeroSectionBg.png";
+import HeroBgPhone from "../../assets/background/HeroSectionBgPhone.png";
 
 const Home = () => {
   return (
     <>
       <HeaderMarquee />
-      <HeaderNavBar />
-      <HeroSection />
+      <Box
+        sx={{
+          backgroundImage: { xs: `url(${HeroBgPhone})`, md: `url(${HeroBg})` },
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          backgroundPosition: { xs: "top", md: "center" },
+          minHeight: { xs: "120vh", md: "100vh" },
+          width: "100%",
+        }}
+      >
+        <HeaderNavBar />
+        <HeroSection />
+      </Box>
       <MarqueeAndAboutSection />
       <ChaiTypesSection />
       <RealPremiumTeaSection />

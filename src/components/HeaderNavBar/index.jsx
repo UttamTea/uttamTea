@@ -29,7 +29,11 @@ const HeaderNavBar = () => {
   const [selectedTab, setSelectedTab] = useState("shop");
   return (
     <ContainerWrapper>
-      <Box mx={{ xs: "0", md: "1.25rem" }} mt={{ xs: "0", md: "2.5rem" }}>
+      <Box
+        mx={{ xs: "0", md: "1.25rem" }}
+        mt={{ xs: "0", md: "0" }}
+        pt={{ xs: "0", md: "2.25rem" }}
+      >
         <Box
           width={"100%"}
           bgcolor={"#007F3D"}
