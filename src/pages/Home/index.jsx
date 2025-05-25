@@ -15,7 +15,7 @@ import AssamTeaSection from "../../components/AssamTeaSection";
 import FAQSection from "../../components/FAQSection";
 import OtherBenefitsSection from "../../components/OtherBenefitsSection";
 import { Box } from "@mui/material";
-import HeroBg from "../../assets/background/HeroSectionBg.png";
+import HeroBg from "../../assets/background/HeroSectionBg.webp";
 import HeroBgPhone from "../../assets/background/HeroSectionBgPhone.webp";
 
 const Home = () => {
