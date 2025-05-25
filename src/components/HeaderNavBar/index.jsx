@@ -31,11 +31,11 @@ const TEA_TYPES = [
     name: "Piyala Tea",
   },
   {
-    id: "113",
+    id: "114",
     name: "Green Tea",
   },
   {
-    id: "114",
+    id: "113",
     name: "Assam Tea",
   },
 ];

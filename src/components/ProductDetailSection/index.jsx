@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import React, { useEffect, useRef, useState } from "react";
 import Star from "../common/Star";
-import { PRODUCT_DATA } from "../../../constant";
+import { PRODUCT_DATA } from "../../constant";
 import CartIcon from "../../assets/icons/CartIcon";
 import ProductTabsSection from "./ProductTabsSection";
 import RelatedProducts from "./RelatedProducts";

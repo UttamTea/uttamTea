@@ -1,8 +1,19 @@
 import { Box, Typography } from "@mui/material";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import AssamTeaSection from "../AssamTeaSection";
+import { useParams } from "react-router-dom";
+import { PRODUCT_DATA } from "../../constant";
 
 const RelatedProducts = () => {
+  const { id } = useParams(); // get the dynamic id from URL
+
+  const [data, setData] = useState(null);
+  useEffect(() => {
+    if (id) {
+      const productDetails = PRODUCT_DATA.filter((item) => item.id !== id);
+      setData(productDetails);
+    }
+  }, [id]);
   return (
     <Box mt={{ xs: "64px", md: "112px" }}>
       <Typography
@@ -14,7 +25,7 @@ const RelatedProducts = () => {
       >
         Related Products
       </Typography>
-      <AssamTeaSection productDetail={true} />
+      <AssamTeaSection productDetail={true} data={data} />
     </Box>
   );
 };

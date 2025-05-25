@@ -3,12 +3,14 @@ import React from "react";
 import ContainerWrapper from "../common/ContainerWrapper";
 import PIYALA_CHAI_IMG from "../../assets/mock/piyalaChai.png";
 import { useNavigate } from "react-router-dom";
+import { PRODUCT_DATA } from "../../constant";
 
 const Card = ({
   background,
   title = "Pyala Tea",
   description = "Lorem ipsum dolor sit amet, consectetur",
   img,
+  id,
 }) => {
   const navigate = useNavigate();
   return (
@@ -26,11 +28,7 @@ const Card = ({
     >
       <Box className="card_internal_box">
         <Box>
-          <img
-            src={PIYALA_CHAI_IMG}
-            alt="Piyala Chai"
-            className="h-auto w-100"
-          />
+          <img src={img} alt="Piyala Chai" className="h-auto w-100" />
           <Typography
             fontSize={"2rem"}
             color="#121212"
@@ -55,7 +53,7 @@ const Card = ({
         <Button
           variant="black"
           className="shopNowButton"
-          onClick={() => navigate("/product/112")}
+          onClick={() => navigate(`/product/${id}`)}
         >
           Shop Now
         </Button>
@@ -114,13 +112,19 @@ const ChaiTypesSection = () => {
         mt={"140px"}
       >
         <Grid container spacing={"1.5rem"}>
-          <Grid item size={{ xs: 12, md: 4 }}>
-            <Card
-              background={"linear-gradient(180deg, #FFEAE6 0%, #FACAC2 100%)"}
-              title="Pyala Tea"
-            />
-          </Grid>
-          <Grid item size={{ xs: 12, md: 4 }}>
+          {PRODUCT_DATA.map((item) => {
+            return (
+              <Grid key={item.id} item size={{ xs: 12, md: 4 }}>
+                <Card
+                  background={item.backgroundColor}
+                  title={item.shortName}
+                  img={item.img}
+                  id={item.id}
+                />
+              </Grid>
+            );
+          })}
+          {/* <Grid item size={{ xs: 12, md: 4 }}>
             <Card
               background={"linear-gradient(180deg, #FFF5E6 0%, #FAE3C2 100%)"}
             />
@@ -129,7 +133,7 @@ const ChaiTypesSection = () => {
             <Card
               background={"linear-gradient(180deg, #F3FFE8 0%, #DCF8C4 100%)"}
             />
-          </Grid>
+          </Grid> */}
         </Grid>
       </Box>
       <Box

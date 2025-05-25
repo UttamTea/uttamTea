@@ -4,7 +4,7 @@ import { Box, Button, Grid, Typography } from "@mui/material";
 import PIYALA_CHAI from "../../assets/images/PiyalaChai.png";
 import { useNavigate } from "react-router-dom";
 
-export const TeaCard = ({ title, description, img, bgColor }) => {
+export const TeaCard = ({ title, description, img, bgColor, id }) => {
   const navigate = useNavigate();
   return (
     <Box
@@ -42,7 +42,7 @@ export const TeaCard = ({ title, description, img, bgColor }) => {
                 marginTop: { xs: "20px", md: "28px" },
                 marginBottom: { xs: "32px", md: "0" },
               }}
-              onClick={() => navigate("/product/112")}
+              onClick={() => navigate(`/product/${id}`)}
             >
               {" "}
               Shop Now
@@ -53,7 +53,12 @@ export const TeaCard = ({ title, description, img, bgColor }) => {
     </Box>
   );
 };
-const AssamTeaSection = ({ marginTop = "140px", productDetail = false }) => {
+const AssamTeaSection = ({
+  marginTop = "140px",
+  productDetail = false,
+  data,
+}) => {
+  console.log("dataaa", data);
   return (
     <ContainerWrapper>
       <Box
@@ -64,43 +69,37 @@ const AssamTeaSection = ({ marginTop = "140px", productDetail = false }) => {
         mb={"5.2rem"}
       >
         <Grid container>
-          <Grid
-            item
-            size={{ xs: 12, md: 6 }}
-            px={{ xs: productDetail ? 0 : "1rem", md: "0" }}
-          >
-            {/* <Card
-              title={"Assam Tea"}
-              description={"Lorem ipsum dolor sit amet, consectetur"}
-              img={PIYALA_CHAI}
-              bgColor={"linear-gradient(180deg, #FFF5E6 0%, #FAE3C2 100%)"}
-            /> */}
-            <TeaCard
-              title={"Assam Tea"}
-              description={"Lorem ipsum dolor sit amet, consectetur"}
-              img={PIYALA_CHAI}
-              bgColor={"linear-gradient(180deg, #FFF5E6 0%, #FAE3C2 100%)"}
-            />
-          </Grid>
-          <Grid
+          {data?.map((item) => {
+            return (
+              <Grid
+                item
+                size={{ xs: 12, md: 6 }}
+                px={{ xs: productDetail ? 0 : "1rem", md: "0" }}
+              >
+                <TeaCard
+                  title={item?.shortName}
+                  description={item?.shortDescription}
+                  img={PIYALA_CHAI}
+                  bgColor={item?.backgroundColor}
+                  id={item.id}
+                />
+              </Grid>
+            );
+          })}
+
+          {/* <Grid
             item
             size={{ xs: 12, md: 6 }}
             px={{ xs: productDetail ? 0 : "1rem", md: "0" }}
             mt={{ xs: "1.25rem", md: "0" }}
           >
-            {/* <Card
-              title={"Assam Tea"}
-              description={"Lorem ipsum dolor sit amet, consectetur"}
-              img={PIYALA_CHAI}
-              bgColor={"linear-gradient(180deg, #F3FFE8 0%, #DCF8C4 100%)"}
-            /> */}
             <TeaCard
               title={"Assam Tea"}
               description={"Lorem ipsum dolor sit amet, consectetur"}
               img={PIYALA_CHAI}
               bgColor={"linear-gradient(180deg, #F3FFE8 0%, #DCF8C4 100%)"}
             />
-          </Grid>
+          </Grid> */}
         </Grid>
       </Box>
     </ContainerWrapper>
