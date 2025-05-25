@@ -16,6 +16,7 @@ const MarqueeAndAboutSection = () => {
         display="flex"
         alignItems="center"
         justifyContent="center"
+        px={{ xs: "1rem", md: "0" }}
       >
         <Typography
           maxWidth="895px"

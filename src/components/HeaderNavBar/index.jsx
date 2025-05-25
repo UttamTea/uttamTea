@@ -1,4 +1,4 @@
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, Popover, Typography } from "@mui/material";
 import React, { useState } from "react";
 import LOGO from "../../assets/logo.svg";
 import ContainerWrapper from "../common/ContainerWrapper";
@@ -25,13 +25,53 @@ const TABS = [
     key: "blogs",
   },
 ];
+const TEA_TYPES = [
+  {
+    id: "112",
+    name: "Piyala Tea",
+  },
+  {
+    id: "113",
+    name: "Green Tea",
+  },
+  {
+    id: "114",
+    name: "Assam Tea",
+  },
+];
 const HeaderNavBar = () => {
   const navigate = useNavigate();
   const [selectedTab, setSelectedTab] = useState("shop");
   const [openDrawer, setOpenDrawer] = useState(false);
+  const [openPopover, setOpenPopover] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
+
   const handleHamburgerClick = () => {
     setOpenDrawer(true);
   };
+  const handleClick = (event, value) => {
+    if (value === "shop") {
+      setAnchorEl(event.currentTarget);
+      setOpenPopover(true);
+    } else {
+      setOpenPopover(false);
+      if (value === "home") {
+        navigate("/");
+      } else if (value === "faq") {
+        const faqSection = document.getElementById("FAQSECTION");
+        if (faqSection) {
+          faqSection.scrollIntoView({ behavior: "smooth" });
+        } else {
+          navigate("/#FAQSECTION"); // fallback for navigation if not on home page
+        }
+      }
+    }
+  };
+
+  const handleShopItemClick = (id) => {
+    navigate(`/product/${id}`);
+  };
+
   return (
     <ContainerWrapper>
       <SideNavDrawer open={openDrawer} setOpen={setOpenDrawer} />
@@ -64,7 +104,7 @@ const HeaderNavBar = () => {
                 p={"0.5rem 1rem"}
                 width={"fit-content"}
                 bgcolor={selectedTab === item.key ? "#fff" : "transparent"}
-                onClick={() => setSelectedTab(item.key)}
+                onClick={(event) => handleClick(event, item.key)}
                 borderRadius={"0.5rem"}
                 sx={{ cursor: "pointer" }}
               >
@@ -99,7 +139,7 @@ const HeaderNavBar = () => {
               style={{ cursor: "pointer" }}
             />
           </Box>
-          <Box display={{ xs: "flex", md: "none" }}>
+          <Box marginLeft={"10px"} display={{ xs: "flex", md: "none" }}>
             <img
               src={RESP_LOGO}
               alt="logo"
@@ -131,6 +171,58 @@ const HeaderNavBar = () => {
             </Button>
           </Box>
         </Box>
+        <Popover
+          open={openPopover}
+          anchorEl={anchorEl}
+          onClose={() => setOpenPopover(false)}
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "left",
+          }}
+          sx={{
+            mt: 2,
+            ".MuiPaper-root": {
+              boxShadow: "0px 4px 16px rgba(0, 0, 0, 0.1)",
+              borderRadius: "12px",
+            },
+          }}
+          transformOrigin={{
+            vertical: "top",
+            horizontal: "left",
+          }}
+        >
+          <Box bgcolor="#fff" py="0.75rem" minWidth={390}>
+            {TEA_TYPES.map((item, index) => (
+              <React.Fragment key={item.id}>
+                <Box
+                  px="1rem"
+                  py="0.625rem"
+                  sx={{
+                    cursor: "pointer",
+                    borderRadius: "0.375rem",
+                    transition: "all 0.2s ease-in-out",
+                    "&:hover": {
+                      backgroundColor: "#F5F5F5", // light gray hover background
+                    },
+                  }}
+                  onClick={() => handleShopItemClick(item.id)}
+                >
+                  <Typography
+                    fontSize="0.9375rem"
+                    fontWeight={400}
+                    fontFamily="Manrope"
+                    color="#121212"
+                  >
+                    {item.name}
+                  </Typography>
+                </Box>
+                {index !== TEA_TYPES.length - 1 && (
+                  <Box mx="1rem" borderBottom="1px solid #EDE5DB" />
+                )}
+              </React.Fragment>
+            ))}
+          </Box>
+        </Popover>
       </Box>
     </ContainerWrapper>
   );

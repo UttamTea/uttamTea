@@ -104,7 +104,11 @@ const ReviewSection = () => {
 
   return (
     <ContainerWrapper>
-      <Box px={{ xs: "1rem", md: "110px" }} mt={{ xs: "70px", md: "140px" }}>
+      <Box
+        px={{ xs: "1rem", md: "110px" }}
+        mt={{ xs: "70px", md: "140px" }}
+        textAlign={"center"}
+      >
         <Typography
           fontSize={{ xs: "1.75rem", md: "2.5rem" }}
           fontWeight={400}
@@ -117,7 +121,7 @@ const ReviewSection = () => {
           Over
         </Typography>
         <Typography
-          mr={{ xs: "0", md: "-5rem" }}
+          mr={{ xs: "-18px", md: "-5rem" }}
           fontSize={{ xs: "88px", md: "130px" }}
           fontWeight={700}
           fontFamily={"Manrope"}
@@ -135,7 +139,8 @@ const ReviewSection = () => {
           fontFamily={"Literata"}
           color="#691E0F"
           textAlign={"center"}
-          maxWidth={{ xs: 325, md: 1084 }}
+          maxWidth={{ xs: 325, md: "100%" }}
+          mx={"auto"}
         >
           Cups of Authentic Indian Tea Served
         </Typography>
@@ -187,6 +192,7 @@ const ReviewSection = () => {
           display={{ xs: "none", md: "flex" }}
           justifyContent="center"
           mt={{ xs: 2, md: 4 }}
+          ml={{ md: "-110px" }}
         >
           <CustomLeftArrow
             onClick={() =>

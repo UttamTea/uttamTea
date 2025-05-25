@@ -49,7 +49,11 @@ const FAQSection = () => {
 
   return (
     <ContainerWrapper>
-      <Box px={{ xs: "0", md: "20px" }} mt={{ xs: "76px", md: "140px" }}>
+      <Box
+        id="FAQSECTION"
+        px={{ xs: "0", md: "20px" }}
+        mt={{ xs: "76px", md: "140px" }}
+      >
         <Typography
           px={{ xs: "1rem", md: "0" }}
           fontSize={{ xs: "1.75rem", md: "2.5rem" }}
