@@ -1,5 +1,5 @@
 import { Box, Button, Grid, Typography } from "@mui/material";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ContainerWrapper from "../common/ContainerWrapper";
 import PIYALA_CHAI_IMG from "../../assets/mock/piyalaChai.png";
 import { useNavigate } from "react-router-dom";
@@ -8,9 +8,9 @@ import { PRODUCT_DATA } from "../../constant";
 const Card = ({
   background,
   title = "Pyala Tea",
-  description = "Lorem ipsum dolor sit amet, consectetur",
   img,
   id,
+  description = "Lorem ipsum dolor sit amet, consectetur",
 }) => {
   const navigate = useNavigate();
   return (
@@ -61,22 +61,24 @@ const Card = ({
     </Box>
   );
 };
-const CardResp = (
+const CardResp = ({
   background,
   title = "Pyala Tea",
+  img,
+  id,
   description = "Lorem ipsum dolor sit amet, consectetur",
-  img
-) => {
+}) => {
+  const navigate = useNavigate();
   return (
     <Box
       minWidth={304}
       height={"100%"}
       sx={{
-        backgroundColor: background,
+        background: background,
       }}
       borderRadius={"12px"}
     >
-      <img src={PIYALA_CHAI_IMG} alt="Piyala Chai" className="h-auto w-100" />
+      <img src={img} alt="Piyala Chai" className="h-auto w-100" />
       <Box textAlign={"center"}>
         <Typography fontSize={"1.5rem"} fontWeight={400} lineHeight={"28px"}>
           {title}
@@ -95,7 +97,7 @@ const CardResp = (
           sx={{ marginTop: "22px", marginBottom: "32px" }}
           variant="black"
           className="shopNowButton"
-          onClick={() => navigate("/product/112")}
+          onClick={() => navigate(`/product/${id}`)}
         >
           Shop Now
         </Button>
@@ -103,7 +105,14 @@ const CardResp = (
     </Box>
   );
 };
+
 const ChaiTypesSection = () => {
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    if (PRODUCT_DATA) {
+      setData(PRODUCT_DATA);
+    }
+  }, [PRODUCT_DATA]);
   return (
     <ContainerWrapper>
       <Box
@@ -112,7 +121,7 @@ const ChaiTypesSection = () => {
         mt={"140px"}
       >
         <Grid container spacing={"1.5rem"}>
-          {PRODUCT_DATA.map((item) => {
+          {data.map((item) => {
             return (
               <Grid key={item.id} item size={{ xs: 12, md: 4 }}>
                 <Card
@@ -124,16 +133,6 @@ const ChaiTypesSection = () => {
               </Grid>
             );
           })}
-          {/* <Grid item size={{ xs: 12, md: 4 }}>
-            <Card
-              background={"linear-gradient(180deg, #FFF5E6 0%, #FAE3C2 100%)"}
-            />
-          </Grid>
-          <Grid item size={{ xs: 12, md: 4 }}>
-            <Card
-              background={"linear-gradient(180deg, #F3FFE8 0%, #DCF8C4 100%)"}
-            />
-          </Grid> */}
         </Grid>
       </Box>
       <Box
@@ -144,19 +143,18 @@ const ChaiTypesSection = () => {
         mt={"56px"}
         className="hide-scrollbar"
       >
-        <CardResp
-          background={"linear-gradient(180deg, #FFEAE6 0%, #FACAC2 100%)"}
-          title="Pyala Tea"
-        />
-        <CardResp
-          background={"linear-gradient(180deg, #FFEAE6 0%, #FACAC2 100%)"}
-        />
-        <CardResp
-          background={"linear-gradient(180deg, #FFEAE6 0%, #FACAC2 100%)"}
-        />
-        <CardResp
-          background={"linear-gradient(180deg, #FFEAE6 0%, #FACAC2 100%)"}
-        />
+        {data.map((item) => {
+          return (
+            <CardResp
+              key={item.id}
+              background={item.backgroundColor}
+              title={item.shortName}
+              img={item.img}
+              id={item.id}
+              description={item.shortDescription}
+            />
+          );
+        })}
       </Box>
     </ContainerWrapper>
   );

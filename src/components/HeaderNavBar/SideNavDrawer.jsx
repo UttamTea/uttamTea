@@ -21,9 +21,9 @@ const TABS = [
     title: "Shop +",
     key: "shop",
     childrens: [
-      { key: "piyala-tea", name: "Piyala Tea" },
-      { key: "green-tea", name: "Green Tea" },
-      { key: "assam-tea", name: "Assam Tea" },
+      { key: "112", name: "Piyala Tea" },
+      { key: "114", name: "Green Tea" },
+      { key: "113", name: "Assam Tea" },
     ],
   },
   { title: "Home", key: "home", path: "/" },
@@ -38,9 +38,21 @@ const SideNavDrawer = ({ open, setOpen }) => {
   const handleClose = () => setOpen(false);
   const toggleShop = () => setExpanded(!expanded);
 
-  const handleNavigate = (path) => {
-    navigate(path);
+  const handleNavigate = (title) => {
+    // navigate(title);
     setOpen(false);
+    if (title === "FAQs") {
+      const faqSection = document.getElementById("FAQSECTION");
+      if (faqSection) {
+        faqSection.scrollIntoView({ behavior: "smooth" });
+      } else {
+        navigate("/#FAQSECTION"); // fallback for navigation if not on home page
+      }
+    } else if (title === "Home") {
+      navigate("/");
+    } else if (title !== "Blogs") {
+      navigate(`/product/${title}`);
+    }
   };
 
   return (
@@ -107,7 +119,7 @@ const SideNavDrawer = ({ open, setOpen }) => {
                   if (tab.childrens) {
                     toggleShop();
                   } else {
-                    handleNavigate(tab.path);
+                    handleNavigate(tab.title);
                   }
                 }}
               >
@@ -147,7 +159,7 @@ const SideNavDrawer = ({ open, setOpen }) => {
                           lineHeight: "20px",
                         }}
                         onClick={() => {
-                          handleNavigate(`/product/112`);
+                          handleNavigate(child.key);
                         }}
                       >
                         {child.name}

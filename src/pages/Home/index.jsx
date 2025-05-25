@@ -18,6 +18,7 @@ import { Box } from "@mui/material";
 import HeroBg from "../../assets/background/HeroSectionBg.webp";
 import HeroBgPhone from "../../assets/background/HeroSectionBgPhone.webp";
 import Footer from "../../components/Footer";
+import { PRODUCT_DATA } from "../../constant";
 
 const Home = () => {
   return (
@@ -45,7 +46,7 @@ const Home = () => {
       <BestSellingProduct />
       <InstagramSection />
       <KnowYourTeasSection />
-      <AssamTeaSection />
+      <AssamTeaSection data={PRODUCT_DATA.slice(1)} />
       <FAQSection />
       <OtherBenefitsSection />
       <Footer />
