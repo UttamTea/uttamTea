@@ -17,6 +17,7 @@ import OtherBenefitsSection from "../../components/OtherBenefitsSection";
 import { Box } from "@mui/material";
 import HeroBg from "../../assets/background/HeroSectionBg.webp";
 import HeroBgPhone from "../../assets/background/HeroSectionBgPhone.webp";
+import Footer from "../../components/Footer";
 
 const Home = () => {
   return (
@@ -47,6 +48,7 @@ const Home = () => {
       <AssamTeaSection />
       <FAQSection />
       <OtherBenefitsSection />
+      <Footer />
     </>
   );
 };
