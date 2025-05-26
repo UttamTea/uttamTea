@@ -7,6 +7,7 @@ import ReviewSection from "../../components/ReviewSection";
 import OtherBenefitsSection from "../../components/OtherBenefitsSection";
 import { useParams } from "react-router-dom";
 import { PRODUCT_DATA } from "../../constant";
+import Footer from "../../components/Footer";
 
 const ProductDetailPage = () => {
   const { id } = useParams(); // get the dynamic id from URL
@@ -29,6 +30,7 @@ const ProductDetailPage = () => {
       <MarqueeAndAboutSection />
       <ReviewSection />
       <OtherBenefitsSection />
+      <Footer />
     </>
   );
 };

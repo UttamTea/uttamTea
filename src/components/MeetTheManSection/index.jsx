@@ -2,6 +2,7 @@ import { Box, Typography, Fade } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import MAN_IMG from "../../assets/mock/Man.png";
 import WOMAN_IMG from "../../assets/mock/Women.png";
+import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
 
 import ArrowCircleRightOutlinedIcon from "@mui/icons-material/ArrowCircleRightOutlined";
 
@@ -70,7 +71,27 @@ const MeetTheManSection = () => {
       >
         <Fade in={fadeIn} timeout={500} key={currentSelectedIndex}>
           <Box display={{ xs: "block", md: "flex" }} gap="44px">
-            <Box>
+            <Box position={"relative"}>
+              <Box
+                display={{ xs: "flex", md: "none" }}
+                position={"absolute"}
+                zIndex={1}
+                right={5}
+                top={5}
+              >
+                <ArrowCircleRightIcon
+                  onClick={() => {
+                    setFadeIn(false);
+                    setTimeout(() => {
+                      setCurrentSelectedIndex(
+                        (prev) => (prev + 1) % data.length
+                      );
+                      setFadeIn(true);
+                    }, 300);
+                  }}
+                  sx={{ color: "#fff" }}
+                />
+              </Box>
               <img
                 src={data[currentSelectedIndex].img}
                 alt="person"
