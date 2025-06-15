@@ -14,7 +14,7 @@ import { PRODUCT_DATA } from "../../constant";
 import CartIcon from "../../assets/icons/CartIcon";
 import ProductTabsSection from "./ProductTabsSection";
 import RelatedProducts from "./RelatedProducts";
-import PIYALA_TEA_IMG from "../../assets/mock/PiyalaMock.png";
+import PIYALA_TEA_IMG from "../../assets/mock/piyalaChai.png";
 import ComparisonTable from "../ComparisonTable";
 import PIYALA_CHAI_WITH_BG from "../../assets/images/PiyalaChaiWithBg.png";
 import ResponsiveProductCards from "./ResponsiveProductCards";
