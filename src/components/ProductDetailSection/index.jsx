@@ -32,29 +32,34 @@ const ResponsiveProductImageCard = () => {
   );
 };
 
-const ProductDetailSection = ({ data = PRODUCT_DATA[0] }) => {
+const ProductDetailSection = ({ data = PRODUCT_DATA[0], details }) => {
+  console.log(details, data);
   const theme = useTheme();
-  const [currentSelectedCard, setCurrentSelectedCard] = useState(0);
   const isMdUp = useMediaQuery(theme.breakpoints.up("md"));
   const [productData, setProductData] = useState(null);
   const [itemCount, setItemCount] = useState(1);
-  const [selectedPacking, setSelectedPackaging] = useState("p1");
+  const [selectedPacking, setSelectedPackaging] = useState(null);
   const [packagingDetails, setPackagingDetails] = useState({
-    newPrice: 0,
+    price: 0,
     oldPrice: 0,
-    discount: 0,
+    dicountPercentage: 0,
   });
   const [isHovered, setIsHovered] = useState(false);
   const [selectedCard, setSelectedCard] = useState(0);
   useEffect(() => {
     if (data) {
       setProductData(data);
-      setPackagingDetails(data.sizes[0]);
+      // setPackagingDetails(data?.variants?.[0]);
     }
   }, [data]);
+  useEffect(() => {
+    setPackagingDetails(details?.variants?.[0]);
+    setSelectedPackaging(details?.variants?.[0]?.id);
+  }, [details]);
   const handleClick = (type) => {
     if (type === "add") {
-      setItemCount((prev) => prev + 1);
+      if (itemCount !== packagingDetails?.quantity)
+        setItemCount((prev) => prev + 1);
     } else {
       if (itemCount !== 1) {
         setItemCount((prev) => prev - 1);
@@ -95,8 +100,7 @@ const ProductDetailSection = ({ data = PRODUCT_DATA[0] }) => {
             </Box>
             <Box
               sx={{
-                background:
-                  "linear-gradient(180deg, #FFEAE6 0%, #FACAC2 100%), #F8F4EC",
+                background: details?.backgroundColor,
               }}
               borderRadius={"1rem"}
               height={528}
@@ -123,7 +127,7 @@ const ProductDetailSection = ({ data = PRODUCT_DATA[0] }) => {
               lineHeight={{ xs: "2rem", md: "120%" }}
               fontWeight={400}
             >
-              {productData?.name}
+              {details?.name}
             </Typography>
             <Box display={"flex"} alignItems={"center"} gap={"0.625rem"}>
               <Box
@@ -146,7 +150,8 @@ const ProductDetailSection = ({ data = PRODUCT_DATA[0] }) => {
                 color={{ xs: "#535353", md: "#121212" }}
                 fontWeight={400}
               >
-                {productData?.rating}
+                {details?.rating}
+                {"/5 (10,000 Reviews)"}
               </Typography>
             </Box>
             <Box
@@ -184,7 +189,7 @@ const ProductDetailSection = ({ data = PRODUCT_DATA[0] }) => {
               my={"1.25rem"}
               maxWidth={596}
             >
-              {productData?.description}
+              {details?.detailedDescription}
             </Typography>
             <Typography
               color="#535353"
@@ -202,7 +207,7 @@ const ProductDetailSection = ({ data = PRODUCT_DATA[0] }) => {
               justifyContent={"flex-start"}
               gap={{ xs: "0.5rem", md: "0.75rem" }}
             >
-              {productData?.sizes.map((item) => {
+              {details?.variants.map((item) => {
                 return (
                   <Box
                     key={item.id}
@@ -232,7 +237,7 @@ const ProductDetailSection = ({ data = PRODUCT_DATA[0] }) => {
                       lineHeight={"1.5rem"}
                     >
                       {" "}
-                      {item.packaging}
+                      {item.size}
                     </Typography>
                     <Typography
                       color={selectedPacking === item.id ? "#fff" : "#535353"}
@@ -242,7 +247,7 @@ const ProductDetailSection = ({ data = PRODUCT_DATA[0] }) => {
                       lineHeight={"0.75rem"}
                     >
                       {" "}
-                      {item.packagingDetail}
+                      {item.variantSmallDescription} pack
                     </Typography>
                   </Box>
                 );
@@ -262,7 +267,7 @@ const ProductDetailSection = ({ data = PRODUCT_DATA[0] }) => {
                 fontFamily={"Literata"}
                 lineHeight={"120%"}
               >
-                ₹{packagingDetails.newPrice}
+                ₹{packagingDetails?.price}
               </Typography>
               <Typography
                 color="#121212"
@@ -274,7 +279,7 @@ const ProductDetailSection = ({ data = PRODUCT_DATA[0] }) => {
                   textDecoration: "line-through",
                 }}
               >
-                ₹ {packagingDetails.oldPrice}
+                ₹ {packagingDetails?.oldPrice}
               </Typography>
               <Chip
                 sx={{ background: "#F8F4EC", border: "1px solid #EDE5DB" }}
@@ -285,7 +290,7 @@ const ProductDetailSection = ({ data = PRODUCT_DATA[0] }) => {
                     fontWeight={400}
                     fontFamily={"Manrope"}
                   >
-                    {packagingDetails.discount} off
+                    {packagingDetails?.dicountPercentage}% off
                   </Typography>
                 }
               />
@@ -372,9 +377,7 @@ const ProductDetailSection = ({ data = PRODUCT_DATA[0] }) => {
                 onMouseLeave={() => setIsHovered(false)}
               >
                 Add to Cart - ₹
-                {(itemCount * packagingDetails.newPrice).toLocaleString(
-                  "en-IN"
-                )}
+                {(itemCount * packagingDetails?.price).toLocaleString("en-IN")}
               </Button>
             </Box>
           </Box>

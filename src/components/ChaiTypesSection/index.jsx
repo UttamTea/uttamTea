@@ -106,13 +106,7 @@ const CardResp = ({
   );
 };
 
-const ChaiTypesSection = () => {
-  const [data, setData] = useState([]);
-  useEffect(() => {
-    if (PRODUCT_DATA) {
-      setData(PRODUCT_DATA);
-    }
-  }, [PRODUCT_DATA]);
+const ChaiTypesSection = ({ data }) => {
   return (
     <ContainerWrapper>
       <Box
@@ -123,12 +117,12 @@ const ChaiTypesSection = () => {
         <Grid container spacing={"1.5rem"}>
           {data.map((item) => {
             return (
-              <Grid key={item.id} item size={{ xs: 12, md: 4 }}>
+              <Grid key={item?.documentId} item size={{ xs: 12, md: 4 }}>
                 <Card
-                  background={item.backgroundColor}
-                  title={item.shortName}
-                  img={item.img}
-                  id={item.id}
+                  background={item?.backgroundColor}
+                  title={item?.name}
+                  img={item?.smallImage?.url}
+                  id={item?.documentId}
                 />
               </Grid>
             );
@@ -146,12 +140,12 @@ const ChaiTypesSection = () => {
         {data.map((item) => {
           return (
             <CardResp
-              key={item.id}
-              background={item.backgroundColor}
-              title={item.shortName}
-              img={item.img}
-              id={item.id}
-              description={item.shortDescription}
+              key={item?.documentId}
+              background={item?.backgroundColor}
+              title={item?.name}
+              img={item?.smallImage?.url}
+              id={item?.documentId}
+              description={item?.smallDescription}
             />
           );
         })}

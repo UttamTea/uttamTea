@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import HeaderMarquee from "../../components/HeaderMarquee";
 import HeaderNavBar from "../../components/HeaderNavBar";
 import HeroSection from "../../components/HeroSection";
@@ -19,8 +19,19 @@ import HeroBg from "../../assets/background/HeroSectionBg.webp";
 import HeroBgPhone from "../../assets/background/HeroSectionBgPhone.webp";
 import Footer from "../../components/Footer";
 import { PRODUCT_DATA } from "../../constant";
+import { fetchProducts } from "../../api";
 
 const Home = () => {
+  const [productsData, setProductsData] = useState([]);
+  const getData = async () => {
+    const products = await fetchProducts();
+    setProductsData(products?.data);
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
   return (
     <>
       <HeaderMarquee />
@@ -38,7 +49,7 @@ const Home = () => {
         <HeroSection />
       </Box>
       <MarqueeAndAboutSection />
-      <ChaiTypesSection />
+      <ChaiTypesSection data={productsData} />
       <RealPremiumTeaSection />
       <WatchHowUttamTeaSection />
       <MeetTheManSection />
@@ -46,7 +57,10 @@ const Home = () => {
       <BestSellingProduct />
       <InstagramSection />
       <KnowYourTeasSection />
-      <AssamTeaSection data={PRODUCT_DATA.slice(1)} />
+      <AssamTeaSection
+        data={PRODUCT_DATA.slice(1)}
+        details={productsData.slice(1)}
+      />
       <FAQSection />
       <OtherBenefitsSection />
       <Footer />

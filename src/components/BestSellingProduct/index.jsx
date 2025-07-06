@@ -143,7 +143,7 @@ const BestSellingProduct = () => {
           <Button
             variant="black"
             sx={{ mt: "1.125rem" }}
-            onClick={() => navigate("/product/112")}
+            onClick={() => navigate("/product/i2fby4m64ynusxxfaidum5lv")}
           >
             Shop Now
           </Button>

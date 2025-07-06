@@ -57,8 +57,9 @@ const AssamTeaSection = ({
   marginTop = "140px",
   productDetail = false,
   data,
+  details,
 }) => {
-  console.log("dataaa", data);
+  console.log("xxxx", details);
   return (
     <ContainerWrapper>
       <Box
@@ -69,19 +70,20 @@ const AssamTeaSection = ({
         mb={"5.2rem"}
       >
         <Grid container>
-          {data?.map((item) => {
+          {details?.map((item) => {
             return (
               <Grid
+                key={item?.documentId}
                 item
                 size={{ xs: 12, md: 6 }}
                 px={{ xs: productDetail ? 0 : "1rem", md: "0" }}
               >
                 <TeaCard
-                  title={item?.shortName}
-                  description={item?.shortDescription}
+                  title={item?.name}
+                  description={item?.smallDescription}
                   img={PIYALA_CHAI}
                   bgColor={item?.backgroundColor}
-                  id={item.id}
+                  id={item.documentId}
                 />
               </Grid>
             );

@@ -7,6 +7,7 @@ import HAMBURGER_ICON from "../../assets/icons/Hamburger.svg";
 import RESP_LOGO from "../../assets/logoResp.svg";
 import CART_ICON_RESP from "../../assets/icons/CartResp.svg";
 import SideNavDrawer from "./SideNavDrawer";
+import Cart from "../Cart";
 const TABS = [
   {
     title: "Shop +",
@@ -45,7 +46,10 @@ const HeaderNavBar = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
   const [openPopover, setOpenPopover] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
-
+  const [openCartDrawer, setOpenCartDrawer] = useState(false);
+  const handleCartClick = () => {
+    setOpenCartDrawer(true);
+  };
   const handleHamburgerClick = () => {
     setOpenDrawer(true);
   };
@@ -73,158 +77,164 @@ const HeaderNavBar = () => {
   };
 
   return (
-    <ContainerWrapper>
-      <SideNavDrawer open={openDrawer} setOpen={setOpenDrawer} />
-      <Box
-        mx={{ xs: "0", md: "1.25rem" }}
-        mt={{ xs: "0", md: "0" }}
-        pt={{ xs: "0", md: "2.25rem" }}
-      >
+    <>
+      <Cart open={openCartDrawer} setOpen={setOpenCartDrawer} />
+      <ContainerWrapper>
+        <SideNavDrawer open={openDrawer} setOpen={setOpenDrawer} />
         <Box
-          width={"100%"}
-          bgcolor={"#007F3D"}
-          p={{ xs: "0.625rem 1rem", md: "0.75rem 5.625rem" }}
-          display={"flex"}
-          borderRadius={{ xs: "0", md: "1.25rem" }}
-          alignItems={"center"}
-          justifyContent={{ xs: "space-between", md: "center" }} // changed from space-between
-          position="relative"
+          mx={{ xs: "0", md: "1.25rem" }}
+          mt={{ xs: "0", md: "0" }}
+          pt={{ xs: "0", md: "2.25rem" }}
         >
-          {/* Left - Tabs */}
           <Box
-            display={{ xs: "none", md: "flex" }}
+            width={"100%"}
+            bgcolor={"#007F3D"}
+            p={{ xs: "0.625rem 1rem", md: "0.75rem 5.625rem" }}
+            display={"flex"}
+            borderRadius={{ xs: "0", md: "1.25rem" }}
             alignItems={"center"}
-            gap={"2rem"}
-            position="absolute"
-            left="5.625rem"
+            justifyContent={{ xs: "space-between", md: "center" }} // changed from space-between
+            position="relative"
           >
-            {TABS.map((item) => (
-              <Box
-                key={item.key}
-                p={"0.5rem 1rem"}
-                width={"fit-content"}
-                bgcolor={selectedTab === item.key ? "#fff" : "transparent"}
-                onClick={(event) => handleClick(event, item.key)}
-                borderRadius={"0.5rem"}
-                sx={{ cursor: "pointer" }}
-              >
-                <Typography
-                  fontSize={"1.125rem"}
-                  fontFamily={"Manrope"}
-                  fontWeight={400}
-                  color={selectedTab === item.key ? "#121212" : "#fff"}
-                >
-                  {item.title}
-                </Typography>
-              </Box>
-            ))}
-          </Box>
-          <Box
-            display={{ xs: "flex", md: "none" }}
-            onClick={handleHamburgerClick}
-          >
-            <img
-              src={HAMBURGER_ICON}
-              alt="hamburger"
-              style={{ height: "24px", width: "24px" }}
-            />
-          </Box>
-
-          {/* Center - Logo */}
-          <Box display={{ xs: "none", md: "flex" }}>
-            <img
-              src={LOGO}
-              alt="logo"
-              onClick={() => navigate("/")}
-              style={{ cursor: "pointer" }}
-            />
-          </Box>
-          <Box marginLeft={"10px"} display={{ xs: "flex", md: "none" }}>
-            <img
-              src={RESP_LOGO}
-              alt="logo"
-              onClick={() => navigate("/")}
-              style={{ cursor: "pointer" }}
-            />
-          </Box>
-
-          {/* Right - Buttons */}
-          <Box
-            display={{ xs: "none", md: "flex" }}
-            alignItems={"center"}
-            position="absolute"
-            right="5.625rem"
-          >
-            <Button variant="transparent">Login</Button>
-            <Button variant="darkGreen">
-              <Box display={"flex"} alignItems={"center"} gap={"0.5rem"}>
-                Cart(0)
-              </Box>
-            </Button>
-          </Box>
-          <Box display={{ xs: "flex", md: "none" }}>
-            <Button variant="darkGreen" sx={{ padding: "8px 12px !important" }}>
-              <Box display={"flex"} alignItems={"center"} gap={"0.5rem"}>
-                <img src={CART_ICON_RESP} alt="cart" />
-                {0}
-              </Box>
-            </Button>
-          </Box>
-        </Box>
-        <Popover
-          open={openPopover}
-          anchorEl={anchorEl}
-          onClose={() => setOpenPopover(false)}
-          anchorOrigin={{
-            vertical: "bottom",
-            horizontal: "left",
-          }}
-          sx={{
-            mt: 2,
-            ".MuiPaper-root": {
-              boxShadow: "0px 4px 16px rgba(0, 0, 0, 0.1)",
-              borderRadius: "12px",
-            },
-          }}
-          transformOrigin={{
-            vertical: "top",
-            horizontal: "left",
-          }}
-        >
-          <Box bgcolor="#fff" py="0.75rem" minWidth={390}>
-            {TEA_TYPES.map((item, index) => (
-              <React.Fragment key={item.id}>
+            {/* Left - Tabs */}
+            <Box
+              display={{ xs: "none", md: "flex" }}
+              alignItems={"center"}
+              gap={"2rem"}
+              position="absolute"
+              left="5.625rem"
+            >
+              {TABS.map((item) => (
                 <Box
-                  px="1rem"
-                  py="0.625rem"
-                  sx={{
-                    cursor: "pointer",
-                    borderRadius: "0.375rem",
-                    transition: "all 0.2s ease-in-out",
-                    "&:hover": {
-                      backgroundColor: "#F5F5F5", // light gray hover background
-                    },
-                  }}
-                  onClick={() => handleShopItemClick(item.id)}
+                  key={item.key}
+                  p={"0.5rem 1rem"}
+                  width={"fit-content"}
+                  bgcolor={selectedTab === item.key ? "#fff" : "transparent"}
+                  onClick={(event) => handleClick(event, item.key)}
+                  borderRadius={"0.5rem"}
+                  sx={{ cursor: "pointer" }}
                 >
                   <Typography
-                    fontSize="0.9375rem"
+                    fontSize={"1.125rem"}
+                    fontFamily={"Manrope"}
                     fontWeight={400}
-                    fontFamily="Manrope"
-                    color="#121212"
+                    color={selectedTab === item.key ? "#121212" : "#fff"}
                   >
-                    {item.name}
+                    {item.title}
                   </Typography>
                 </Box>
-                {index !== TEA_TYPES.length - 1 && (
-                  <Box mx="1rem" borderBottom="1px solid #EDE5DB" />
-                )}
-              </React.Fragment>
-            ))}
+              ))}
+            </Box>
+            <Box
+              display={{ xs: "flex", md: "none" }}
+              onClick={handleHamburgerClick}
+            >
+              <img
+                src={HAMBURGER_ICON}
+                alt="hamburger"
+                style={{ height: "24px", width: "24px" }}
+              />
+            </Box>
+
+            {/* Center - Logo */}
+            <Box display={{ xs: "none", md: "flex" }}>
+              <img
+                src={LOGO}
+                alt="logo"
+                onClick={() => navigate("/")}
+                style={{ cursor: "pointer" }}
+              />
+            </Box>
+            <Box marginLeft={"10px"} display={{ xs: "flex", md: "none" }}>
+              <img
+                src={RESP_LOGO}
+                alt="logo"
+                onClick={() => navigate("/")}
+                style={{ cursor: "pointer" }}
+              />
+            </Box>
+
+            {/* Right - Buttons */}
+            <Box
+              display={{ xs: "none", md: "flex" }}
+              alignItems={"center"}
+              position="absolute"
+              right="5.625rem"
+            >
+              <Button variant="transparent">Login</Button>
+              <Button variant="darkGreen" onClick={handleCartClick}>
+                <Box display={"flex"} alignItems={"center"} gap={"0.5rem"}>
+                  Cart(0)
+                </Box>
+              </Button>
+            </Box>
+            <Box display={{ xs: "flex", md: "none" }}>
+              <Button
+                variant="darkGreen"
+                sx={{ padding: "8px 12px !important" }}
+              >
+                <Box display={"flex"} alignItems={"center"} gap={"0.5rem"}>
+                  <img src={CART_ICON_RESP} alt="cart" />
+                  {0}
+                </Box>
+              </Button>
+            </Box>
           </Box>
-        </Popover>
-      </Box>
-    </ContainerWrapper>
+          <Popover
+            open={openPopover}
+            anchorEl={anchorEl}
+            onClose={() => setOpenPopover(false)}
+            anchorOrigin={{
+              vertical: "bottom",
+              horizontal: "left",
+            }}
+            sx={{
+              mt: 2,
+              ".MuiPaper-root": {
+                boxShadow: "0px 4px 16px rgba(0, 0, 0, 0.1)",
+                borderRadius: "12px",
+              },
+            }}
+            transformOrigin={{
+              vertical: "top",
+              horizontal: "left",
+            }}
+          >
+            <Box bgcolor="#fff" py="0.75rem" minWidth={390}>
+              {TEA_TYPES.map((item, index) => (
+                <React.Fragment key={item.id}>
+                  <Box
+                    px="1rem"
+                    py="0.625rem"
+                    sx={{
+                      cursor: "pointer",
+                      borderRadius: "0.375rem",
+                      transition: "all 0.2s ease-in-out",
+                      "&:hover": {
+                        backgroundColor: "#F5F5F5", // light gray hover background
+                      },
+                    }}
+                    onClick={() => handleShopItemClick(item.id)}
+                  >
+                    <Typography
+                      fontSize="0.9375rem"
+                      fontWeight={400}
+                      fontFamily="Manrope"
+                      color="#121212"
+                    >
+                      {item.name}
+                    </Typography>
+                  </Box>
+                  {index !== TEA_TYPES.length - 1 && (
+                    <Box mx="1rem" borderBottom="1px solid #EDE5DB" />
+                  )}
+                </React.Fragment>
+              ))}
+            </Box>
+          </Popover>
+        </Box>
+      </ContainerWrapper>
+    </>
   );
 };
 
