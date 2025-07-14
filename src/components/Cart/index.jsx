@@ -8,6 +8,8 @@ import {
 } from "@mui/material";
 import React from "react";
 import CloseIcon from "../../assets/icons/CloseIcon.svg";
+import CartContentSection from "./CartContentSection";
+import CartTotalPaymentDetails from "./CartTotalPaymentDetails";
 
 const Cart = ({ open, setOpen }) => {
   const handleClose = () => {
@@ -21,6 +23,7 @@ const Cart = ({ open, setOpen }) => {
     <Drawer anchor="right" open={open} onClose={handleClose}>
       <Box
         height="100vh"
+        position={"relative"}
         width={{ xs: "100vw", md: "35vw" }} // full width on small screens
         bgcolor="#fff"
         py={isXsScreen ? "2rem" : "3rem"}
@@ -45,7 +48,9 @@ const Cart = ({ open, setOpen }) => {
             <img src={CloseIcon} alt="closeIcon" />
           </Box>
         </Box>
-        <Divider sx={{ bgcolor: "#ECECEC" }} />
+        {/* <Divider sx={{ bgcolor: "#ECECEC" }} /> */}
+        <CartContentSection />
+        <CartTotalPaymentDetails />
       </Box>
     </Drawer>
   );

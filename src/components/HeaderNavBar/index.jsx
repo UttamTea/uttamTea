@@ -8,6 +8,7 @@ import RESP_LOGO from "../../assets/logoResp.svg";
 import CART_ICON_RESP from "../../assets/icons/CartResp.svg";
 import SideNavDrawer from "./SideNavDrawer";
 import Cart from "../Cart";
+import { useSelector } from "react-redux";
 const TABS = [
   {
     title: "Shop +",
@@ -47,6 +48,7 @@ const HeaderNavBar = () => {
   const [openPopover, setOpenPopover] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
   const [openCartDrawer, setOpenCartDrawer] = useState(false);
+  const cartItems = useSelector((state) => state.cart.cartItems);
   const handleCartClick = () => {
     setOpenCartDrawer(true);
   };
@@ -164,7 +166,7 @@ const HeaderNavBar = () => {
               <Button variant="transparent">Login</Button>
               <Button variant="darkGreen" onClick={handleCartClick}>
                 <Box display={"flex"} alignItems={"center"} gap={"0.5rem"}>
-                  Cart(0)
+                  Cart({cartItems.length})
                 </Box>
               </Button>
             </Box>
