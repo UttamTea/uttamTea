@@ -110,6 +110,7 @@ const ChaiTypesSection = ({ data }) => {
   return (
     <ContainerWrapper>
       <Box
+        id="productsSection"
         display={{ xs: "none", md: "block " }}
         px={{ xs: "1rem", md: "110px" }}
         mt={"140px"}

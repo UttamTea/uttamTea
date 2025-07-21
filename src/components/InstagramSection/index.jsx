@@ -7,6 +7,7 @@ import INSTAGRAM_IMAGE from "../../assets/mock/Instagram.png";
 import R1 from "../../assets/reviews/R1.png";
 import R2 from "../../assets/reviews/R2.png";
 import R3 from "../../assets/reviews/R3.png";
+import { useNavigate } from "react-router-dom";
 
 const Card = ({ image }) => {
   return (
@@ -101,7 +102,7 @@ const responsive = {
 const InstagramSection = () => {
   const carouselRef = useRef();
   const cards = [INSTAGRAM_IMAGE, R1, R2, R3, INSTAGRAM_IMAGE, R1, R2, R3];
-
+  const navigate = useNavigate();
   return (
     <ContainerWrapper>
       <Box px={{ xs: "1rem", md: "110px" }} mt={{ xs: "76px", md: "140px" }}>
@@ -120,7 +121,14 @@ const InstagramSection = () => {
           justifyContent={"center"}
           mt={{ xs: "1.25rem", md: "1.5rem" }}
         >
-          <Button variant="black">Follow Us</Button>
+          <Button
+            variant="black"
+            onClick={() =>
+              window.open("https://www.instagram.com/uttamtea/", "_blank")
+            }
+          >
+            Follow Us
+          </Button>
         </Box>
       </Box>
 

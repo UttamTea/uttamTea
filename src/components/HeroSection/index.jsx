@@ -118,7 +118,12 @@ const HeroSection = () => {
             </Typography>
             <Button
               variant="black"
-              onClick={() => navigate("/product/i2fby4m64ynusxxfaidum5lv")}
+              onClick={() => {
+                const section = document.getElementById("productsSection");
+                if (section) {
+                  section.scrollIntoView({ behavior: "smooth" });
+                }
+              }}
             >
               Shop teas
             </Button>

@@ -153,7 +153,7 @@ const ReviewSection = () => {
           lineHeight={"1.5rem"}
           textAlign={"center"}
         >
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit,{" "}
+          Flavour of premium tea in every sip{" "}
         </Typography>
         <Typography
           fontSize={{ xs: "1.75rem", md: "2.5rem" }}
