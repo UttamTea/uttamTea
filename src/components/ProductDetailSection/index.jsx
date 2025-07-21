@@ -3,37 +3,21 @@ import {
   Button,
   Chip,
   Grid,
-  IconButton,
+  Rating,
   Typography,
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import React, { useEffect, useRef, useState } from "react";
-import Star from "../common/Star";
+import React, { useEffect, useState } from "react";
 import { PRODUCT_DATA } from "../../constant";
 import CartIcon from "../../assets/icons/CartIcon";
 import ProductTabsSection from "./ProductTabsSection";
 import RelatedProducts from "./RelatedProducts";
-import PIYALA_TEA_IMG from "../../assets/mock/piyalaChai.png";
 import ComparisonTable from "../ComparisonTable";
-import PIYALA_CHAI_WITH_BG from "../../assets/images/PiyalaChaiWithBg.png";
 import ResponsiveProductCards from "./ResponsiveProductCards";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../features/cart/cartSlice";
 import Cart from "../Cart";
-
-const ResponsiveProductImageCard = () => {
-  return (
-    <Box width={"100%"}>
-      <img
-        src={PIYALA_CHAI_WITH_BG}
-        alt="piyala chai"
-        className="h-auto w-100"
-        style={{ minWidth: "340px", height: "424px" }}
-      />
-    </Box>
-  );
-};
 
 const ProductDetailSection = ({ data = PRODUCT_DATA[0], details }) => {
   const theme = useTheme();
@@ -48,14 +32,12 @@ const ProductDetailSection = ({ data = PRODUCT_DATA[0], details }) => {
     dicountPercentage: 0,
   });
   const [isHovered, setIsHovered] = useState(false);
-  const [selectedCard, setSelectedCard] = useState(0);
   const [openCartDrawer, setOpenCartDrawer] = useState(false);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (data) {
       setProductData(data);
-      // setPackagingDetails(data?.variants?.[0]);
     }
   }, [data]);
   useEffect(() => {
@@ -74,8 +56,14 @@ const ProductDetailSection = ({ data = PRODUCT_DATA[0], details }) => {
   };
   const handleAddToCartClick = () => {
     setLoading(true);
+    console.log(
+      "detailsdetailsdetailsdetailsdetails",
+      details,
+      packagingDetails
+    );
     const params = {
-      id: details?.documentId,
+      productId: details?.documentId,
+      variantId: packagingDetails?.variantId,
       name: details?.name,
       price: packagingDetails?.price,
       purchasedQuantity: itemCount,
@@ -96,51 +84,24 @@ const ProductDetailSection = ({ data = PRODUCT_DATA[0], details }) => {
         <Grid container spacing={"2rem"}>
           <Grid item size={{ xs: 12, md: 5.8 }}>
             <Box display={{ xs: "none", md: "flex" }} gap={"1rem"}>
-              <Box>
-                <Box
-                  onClick={() => setSelectedCard(0)}
-                  border={selectedCard !== 0 ? "none" : "1px solid #7F3B2D"}
-                  borderRadius={"1rem"}
-                  bgcolor={"#F8F4EC"}
-                  height={"5rem"}
-                  width={"5rem"}
-                ></Box>
-                <Box
-                  onClick={() => setSelectedCard(1)}
-                  border={selectedCard !== 1 ? "none" : "1px solid #7F3B2D"}
-                  borderRadius={"1rem"}
-                  bgcolor={"#F8F4EC"}
-                  height={"5rem"}
-                  width={"5rem"}
-                  my={"0.75rem"}
-                ></Box>
-                <Box
-                  onClick={() => setSelectedCard(2)}
-                  border={selectedCard !== 2 ? "none" : "1px solid #7F3B2D"}
-                  borderRadius={"1rem"}
-                  bgcolor={"#F8F4EC"}
-                  height={"5rem"}
-                  width={"5rem"}
-                ></Box>
-              </Box>
               <Box
                 sx={{
                   background: details?.backgroundColor,
                 }}
                 borderRadius={"1rem"}
                 height={528}
-                width={496}
+                width={"100%"}
               >
                 <img
-                  src={PIYALA_TEA_IMG}
+                  src={details?.bigImage?.url}
                   alt="piyala"
                   className="h-100 w-100 object_fit_cover"
-                  style={{ borderRadius: "1rem" }}
+                  style={{ borderRadius: "1rem", objectFit: "cover" }}
                 />
               </Box>
             </Box>
             <Box display={{ xs: "block", md: "none" }}>
-              <ResponsiveProductCards />
+              <ResponsiveProductCards details={details} />
             </Box>
           </Grid>
           <Grid item size={{ xs: 12, md: 6 }}>
@@ -162,11 +123,12 @@ const ProductDetailSection = ({ data = PRODUCT_DATA[0], details }) => {
                   alignItems={"center"}
                   gap={"4px"}
                 >
-                  <Star />
-                  <Star />
-                  <Star />
-                  <Star />
-                  <Star />
+                  <Rating
+                    name="half-rating-read"
+                    value={details?.rating || 5}
+                    precision={0.5}
+                    readOnly
+                  />
                 </Box>
                 <Typography
                   mb={"0.5rem"}
@@ -179,42 +141,15 @@ const ProductDetailSection = ({ data = PRODUCT_DATA[0], details }) => {
                   {"/5 (10,000 Reviews)"}
                 </Typography>
               </Box>
-              <Box
-                display={"flex"}
-                alignItems={"center"}
-                justifyContent={"flex-start"}
-                gap={"0.75rem"}
-              >
-                {productData?.keywords.map((item, index) => {
-                  return (
-                    <Chip
-                      key={index}
-                      sx={{
-                        border: "1px solid #EDE5DB",
-                        background: "#F8F4EC",
-                      }}
-                      label={
-                        <Typography
-                          fontSize={"0.875rem"}
-                          fontFamily={"Manrope"}
-                          color="#535353"
-                          fontWeight={400}
-                          lineHeight={"1.25rem"}
-                        >
-                          {item}
-                        </Typography>
-                      }
-                    />
-                  );
-                })}
-              </Box>
+
               <Typography
                 fontSize={"0.875rem"}
                 fontFamily={"Manrope"}
                 fontWeight={400}
                 color="#535353"
                 lineHeight={"1.25rem"}
-                my={"1.25rem"}
+                mt={"1.25rem"}
+                mb={"3rem"}
                 maxWidth={596}
               >
                 {details?.detailedDescription}
@@ -415,7 +350,7 @@ const ProductDetailSection = ({ data = PRODUCT_DATA[0], details }) => {
             </Box>
           </Grid>
         </Grid>
-        <ProductTabsSection data={productData} />
+        <ProductTabsSection data={details} />
         <RelatedProducts />
         <ComparisonTable />
       </Box>

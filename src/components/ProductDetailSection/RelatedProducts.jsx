@@ -3,17 +3,20 @@ import React, { useEffect, useState } from "react";
 import AssamTeaSection from "../AssamTeaSection";
 import { useParams } from "react-router-dom";
 import { PRODUCT_DATA } from "../../constant";
+import { fetchProductById, fetchProducts } from "../../api";
 
 const RelatedProducts = () => {
   const { id } = useParams(); // get the dynamic id from URL
-
   const [data, setData] = useState(null);
+
+  const getData = async () => {
+    const products = await fetchProducts();
+    setData(products?.data);
+  };
+
   useEffect(() => {
-    if (id) {
-      const productDetails = PRODUCT_DATA.filter((item) => item.id !== id);
-      setData(productDetails);
-    }
-  }, [id]);
+    getData();
+  }, []);
   return (
     <Box mt={{ xs: "64px", md: "112px" }}>
       <Typography
@@ -25,7 +28,10 @@ const RelatedProducts = () => {
       >
         Related Products
       </Typography>
-      <AssamTeaSection productDetail={true} data={data} />
+      <AssamTeaSection
+        productDetail={true}
+        data={data?.filter((item) => item.documentId !== id)}
+      />
     </Box>
   );
 };

@@ -4,6 +4,9 @@ import Home from "./pages/Home";
 import ProductDetailPage from "./pages/ProductDetail";
 import ScrollToTop from "./components/common/ScrollToTop";
 import Success from "./pages/Success";
+import TermsAndCondition from "./pages/TermsAndCondition";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import RefundPolicy from "./pages/RefundPolicy";
 
 function App() {
   return (
@@ -13,7 +16,10 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/product/:id" element={<ProductDetailPage />} />
 
-        <Route path="/success/:orderId" element={<Success />} />
+        <Route path="/success" element={<Success />} />
+        <Route path="/terms-and-conditions" element={<TermsAndCondition />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/refund-policy" element={<RefundPolicy />} />
       </Routes>
     </>
   );

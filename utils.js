@@ -45,7 +45,7 @@ export const handlePayment = async (totalPrice, cartItems) => {
               order_status: "paid",
             });
 
-            alert("🎉 Order placed and saved successfully!");
+            window.location.href = "/success";
           } else {
             console.log("❌ Payment signature mismatch");
             alert("Payment Failed. Please try again.");

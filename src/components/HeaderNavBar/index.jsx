@@ -1,5 +1,5 @@
 import { Box, Button, Popover, Typography } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import LOGO from "../../assets/logo.svg";
 import ContainerWrapper from "../common/ContainerWrapper";
 import { useNavigate } from "react-router-dom";
@@ -9,6 +9,7 @@ import CART_ICON_RESP from "../../assets/icons/CartResp.svg";
 import SideNavDrawer from "./SideNavDrawer";
 import Cart from "../Cart";
 import { useSelector } from "react-redux";
+import { fetchProducts } from "../../api";
 const TABS = [
   {
     title: "Shop +",
@@ -22,10 +23,10 @@ const TABS = [
     title: "FAQs",
     key: "faq",
   },
-  {
-    title: "Blogs",
-    key: "blogs",
-  },
+  // {
+  //   title: "Blogs",
+  //   key: "blogs",
+  // },
 ];
 const TEA_TYPES = [
   {
@@ -48,7 +49,17 @@ const HeaderNavBar = () => {
   const [openPopover, setOpenPopover] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
   const [openCartDrawer, setOpenCartDrawer] = useState(false);
+  const [productsData, setProductsData] = useState([]);
   const cartItems = useSelector((state) => state.cart.cartItems);
+  const getData = async () => {
+    const products = await fetchProducts();
+    setProductsData(products?.data);
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+  console.log("productsData", productsData);
   const handleCartClick = () => {
     setOpenCartDrawer(true);
   };
@@ -82,7 +93,11 @@ const HeaderNavBar = () => {
     <>
       <Cart open={openCartDrawer} setOpen={setOpenCartDrawer} />
       <ContainerWrapper>
-        <SideNavDrawer open={openDrawer} setOpen={setOpenDrawer} />
+        <SideNavDrawer
+          open={openDrawer}
+          setOpen={setOpenDrawer}
+          productsData={productsData}
+        />
         <Box
           mx={{ xs: "0", md: "1.25rem" }}
           mt={{ xs: "0", md: "0" }}
@@ -163,7 +178,7 @@ const HeaderNavBar = () => {
               position="absolute"
               right="5.625rem"
             >
-              <Button variant="transparent">Login</Button>
+              {/* <Button variant="transparent">Login</Button> */}
               <Button variant="darkGreen" onClick={handleCartClick}>
                 <Box display={"flex"} alignItems={"center"} gap={"0.5rem"}>
                   Cart({cartItems.length})
@@ -174,10 +189,11 @@ const HeaderNavBar = () => {
               <Button
                 variant="darkGreen"
                 sx={{ padding: "8px 12px !important" }}
+                onClick={handleCartClick}
               >
                 <Box display={"flex"} alignItems={"center"} gap={"0.5rem"}>
                   <img src={CART_ICON_RESP} alt="cart" />
-                  {0}
+                  {cartItems.length}
                 </Box>
               </Button>
             </Box>
@@ -203,7 +219,7 @@ const HeaderNavBar = () => {
             }}
           >
             <Box bgcolor="#fff" py="0.75rem" minWidth={390}>
-              {TEA_TYPES.map((item, index) => (
+              {productsData?.map((item, index) => (
                 <React.Fragment key={item.id}>
                   <Box
                     px="1rem"
@@ -216,7 +232,7 @@ const HeaderNavBar = () => {
                         backgroundColor: "#F5F5F5", // light gray hover background
                       },
                     }}
-                    onClick={() => handleShopItemClick(item.id)}
+                    onClick={() => handleShopItemClick(item.documentId)}
                   >
                     <Typography
                       fontSize="0.9375rem"

@@ -22,13 +22,22 @@ const ProductTabsSection = ({ data }) => {
   const renderTabContent = () => {
     switch (selectedTab) {
       case 0:
-        return data?.description || "Description content goes here.";
+        return data?.detailedDescription || "Description content goes here.";
       case 1:
-        return data?.ingredients || "Ingredients content goes here.";
+        return (
+          data?.ingredients?.[0]?.children?.[0]?.text ||
+          "Ingredients content goes here."
+        );
       case 2:
-        return data?.howToUse || "How to Use content goes here.";
+        return (
+          data?.howToUse?.[0]?.children?.[0]?.text ||
+          "How to Use content goes here."
+        );
       case 3:
-        return data?.shipping || "Shipping content goes here.";
+        return (
+          data?.shipping?.[0]?.children?.[0]?.text ||
+          "Shipping content goes here."
+        );
       default:
         return "";
     }

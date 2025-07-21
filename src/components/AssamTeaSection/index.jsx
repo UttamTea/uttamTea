@@ -57,9 +57,8 @@ const AssamTeaSection = ({
   marginTop = "140px",
   productDetail = false,
   data,
-  details,
 }) => {
-  console.log("xxxx", details);
+  console.log("xxxx", data);
   return (
     <ContainerWrapper>
       <Box
@@ -70,7 +69,7 @@ const AssamTeaSection = ({
         mb={"5.2rem"}
       >
         <Grid container>
-          {details?.map((item) => {
+          {data?.map((item) => {
             return (
               <Grid
                 key={item?.documentId}

@@ -1,14 +1,12 @@
 import React from "react";
-import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { Box } from "@mui/material";
-import PIYALA_CHAI_WITH_BG from "../../assets/images/PiyalaChaiWithBg.png";
 
-const ResponsiveProductImageCard = () => {
+const ResponsiveProductImageCard = ({ img }) => {
   return (
     <Box width="100%">
       <img
-        src={PIYALA_CHAI_WITH_BG}
+        src={img}
         alt="piyala chai"
         className="h-auto w-100"
         style={{
@@ -16,13 +14,16 @@ const ResponsiveProductImageCard = () => {
           height: "424px",
           objectFit: "cover",
           borderRadius: "12px",
+          border: "1px solid #D3D3D3",
         }}
       />
     </Box>
   );
 };
 
-const ResponsiveProductCards = () => {
+const ResponsiveProductCards = ({ details }) => {
+  console.log("details", details);
+
   const responsive = {
     superLargeDesktop: {
       breakpoint: { max: 4000, min: 1536 },
@@ -43,23 +44,21 @@ const ResponsiveProductCards = () => {
   };
 
   return (
-    <Carousel
-      responsive={responsive}
-      showDots
-      arrows={false}
-      infinite
-      autoPlay={true}
-      containerClass="carousel-container"
-      swipeable={false}
-      draggable={false}
-      dotListClass="react-multi-carousel-dot-list"
-      itemClass="carousel-item-padding-40-px"
-    >
-      <ResponsiveProductImageCard />
-      <ResponsiveProductImageCard />
-      <ResponsiveProductImageCard />
-      <ResponsiveProductImageCard />
-    </Carousel>
+    // <Carousel
+    //   responsive={responsive}
+    //   showDots
+    //   arrows={false}s
+    //   infinite
+    //   autoPlay={true}
+    //   containerClass="carousel-container"
+    //   swipeable={false}
+    //   draggable={false}
+    //   dotListClass="react-multi-carousel-dot-list"
+    //   itemClass="carousel-item-padding-40-px"
+    // >
+    <ResponsiveProductImageCard img={details?.bigImage?.url} />
+
+    // </Carousel>
   );
 };
 

@@ -48,7 +48,6 @@ const Cart = ({ open, setOpen }) => {
             <img src={CloseIcon} alt="closeIcon" />
           </Box>
         </Box>
-        {/* <Divider sx={{ bgcolor: "#ECECEC" }} /> */}
         <CartContentSection />
         <CartTotalPaymentDetails />
       </Box>

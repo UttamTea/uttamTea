@@ -1,13 +1,14 @@
 import { Box, Button, Typography } from "@mui/material";
-import axios from "axios";
 import React from "react";
 import { useSelector } from "react-redux";
 import { handlePayment } from "../../../utils";
 
 const CartTotalPaymentDetails = () => {
   const totalPrice = useSelector((state) => state.cart.totalPrice);
-  const cartItems = [{ id: 1, name: "Green Tea", qty: 2, price: 100 }];
+  const cartItemsInStore = useSelector((state) => state.cart.cartItems);
 
+  if (cartItemsInStore.length === 0) return;
+  console.log("ccccc", cartItemsInStore);
   return (
     <Box mt={"3rem"} px={{ xs: "1rem", md: "2.25rem" }}>
       <Box
@@ -34,7 +35,7 @@ const CartTotalPaymentDetails = () => {
       <Button
         sx={{ width: "100%" }}
         variant="black"
-        onClick={() => handlePayment(totalPrice, cartItems)}
+        onClick={() => handlePayment(totalPrice, cartItemsInStore)}
       >
         Proceed to pay
       </Button>

@@ -116,7 +116,10 @@ const HeroSection = () => {
               Authentic Indian kadak chai, brewed with family secrets and
               timeless spice blends. Taste tradition in every sip.
             </Typography>
-            <Button variant="black" onClick={() => navigate("/product/112")}>
+            <Button
+              variant="black"
+              onClick={() => navigate("/product/i2fby4m64ynusxxfaidum5lv")}
+            >
               Shop teas
             </Button>
           </Box>

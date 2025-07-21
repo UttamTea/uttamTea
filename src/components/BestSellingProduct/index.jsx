@@ -12,6 +12,7 @@ const BestSellingProduct = () => {
       <Box
         mt={{ xs: "64px", md: "140px" }}
         width={"100%"}
+        sx={{ overflowX: "hidden", maxWidth: "100vw" }}
         height={{ xs: "100%", md: 755 }}
         position={"relative"}
         px={{ xs: "1rem", md: "0" }}

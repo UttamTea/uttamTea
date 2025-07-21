@@ -57,10 +57,7 @@ const Home = () => {
       <BestSellingProduct />
       <InstagramSection />
       <KnowYourTeasSection />
-      <AssamTeaSection
-        data={PRODUCT_DATA.slice(1)}
-        details={productsData.slice(1)}
-      />
+      <AssamTeaSection data={productsData?.slice(1)} />
       <FAQSection />
       <OtherBenefitsSection />
       <Footer />

@@ -28,10 +28,10 @@ const TABS = [
   },
   { title: "Home", key: "home", path: "/" },
   { title: "FAQs", key: "faq", path: "/faqs" },
-  { title: "Blogs", key: "blogs", path: "/blogs" },
+  // { title: "Blogs", key: "blogs", path: "/blogs" },
 ];
 
-const SideNavDrawer = ({ open, setOpen }) => {
+const SideNavDrawer = ({ open, setOpen, productsData }) => {
   const [expanded, setExpanded] = useState(false);
   const navigate = useNavigate();
 
@@ -147,9 +147,9 @@ const SideNavDrawer = ({ open, setOpen }) => {
               {tab.key === "shop" && (
                 <Collapse in={expanded} timeout="auto" unmountOnExit>
                   <Box px="2rem">
-                    {tab.childrens.map((child) => (
+                    {productsData?.map((child) => (
                       <Typography
-                        key={child.key}
+                        key={child.documentId}
                         sx={{
                           py: "0.5rem",
                           cursor: "pointer",
@@ -159,7 +159,7 @@ const SideNavDrawer = ({ open, setOpen }) => {
                           lineHeight: "20px",
                         }}
                         onClick={() => {
-                          handleNavigate(child.key);
+                          handleNavigate(child.documentId);
                         }}
                       >
                         {child.name}

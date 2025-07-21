@@ -1,6 +1,7 @@
 import { Box, Grid, Typography } from "@mui/material";
 import React from "react";
 import LOGO from "../../assets/footerLogo.png";
+import { useNavigate } from "react-router-dom";
 const FOOTER_TABS_ITEMS = [
   {
     title: "about us",
@@ -46,11 +47,13 @@ const FOOTER_TABS_ITEMS = [
   },
 ];
 const Footer = () => {
+  const navigate = useNavigate();
   return (
     <Box
-      width={"100vw"}
+      width={"100%"}
       height={"100%"}
       bgcolor={"#7F3B2D"}
+      sx={{ maxWidth: "100vw", overflowX: "hidden" }}
       px={{ xs: "1rem", md: "152px" }}
       py={{ xs: "2.25rem", md: "131px" }}
     >
@@ -256,6 +259,16 @@ const Footer = () => {
           {FOOTER_TABS_ITEMS.map((item) => {
             return (
               <Typography
+                sx={{ cursor: "pointer" }}
+                onClick={() => {
+                  if (
+                    item.key === "terms & conditions" ||
+                    item.key === "privacy policy" ||
+                    item.key === "refund policy"
+                  ) {
+                    navigate(item.url);
+                  }
+                }}
                 key={item.key}
                 fontSize={"0.875rem"}
                 fontWeight={400}
@@ -282,7 +295,20 @@ const Footer = () => {
       <Grid rowSpacing={"28px"} display={{ md: "none" }} container>
         {FOOTER_TABS_ITEMS.map((item) => {
           return (
-            <Grid key={item.key} item size={{ xs: 6 }}>
+            <Grid
+              key={item.key}
+              item
+              size={{ xs: 6 }}
+              onClick={() => {
+                if (
+                  item.key === "terms & conditions" ||
+                  item.key === "privacy policy" ||
+                  item.key === "refund policy"
+                ) {
+                  navigate(item.url);
+                }
+              }}
+            >
               <Typography
                 fontSize={"0.875rem"}
                 fontWeight={400}
