@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const axiosInstance = axios.create({
-  baseURL: "http://localhost:1337/api",
+  baseURL: "https://amazing-moonlight-9222a198d9.strapiapp.com/api",
   params: {
     populate: "*",
   },

@@ -4,7 +4,7 @@ export const handlePayment = async (totalPrice, cartItems) => {
   try {
     // STEP 1: Create Razorpay Order
     const res = await axios.post(
-      "http://localhost:1337/api/razorpay/create-order",
+      "https://amazing-moonlight-9222a198d9.strapiapp.com/api/razorpay/create-order",
       {
         amount: totalPrice,
       }
@@ -23,7 +23,7 @@ export const handlePayment = async (totalPrice, cartItems) => {
         // STEP 2: Verify Signature with Backend
         try {
           const verifyRes = await axios.post(
-            "http://localhost:1337/api/razorpay/verify-payment",
+            "https://amazing-moonlight-9222a198d9.strapiapp.com/api/razorpay/verify-payment",
             {
               razorpay_order_id: response.razorpay_order_id,
               razorpay_payment_id: response.razorpay_payment_id,
@@ -35,15 +35,18 @@ export const handlePayment = async (totalPrice, cartItems) => {
             console.log("✅ Payment verified and successful!");
 
             // ✅ STEP 3: Save order to Strapi
-            await axios.post("http://localhost:1337/api/razorpay/save-order", {
-              razorpay_order_id: response.razorpay_order_id,
-              razorpay_payment_id: response.razorpay_payment_id,
-              razorpay_signature: response.razorpay_signature,
-              amount: totalPrice,
-              cart_items: cartItems, // this must be passed from outside
-              customer_email: "test@example.com",
-              order_status: "paid",
-            });
+            await axios.post(
+              "https://amazing-moonlight-9222a198d9.strapiapp.com/api/razorpay/save-order",
+              {
+                razorpay_order_id: response.razorpay_order_id,
+                razorpay_payment_id: response.razorpay_payment_id,
+                razorpay_signature: response.razorpay_signature,
+                amount: totalPrice,
+                cart_items: cartItems, // this must be passed from outside
+                customer_email: "test@example.com",
+                order_status: "paid",
+              }
+            );
 
             window.location.href = "/success";
           } else {
