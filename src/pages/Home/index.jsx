@@ -51,9 +51,9 @@ const Home = () => {
       <MarqueeAndAboutSection />
       <ChaiTypesSection data={productsData} />
       <RealPremiumTeaSection />
-      <WatchHowUttamTeaSection />
+      {/* <WatchHowUttamTeaSection /> */}
       <MeetTheManSection />
-      <ReviewSection />
+      {/* <ReviewSection /> */}
       <BestSellingProduct />
       <InstagramSection />
       <KnowYourTeasSection />

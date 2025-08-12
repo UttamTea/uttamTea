@@ -56,6 +56,7 @@ const MeetTheManSection = () => {
       display={{ xs: "block", md: "flex" }}
       justifyContent={"center"}
       alignItems={"center"}
+      mt={{ xs: "1rem", md: "160px" }}
       px={{ xs: "1rem", md: "111px" }}
       py={{ xs: "70px", md: "108px" }}
     >
