@@ -124,6 +124,7 @@ const ChaiTypesSection = ({ data }) => {
                   title={item?.name}
                   img={item?.smallImage?.url}
                   id={item?.documentId}
+                  description={item?.smallDescription}
                 />
               </Grid>
             );

@@ -12,38 +12,38 @@ const DATA = [
   {
     title: "Kashmiri Kahwa",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est.",
+      "A fragrant blend of green tea, saffron, cinnamon, and cardamom, Kashmiri Kahwa is a warm hug in a cup. Traditionally brewed in the valleys of Kashmir, it offers a delicate balance of sweetness and spice. Perfect for cold mornings, it soothes the senses while promoting digestion and keeping you refreshed throughout the day.",
     img: KASHMIRI_KAHRA,
   },
 
   {
     title: "Matcha Tea",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est.",
+      "Finely ground from premium Japanese green tea leaves, Matcha is rich in antioxidants and vibrant in flavour. Its creamy, umami taste pairs beautifully with its smooth texture, offering a calm, focused energy. Traditionally whisked into a frothy drink, Matcha is as much a mindful ritual as it is a healthful beverage.",
     img: MATCH_TEA,
   },
   {
     title: "Green Tea",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est.",
+      "Fresh, light, and naturally invigorating, Green Tea is celebrated for its clean taste and health benefits. Packed with antioxidants, it supports metabolism, boosts energy, and offers gentle refreshment. Whether sipped plain or with a hint of lemon, Green Tea is the perfect everyday companion for those seeking balance and vitality.",
     img: GREEN_TEA,
   },
   {
     title: "Noon Chai",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est.",
+      "A traditional pink tea from Kashmir, Noon Chai is brewed with green tea leaves, milk, baking soda, and salt. Its unique savoury taste, creamy texture, and rosy hue make it truly distinctive. Served hot, often with bread or nuts, it’s a cherished comfort drink that warms both the body and heart.",
     img: NOON_TEA,
   },
   {
     title: "Black Tea",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est.",
+      "Bold, robust, and deeply satisfying, Black Tea is India’s timeless brew. From the strong Assam variety to the malty Darjeeling, its flavour profile is rich and full-bodied. Perfect with milk, sugar, or spices, it’s a versatile tea that fuels mornings, refreshes afternoons, and brings people together over a hearty cup.",
     img: BLACK_TEA,
   },
   {
     title: "White Tea",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est.",
+      "The most delicate of all teas, White Tea is made from the youngest tea buds, minimally processed to preserve their natural goodness. With a light, sweet flavour and subtle aroma, it’s rich in antioxidants and gentle on the palate. A soothing choice for moments when you want pure, calming refreshment.",
     img: WHITE_TEA,
   },
 ];
@@ -77,8 +77,17 @@ const SelectedTeaCard = ({ index }) => {
         >
           {itemData.description}
         </Typography>
-        <Button variant="black" sx={{ mt: "2.5rem" }}>
-          Read More
+        <Button
+          variant="black"
+          sx={{ mt: "2.5rem" }}
+          onClick={() => {
+            const section = document.getElementById("productsSection");
+            if (section) {
+              section.scrollIntoView({ behavior: "smooth" });
+            }
+          }}
+        >
+          Explore our tea collection
         </Button>
       </Box>
     </Box>

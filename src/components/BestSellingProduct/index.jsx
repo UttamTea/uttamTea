@@ -101,8 +101,8 @@ const BestSellingProduct = () => {
             lineHeight={"120%"}
             fontSize={"0.75rem"}
           >
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore
+            Authentic Indian chai that&apos;s big on taste and gentle on your
+            pocket.
           </Typography>
           <Box display={"flex"} alignItems={"center"} gap={"0.625rem"}>
             <Typography

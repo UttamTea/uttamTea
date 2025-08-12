@@ -113,8 +113,9 @@ const HeroSection = () => {
               lineHeight={{ xs: "1.5rem", md: "150%" }}
               maxWidth={{ xs: 312, md: 489 }}
             >
-              Authentic Indian kadak chai, brewed with family secrets and
-              timeless spice blends. Taste tradition in every sip.
+              Where bold Indian chai meets eight decades of family tradition,
+              blending pure ingredients, timeless recipes, and the everyday joy
+              of an authentic cup.
             </Typography>
             <Button
               variant="black"

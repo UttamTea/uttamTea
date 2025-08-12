@@ -9,7 +9,7 @@ export const TeaCard = ({ title, description, img, bgColor, id }) => {
   return (
     <Box
       width={"100%"}
-      height={{ xs: "100%", md: "720px" }}
+      height={{ xs: "100%", md: "740px" }}
       className="teaCard_main_container"
       sx={{ background: bgColor }}
       borderRadius={"1.5rem"}
@@ -18,7 +18,7 @@ export const TeaCard = ({ title, description, img, bgColor, id }) => {
       <Box display={"flex"} justifyContent={"center"} alignItems={"center"}>
         <Box display={"flex"} flexDirection={"column"} alignItems={"center"}>
           <img src={img} alt="img" className="assam_tea_images w-100 h-auto" />
-          <Box textAlign={"center"} mt={{ xs: "0", md: "-2rem" }}>
+          <Box textAlign={"center"} mt={{ xs: "0", md: "0.5rem" }}>
             <Typography
               color="#121212"
               fontFamily={"Literata"}
@@ -80,7 +80,7 @@ const AssamTeaSection = ({
                 <TeaCard
                   title={item?.name}
                   description={item?.smallDescription}
-                  img={PIYALA_CHAI}
+                  img={item?.smallImage?.url}
                   bgColor={item?.backgroundColor}
                   id={item.documentId}
                 />

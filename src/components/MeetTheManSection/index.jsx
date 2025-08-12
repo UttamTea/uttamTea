@@ -9,24 +9,24 @@ import ArrowCircleRightOutlinedIcon from "@mui/icons-material/ArrowCircleRightOu
 const data = [
   {
     img: MAN_IMG,
-    name: "Mr. John Doe",
+    name: "Mr. Uttam’s Story",
     heading: "Meet the Man",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est.",
+      "Uttam Tea began as a humble tea shop with a simple vision to make high-quality tea affordable and accessible to every household. What started as a small endeavor turned into a legacy, as more and more families made Uttam Tea a part of their lives. Over the years, our passion for purity, taste, and customer satisfaction has remained unchanged, guiding us as we expanded our reach across India.",
   },
   {
     img: WOMAN_IMG,
-    name: "How it all Started",
+    name: "Why Uttam Tea?",
     heading: "The Story",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est.",
+      "For over 40 years, Uttam Tea has been more than just a brand, it has been a part of countless morning rituals, cherished conversations, and comforting moments. We believe that a great cup of tea is not just about taste, it is about the experience it creates. Whether it is the first sip that wakes you up or the last one that brings peace after a long day, Uttam Tea is crafted to be your perfect companion.",
   },
   {
     img: MAN_IMG,
-    name: "Mr. John Doe",
-    heading: "Meet the Man",
+    name: "Why Uttam Tea?",
+    heading: "The Story",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est.",
+      "What makes us special? Our unwavering commitment to quality. Unlike many, we never compromise on purity, ensuring that every blend delivers the same rich aroma and taste that generations have trusted. Our teas are masterfully blended using the finest leaves from Assam and Darjeeling, striking the perfect balance between strength and smoothness.",
   },
 ];
 
