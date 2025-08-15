@@ -13,7 +13,7 @@ export const handlePayment = async (totalPrice, cartItems) => {
     const { order } = res.data;
 
     const options = {
-      key: "rzp_test_ZGTAPsz4bPURGT",
+      key: "rzp_live_R5b1AJOzDL4GMz",
       amount: order.amount,
       currency: order.currency,
       name: "Uttam Tea",
