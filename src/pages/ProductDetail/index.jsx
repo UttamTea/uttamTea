@@ -54,7 +54,7 @@ const ProductDetailPage = () => {
       <HeaderNavBar />
       <ProductDetailSection details={data} />
       <MarqueeAndAboutSection />
-      <ReviewSection />
+      {/* <ReviewSection /> */}
       <OtherBenefitsSection />
       <Footer />
     </>
