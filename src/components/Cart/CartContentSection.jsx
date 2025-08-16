@@ -2,7 +2,11 @@ import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { removeFromCart } from "../../features/cart/cartSlice";
+import {
+  removeFromCart,
+  increaseQuantity,
+  decreaseQuantity,
+} from "../../features/cart/cartSlice";
 
 const CartContentSection = () => {
   const theme = useTheme();
@@ -12,6 +16,14 @@ const CartContentSection = () => {
 
   const handleRemove = (variantId) => {
     dispatch(removeFromCart(variantId));
+  };
+
+  const handleIncrease = (variantId) => {
+    dispatch(increaseQuantity(variantId));
+  };
+
+  const handleDecrease = (variantId) => {
+    dispatch(decreaseQuantity(variantId));
   };
 
   if (cartItems.length === 0) {
@@ -116,8 +128,11 @@ const CartContentSection = () => {
                 gap={"1rem"}
                 width={"fit-content"}
               >
-                {/* Add/Subtract kept for future, not wired yet */}
-                <Box sx={{ cursor: "pointer" }}>
+                {/* Subtract */}
+                <Box
+                  sx={{ cursor: "pointer" }}
+                  onClick={() => handleDecrease(item.variantId)}
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
@@ -136,7 +151,11 @@ const CartContentSection = () => {
                 <Typography fontSize={"14px"}>
                   {item.purchasedQuantity}
                 </Typography>
-                <Box sx={{ cursor: "pointer" }}>
+                {/* Add */}
+                <Box
+                  sx={{ cursor: "pointer" }}
+                  onClick={() => handleIncrease(item.variantId)}
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
