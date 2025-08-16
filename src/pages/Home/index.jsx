@@ -5,9 +5,7 @@ import HeroSection from "../../components/HeroSection";
 import MarqueeAndAboutSection from "../../components/MarqueeAndAboutSection";
 import ChaiTypesSection from "../../components/ChaiTypesSection";
 import RealPremiumTeaSection from "../../components/RealPremiumTeaSection";
-import WatchHowUttamTeaSection from "../../components/WatchHowUttamTeaSection";
 import MeetTheManSection from "../../components/MeetTheManSection";
-import ReviewSection from "../../components/ReviewSection";
 import BestSellingProduct from "../../components/BestSellingProduct";
 import InstagramSection from "../../components/InstagramSection";
 import KnowYourTeasSection from "../../components/KnowYourTeasSection";
@@ -18,14 +16,23 @@ import { Box } from "@mui/material";
 import HeroBg from "../../assets/background/HeroSectionBg.webp";
 import HeroBgPhone from "../../assets/background/HeroSectionBgPhone.webp";
 import Footer from "../../components/Footer";
-import { PRODUCT_DATA } from "../../constant";
 import { fetchProducts } from "../../api";
+import FullScreenLoader from "../../components/FullScreenLoader/FullScreenLoader";
 
 const Home = () => {
   const [productsData, setProductsData] = useState([]);
+  const [loading, setLoading] = useState(false);
+
   const getData = async () => {
-    const products = await fetchProducts();
-    setProductsData(products?.data);
+    setLoading(true);
+    try {
+      const products = await fetchProducts();
+      setProductsData(products?.data || []);
+    } catch (error) {
+      console.error("Error fetching products:", error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -34,6 +41,9 @@ const Home = () => {
 
   return (
     <>
+      {/* Loader */}
+      <FullScreenLoader loading={loading} />
+
       <HeaderMarquee />
       <Box
         sx={{
@@ -51,9 +61,7 @@ const Home = () => {
       <MarqueeAndAboutSection />
       <ChaiTypesSection data={productsData} />
       <RealPremiumTeaSection />
-      {/* <WatchHowUttamTeaSection /> */}
       <MeetTheManSection />
-      {/* <ReviewSection /> */}
       <BestSellingProduct />
       <InstagramSection />
       <KnowYourTeasSection />
