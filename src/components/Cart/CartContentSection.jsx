@@ -1,15 +1,17 @@
 import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { removeFromCart } from "../../features/cart/cartSlice";
 
 const CartContentSection = () => {
   const theme = useTheme();
   const isXsScreen = useMediaQuery(theme.breakpoints.down("md"));
   const cartItems = useSelector((state) => state.cart.cartItems);
+  const dispatch = useDispatch();
 
-  const handleClick = (type) => {
-    // Implement add/subtract functionality here
+  const handleRemove = (variantId) => {
+    dispatch(removeFromCart(variantId));
   };
 
   if (cartItems.length === 0) {
@@ -44,7 +46,7 @@ const CartContentSection = () => {
           color="#999"
           mt={0.5}
         >
-          Looks like you haven’t added anything yet.
+          Looks like you haven&apos;t added anything yet.
         </Typography>
       </Box>
     );
@@ -114,10 +116,8 @@ const CartContentSection = () => {
                 gap={"1rem"}
                 width={"fit-content"}
               >
-                <Box
-                  sx={{ cursor: "pointer" }}
-                  onClick={() => handleClick("substract")}
-                >
+                {/* Add/Subtract kept for future, not wired yet */}
+                <Box sx={{ cursor: "pointer" }}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
@@ -136,10 +136,7 @@ const CartContentSection = () => {
                 <Typography fontSize={"14px"}>
                   {item.purchasedQuantity}
                 </Typography>
-                <Box
-                  sx={{ cursor: "pointer" }}
-                  onClick={() => handleClick("add")}
-                >
+                <Box sx={{ cursor: "pointer" }}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
@@ -162,7 +159,10 @@ const CartContentSection = () => {
                   </svg>
                 </Box>
               </Box>
-              <DeleteIcon sx={{ cursor: "pointer", color: "red" }} />
+              <DeleteIcon
+                sx={{ cursor: "pointer", color: "red" }}
+                onClick={() => handleRemove(item.variantId)}
+              />
             </Box>
           </Box>
         </Box>

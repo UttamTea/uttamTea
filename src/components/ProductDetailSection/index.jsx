@@ -56,11 +56,7 @@ const ProductDetailSection = ({ data = PRODUCT_DATA[0], details }) => {
   };
   const handleAddToCartClick = () => {
     setLoading(true);
-    console.log(
-      "detailsdetailsdetailsdetailsdetails",
-      details,
-      packagingDetails
-    );
+
     const params = {
       productId: details?.documentId,
       variantId: packagingDetails?.variantId,

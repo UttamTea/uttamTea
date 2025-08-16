@@ -6,9 +6,8 @@ import { handlePayment } from "../../../utils";
 const CartTotalPaymentDetails = () => {
   const totalPrice = useSelector((state) => state.cart.totalPrice);
   const cartItemsInStore = useSelector((state) => state.cart.cartItems);
-
+  console.log("cartItemsInStore", cartItemsInStore);
   if (cartItemsInStore.length === 0) return;
-  console.log("ccccc", cartItemsInStore);
   return (
     <Box mt={"3rem"} px={{ xs: "1rem", md: "2.25rem" }}>
       <Box

@@ -10,7 +10,6 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, action) => {
-      console.log("ssssss", action.payload);
       const newItem = action.payload;
 
       const existingItem = state.cartItems.find(
@@ -27,7 +26,6 @@ const cartSlice = createSlice({
           // Update totalPrice
           state.totalPrice += newItem.price * newItem.purchasedQuantity;
         } else {
-          console.warn("Quantity exceeds available stock");
         }
       } else {
         state.cartItems.push(newItem);
