@@ -2,11 +2,11 @@ import { Box, Button, Typography } from "@mui/material";
 import React from "react";
 import { useSelector } from "react-redux";
 import { handlePayment } from "../../../utils";
+// import PersonalDetailsModal from "../PersonalDetailsModal/PersonalDetailsModal";
 
-const CartTotalPaymentDetails = () => {
+const CartTotalPaymentDetails = ({ setOpenDetailModal }) => {
   const totalPrice = useSelector((state) => state.cart.totalPrice);
   const cartItemsInStore = useSelector((state) => state.cart.cartItems);
-  console.log("cartItemsInStore", cartItemsInStore);
   if (cartItemsInStore.length === 0) return;
   return (
     <Box mt={"3rem"} px={{ xs: "1rem", md: "2.25rem" }}>
@@ -34,9 +34,9 @@ const CartTotalPaymentDetails = () => {
       <Button
         sx={{ width: "100%" }}
         variant="black"
-        onClick={() => handlePayment(totalPrice, cartItemsInStore)}
+        onClick={() => setOpenDetailModal(true)}
       >
-        Proceed to pay
+        Proceed
       </Button>
     </Box>
   );

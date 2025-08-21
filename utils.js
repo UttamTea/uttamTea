@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const handlePayment = async (totalPrice, cartItems) => {
+export const handlePayment = async (totalPrice, cartItems, personalDetails) => {
   try {
     // STEP 1: Create Razorpay Order
     const res = await axios.post(
@@ -43,7 +43,8 @@ export const handlePayment = async (totalPrice, cartItems) => {
                 razorpay_signature: response.razorpay_signature,
                 amount: totalPrice,
                 cart_items: cartItems, // this must be passed from outside
-                customer_email: "test@example.com",
+                personal_details: personalDetails, // ✅ added
+                customer_email: personalDetails.email, // ✅ dynamic instead of hardcoded
                 order_status: "paid",
               }
             );

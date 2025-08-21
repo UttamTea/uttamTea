@@ -6,21 +6,30 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import CloseIcon from "../../assets/icons/CloseIcon.svg";
 import CartContentSection from "./CartContentSection";
 import CartTotalPaymentDetails from "./CartTotalPaymentDetails";
+import PersonalDetailsModal from "../PersonalDetailsModal/PersonalDetailsModal";
 
 const Cart = ({ open, setOpen }) => {
+  const [openDetailModal, setOpenDetailModal] = useState(false);
   const handleClose = () => {
     setOpen(false);
   };
-
+  const handlePersonalDetailsModalClose = () => {
+    setOpenDetailModal(false);
+  };
   const theme = useTheme();
   const isXsScreen = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
     <Drawer anchor="right" open={open} onClose={handleClose}>
+      <PersonalDetailsModal
+        open={openDetailModal}
+        handleClose={handlePersonalDetailsModalClose}
+      />
+
       <Box
         height="100vh"
         position={"relative"}
@@ -49,7 +58,7 @@ const Cart = ({ open, setOpen }) => {
           </Box>
         </Box>
         <CartContentSection />
-        <CartTotalPaymentDetails />
+        <CartTotalPaymentDetails setOpenDetailModal={setOpenDetailModal} />
       </Box>
     </Drawer>
   );
