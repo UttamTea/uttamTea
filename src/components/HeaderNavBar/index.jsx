@@ -59,7 +59,6 @@ const HeaderNavBar = () => {
   useEffect(() => {
     getData();
   }, []);
-  console.log("productsData", productsData);
   const handleCartClick = () => {
     setOpenCartDrawer(true);
   };
