@@ -1,7 +1,7 @@
 import React from "react";
 import ContainerWrapper from "../common/ContainerWrapper";
 import { Box, Button, Typography } from "@mui/material";
-import PREMIUM_TEA_IMG from "../../assets/images/PremiumTea.svg";
+import PREMIUM_TEA_IMG from "../../assets/images/UpdatedPremium.svg";
 import { useNavigate } from "react-router-dom";
 
 const RealPremiumTeaSection = () => {
