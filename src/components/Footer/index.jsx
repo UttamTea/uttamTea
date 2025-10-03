@@ -79,8 +79,8 @@ const Footer = () => {
               fill="none"
             >
               <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 d="M5 9C5 5.13 8.13 2 12 2C15.87 2 19 5.13 19 9C19 13.17 14.58 18.92 12.77 21.11C12.37 21.59 11.64 21.59 11.24 21.11C9.42 18.92 5 13.17 5 9ZM9.5 9C9.5 10.38 10.62 11.5 12 11.5C13.38 11.5 14.5 10.38 14.5 9C14.5 7.62 13.38 6.5 12 6.5C10.62 6.5 9.5 7.62 9.5 9Z"
                 fill="#FEFEFE"
               />
@@ -114,8 +114,8 @@ const Footer = () => {
                 fill="none"
               >
                 <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
+                  fillRule="evenodd"
+                  clipRule="evenodd"
                   d="M19.23 15.2598L16.69 14.9698C16.08 14.8998 15.48 15.1098 15.05 15.5398L13.21 17.3798C10.38 15.9398 8.06004 13.6298 6.62004 10.7898L8.47004 8.93977C8.90004 8.50977 9.11004 7.90977 9.04004 7.29977L8.75004 4.77977C8.63004 3.76977 7.78004 3.00977 6.76004 3.00977H5.03004C3.90004 3.00977 2.96004 3.94977 3.03004 5.07977C3.56004 13.6198 10.39 20.4398 18.92 20.9698C20.05 21.0398 20.99 20.0998 20.99 18.9698V17.2398C21 16.2298 20.24 15.3798 19.23 15.2598Z"
                   fill="#FEFEFE"
                 />
@@ -142,7 +142,7 @@ const Footer = () => {
                 viewBox="0 0 24 24"
                 fill="none"
               >
-                <g clip-path="url(#clip0_365_630)">
+                <g clipPath="url(#clip0_365_630)">
                   <path
                     d="M23.7888 4.76953L16.5101 12.0014L23.7888 19.2332C23.9204 18.9582 24.0002 18.6541 24.0002 18.3295V5.67323C24.0002 5.34853 23.9204 5.04455 23.7888 4.76953Z"
                     fill="#FEFEFE"
@@ -172,7 +172,7 @@ const Footer = () => {
                 fontSize={"0.875rem"}
                 fontWeight={400}
               >
-                hi@example.com
+                info@uttamtea.com
               </Typography>
             </Box>
           </Box>
@@ -201,7 +201,7 @@ const Footer = () => {
                 sx={{ cursor: "pointer" }}
                 onClick={() =>
                   window.open(
-                    "https://www.facebook.com/uttamteaindia/?ref=_xav_ig_profile_page_web#",
+                    "https://www.facebook.com/uttamteaindia/",
                     "_blank"
                   )
                 }

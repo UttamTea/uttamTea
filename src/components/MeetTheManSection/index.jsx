@@ -1,28 +1,29 @@
 import { Box, Typography, Fade } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import MAN_IMG from "../../assets/mock/Man.png";
-import WOMAN_IMG from "../../assets/mock/Women.png";
+import MR_UTTAM_IMG from "../../assets/Mruttamphoto.svg";
+import PEOPLE_PLUCKING_IMG from "../../assets/peoplepluckingtea.svg";
+import LADY_PLUCKING_IMG from "../../assets/ladypluckingtea.svg";
 import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
 
 import ArrowCircleRightOutlinedIcon from "@mui/icons-material/ArrowCircleRightOutlined";
 
 const data = [
   {
-    img: MAN_IMG,
+    img: MR_UTTAM_IMG,
     name: "Mr. Uttam’s Story",
     heading: "Meet the Man",
     description:
       "Uttam Tea began as a humble tea shop with a simple vision to make high-quality tea affordable and accessible to every household. What started as a small endeavor turned into a legacy, as more and more families made Uttam Tea a part of their lives. Over the years, our passion for purity, taste, and customer satisfaction has remained unchanged, guiding us as we expanded our reach across India.",
   },
   {
-    img: WOMAN_IMG,
+    img: PEOPLE_PLUCKING_IMG,
     name: "Why Uttam Tea?",
     heading: "The Story",
     description:
       "For over 40 years, Uttam Tea has been more than just a brand, it has been a part of countless morning rituals, cherished conversations, and comforting moments. We believe that a great cup of tea is not just about taste, it is about the experience it creates. Whether it is the first sip that wakes you up or the last one that brings peace after a long day, Uttam Tea is crafted to be your perfect companion.",
   },
   {
-    img: MAN_IMG,
+    img: LADY_PLUCKING_IMG,
     name: "Why Uttam Tea?",
     heading: "The Story",
     description:

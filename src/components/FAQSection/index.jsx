@@ -108,7 +108,7 @@ const FAQSection = () => {
             >
               <AccordionSummary
                 expandIcon={
-                  <IconButton>
+                  <IconButton component="span">
                     {expanded === `panel${index}` ? (
                       <ExpandLessIcon />
                     ) : (

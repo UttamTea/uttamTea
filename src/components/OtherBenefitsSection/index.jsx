@@ -160,7 +160,7 @@ const OtherBenefitsSection = () => {
               fontFamily="Literata"
               textAlign="center"
             >
-              Get 20% off your first order
+              Subscribe for best offer
             </Typography>
             <Typography
               mt="0.75rem"
@@ -169,7 +169,7 @@ const OtherBenefitsSection = () => {
               fontFamily="Manrope"
               textAlign="center"
             >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              Join our chai family and enjoy special offers straight to your inbox
             </Typography>
             <Box
               display="flex"

@@ -3,12 +3,12 @@ import HEART_ICON from "../../assets/icons/Heart.svg";
 const BottomMarquee = () => {
   // Improved content structure with spans for better styling control
   const marqueeItems = [
-    { icon: HEART_ICON, text: "50,00 Happy Customers" },
-    { icon: HEART_ICON, text: "80+ years" },
-    { icon: HEART_ICON, text: "50,00 Happy Customers" },
-    { icon: HEART_ICON, text: "80+ years" },
-    { icon: HEART_ICON, text: "50,00 Happy Customers" },
-    { icon: HEART_ICON, text: "80+ years" },
+    { icon: HEART_ICON, text: "10,000 Happy Customers" },
+    { icon: HEART_ICON, text: "40+ Years" },
+    { icon: HEART_ICON, text: "10,000 Happy Customers" },
+    { icon: HEART_ICON, text: "40+ Years" },
+    { icon: HEART_ICON, text: "10,000 Happy Customers" },
+    { icon: HEART_ICON, text: "40+ Years" },
   ];
 
   // Create styled content with proper spacing

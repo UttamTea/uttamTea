@@ -31,13 +31,13 @@ import React from "react";
 const HeaderMarquee = () => {
   // Improved content structure with spans for better styling control
   const marqueeItems = [
-    { icon: ".", text: "SHOP NOW & SAVE UPTO Rs 499/-" },
-    { icon: ".", text: "SHOP NOW & SAVE UPTO Rs 499/-" },
-    { icon: ".", text: "SHOP NOW & SAVE UPTO Rs 499/-" },
-    { icon: ".", text: "SHOP NOW & SAVE UPTO Rs 499/-" },
-    { icon: ".", text: "SHOP NOW & SAVE UPTO Rs 499/-" },
-    { icon: ".", text: "SHOP NOW & SAVE UPTO Rs 499/-" },
-    { icon: ".", text: "SHOP NOW & SAVE UPTO Rs 499/-" },
+     { icon: ".", text: "BEST QUALITY ASSAM TEA" },
+     { icon: ".", text: "BEST QUALITY ASSAM TEA" },
+     { icon: ".", text: "BEST QUALITY ASSAM TEA" },
+     { icon: ".", text: "BEST QUALITY ASSAM TEA" },
+     { icon: ".", text: "BEST QUALITY ASSAM TEA" },
+     { icon: ".", text: "BEST QUALITY ASSAM TEA" },
+     { icon: ".", text: "BEST QUALITY ASSAM TEA" },
   ];
 
   // Create styled content with proper spacing

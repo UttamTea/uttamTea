@@ -42,10 +42,16 @@ const PersonalDetailsModal = ({ open, handleClose }) => {
     reset,
   } = useForm();
 
+  // Calculate delivery charge
+  const DELIVERY_CHARGE = 99;
+  const FREE_DELIVERY_THRESHOLD = 1299;
+  const deliveryCharge = totalPrice >= FREE_DELIVERY_THRESHOLD ? 0 : DELIVERY_CHARGE;
+  const finalTotal = totalPrice + deliveryCharge;
+
   // Handle form submission
   const onSubmit = async (data) => {
     console.log("Customer Details:", data);
-    handlePayment(totalPrice, cartItemsInStore, data);
+    handlePayment(finalTotal, totalPrice, deliveryCharge, cartItemsInStore, data);
   };
 
   const handleCloseModal = () => {

@@ -27,9 +27,9 @@ const MarqueeAndAboutSection = () => {
           fontFamily={"Literata"}
           fontWeight={300}
         >
-          Where bold Indian chai meets eight decades of family tradition —
-          blending pure ingredients, timeless recipes, and the everyday joy of a
-          truly authentic cup.
+          For four decades, our family has blended bold Indian chai
+          with pure ingredients and timeless recipes, bringing you the everyday joy of an authentic
+          cup.
         </Typography>
       </Box>
     </Box>

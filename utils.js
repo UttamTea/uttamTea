@@ -1,12 +1,12 @@
 import axios from "axios";
 
-export const handlePayment = async (totalPrice, cartItems, personalDetails) => {
+export const handlePayment = async (finalTotal, subtotal, deliveryCharge, cartItems, personalDetails) => {
   try {
     // STEP 1: Create Razorpay Order
     const res = await axios.post(
       "https://amazing-moonlight-9222a198d9.strapiapp.com/api/razorpay/create-order",
       {
-        amount: totalPrice,
+        amount: finalTotal,
       }
     );
 
@@ -41,7 +41,9 @@ export const handlePayment = async (totalPrice, cartItems, personalDetails) => {
                 razorpay_order_id: response.razorpay_order_id,
                 razorpay_payment_id: response.razorpay_payment_id,
                 razorpay_signature: response.razorpay_signature,
-                amount: totalPrice,
+                amount: finalTotal,
+                subtotal: subtotal,
+                delivery_charge: deliveryCharge,
                 cart_items: cartItems, // this must be passed from outside
                 personal_details: personalDetails, // ✅ added
                 customer_email: personalDetails.email, // ✅ dynamic instead of hardcoded

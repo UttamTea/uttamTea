@@ -130,6 +130,7 @@ const KnowYourTeasSection = () => {
           {DATA.map((item, index) => {
             return (
               <Box
+                key={item.id || index}
                 sx={{ cursor: "pointer" }}
                 onClick={() => setSelectedTea(index)}
                 display={"flex"}

@@ -42,7 +42,7 @@ const RealPremiumTeaSection = () => {
             sx={{ marginTop: { xs: "1.75rem", md: "2.25rem" } }}
             onClick={() => navigate("/product/112")}
           >
-            Shop teas
+            Shop Now
           </Button>
         </Box>
         <Box mt={{ xs: "44px", md: "0" }}>
