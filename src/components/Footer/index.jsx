@@ -51,25 +51,25 @@ const Footer = () => {
   return (
     <Box
       width={"100%"}
-      height={"100%"}
       bgcolor={"#7F3B2D"}
       sx={{ maxWidth: "100vw", overflowX: "hidden" }}
-      px={{ xs: "1rem", md: "152px" }}
-      py={{ xs: "2.25rem", md: "131px" }}
+      px={{ xs: "1rem", md: "110px" }}
+      py={{ xs: "2rem", md: "3.5rem" }}
     >
       <Box
         width={"100%"}
-        height={"100%"}
         display={{ xs: "block", md: "flex" }}
         justifyContent={"space-between"}
+        alignItems={{ md: "flex-start" }}
       >
         <img src={LOGO} alt="footer" className="footerLogo" />
-        <Box minWidth={{ xs: "100%", md: 356 }} mt={{ xs: "30px", md: "0" }}>
+        <Box minWidth={{ xs: "100%", md: 356 }} mt={{ xs: "2rem", md: "0" }}>
           <Box
             display={"flex"}
             alignItems={"center"}
             justifyContent={"flex-start"}
-            gap={"1rem"}
+            gap={"0.75rem"}
+            mb={"1rem"}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -98,7 +98,7 @@ const Footer = () => {
             display={"flex"}
             justifyContent={"space-between"}
             alignItems={"center"}
-            mt={{ xs: "1rem", md: "1rem" }}
+            mb={"1rem"}
           >
             <Box
               display={"flex"}
@@ -181,7 +181,7 @@ const Footer = () => {
             display={"flex"}
             justifyContent={"space-between"}
             alignItems={"center"}
-            mt={"40px"}
+            mt={{ xs: "1.5rem", md: "2rem" }}
           >
             <Typography
               color="#BF9D96"
@@ -195,7 +195,7 @@ const Footer = () => {
               display={"flex"}
               alignItems={"center"}
               justifyContent={"flex-end"}
-              gap={{ xs: "1.25rem", md: "1.5rem" }}
+              gap={{ xs: "1rem", md: "1.5rem" }}
             >
               <Box
                 sx={{ cursor: "pointer" }}
@@ -268,9 +268,9 @@ const Footer = () => {
         height={"1px"}
         width={"100%"}
         bgcolor={"#FEFEFE"}
-        sx={{ opacity: "0.2" }}
-        mt={{ xs: "2.25rem", md: "82px" }}
-        mb={{ xs: "2.25rem", md: "1.5rem" }}
+        sx={{ opacity: "0.3" }}
+        mt={{ xs: "2rem", md: "3rem" }}
+        mb={{ xs: "1.5rem", md: "2rem" }}
       />
       <Box
         display={{ xs: "none", md: "flex" }}
