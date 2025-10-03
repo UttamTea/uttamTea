@@ -101,7 +101,7 @@ const HeroSection = () => {
               maxWidth={498}
               mt={{ xs: "0.5rem", md: "0" }}
             >
-              Brewing Bold Flavors Since 1940
+              Brewing Bold Flavors Since 1983
             </Typography>
             <Typography
               mt={"1.25rem"}
@@ -113,9 +113,9 @@ const HeroSection = () => {
               lineHeight={{ xs: "1.5rem", md: "150%" }}
               maxWidth={{ xs: 312, md: 489 }}
             >
-              For four decades, our family has blended bold Indian chai
-              with pure ingredients and timeless recipes, bringing you the everyday joy of an authentic
-              cup.
+              Where bold Indian chai meets four decades of family tradition, 
+              blending pure ingredients, timeless recipes and the everyday joy 
+              of an authentic cup.
             </Typography>
             <Button
               variant="black"

@@ -85,14 +85,19 @@ const Footer = () => {
                 fill="#FEFEFE"
               />
             </svg>
-            <Typography
-              color="#E4D7D4"
-              fontFamily={"Manrope"}
-              fontSize={"0.875rem"}
-              fontWeight={400}
-            >
-              Delhi, New Delhi, Delhi 110055
-            </Typography>
+              <Typography
+                color="#E4D7D4"
+                fontFamily={"Manrope"}
+                fontSize={"0.875rem"}
+                fontWeight={400}
+                component="a"
+                href="https://share.google/d3Gmx25aJEbQTHmJ7"
+                target="_blank"
+                rel="noopener noreferrer"
+                sx={{ textDecoration: "none", color: "#E4D7D4" }}
+              >
+                E2/254A, Main Road, Shastri Nagar, New Delhi - 110052
+              </Typography>
           </Box>
           <Box
             display={"flex"}
@@ -120,14 +125,17 @@ const Footer = () => {
                   fill="#FEFEFE"
                 />
               </svg>
-              <Typography
-                color="#E4D7D4"
-                fontFamily={"Manrope"}
-                fontSize={"0.875rem"}
-                fontWeight={400}
-              >
-                (123) 456-7890
-              </Typography>
+                <Typography
+                  color="#E4D7D4"
+                  fontFamily={"Manrope"}
+                  fontSize={"0.875rem"}
+                  fontWeight={400}
+                  component="a"
+                  href="tel:+919313633232"
+                  sx={{ textDecoration: "none", color: "#E4D7D4" }}
+                >
+                  +91 93136 33232
+                </Typography>
             </Box>
             <Box
               display={"flex"}
