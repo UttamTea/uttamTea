@@ -52,6 +52,7 @@ const MeetTheManSection = () => {
 
   return (
     <Box
+      id="meetTheManSection"
       bgcolor={"#7F3B2D"}
       width={"100%"}
       display={{ xs: "block", md: "flex" }}

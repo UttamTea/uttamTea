@@ -5,8 +5,10 @@ import BEST_SELLING from "../../assets/background/BestSelling.png";
 import BEST_SELLING_RESP from "../../assets/background/BestSellingResp.png";
 
 import { useNavigate } from "react-router-dom";
-const BestSellingProduct = () => {
+const BestSellingProduct = ({ data }) => {
   const navigate = useNavigate();
+  // Get the first product (Piyala Tea) documentId
+  const piyalaTeaId = data?.[0]?.documentId || "brjod7y7iaipxrnaw01ytsc0";
   return (
     <ContainerWrapper>
       <Box
@@ -144,9 +146,9 @@ const BestSellingProduct = () => {
           <Button
             variant="black"
             sx={{ mt: "1.125rem" }}
-            onClick={() => navigate("/product/i2fby4m64ynusxxfaidum5lv")}
+            onClick={() => navigate(`/product/brjod7y7iaipxrnaw01ytsc0`)}
           >
-            Shop Now
+            Shop Now 
           </Button>
         </Box>
         <Box mt={"1.25rem"} display={{ xs: "block", md: "none" }}>
@@ -214,7 +216,7 @@ const BestSellingProduct = () => {
           <Button
             variant="black"
             sx={{ mt: "1.125rem" }}
-            onClick={() => navigate("/product/112")}
+            onClick={() => navigate(`/product/brjod7y7iaipxrnaw01ytsc0`)}
           >
             Shop Now
           </Button>

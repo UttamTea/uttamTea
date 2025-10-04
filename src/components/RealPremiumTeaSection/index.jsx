@@ -39,8 +39,18 @@ const RealPremiumTeaSection = () => {
           </Typography>
           <Button
             variant="black"
-            sx={{ marginTop: { xs: "1.75rem", md: "2.25rem" } }}
-            onClick={() => navigate("/product/112")}
+            sx={{ 
+              marginTop: { xs: "1.75rem", md: "2.25rem" },
+              cursor: "pointer",
+              touchAction: "manipulation",
+              WebkitTapHighlightColor: "transparent",
+            }}
+            onClick={() => {
+              const section = document.getElementById("productsSection");
+              if (section) {
+                section.scrollIntoView({ behavior: "smooth", block: "center" });
+              }
+            }}
           >
             Shop Now
           </Button>

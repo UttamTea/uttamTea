@@ -79,11 +79,16 @@ const SelectedTeaCard = ({ index }) => {
         </Typography>
         <Button
           variant="black"
-          sx={{ mt: "2.5rem" }}
+          sx={{ 
+            mt: "2.5rem",
+            cursor: "pointer",
+            touchAction: "manipulation",
+            WebkitTapHighlightColor: "transparent",
+          }}
           onClick={() => {
             const section = document.getElementById("productsSection");
             if (section) {
-              section.scrollIntoView({ behavior: "smooth" });
+              section.scrollIntoView({ behavior: "smooth", block: "center" });
             }
           }}
         >

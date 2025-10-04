@@ -109,36 +109,36 @@ const CardResp = ({
 const ChaiTypesSection = ({ data }) => {
   return (
     <ContainerWrapper>
-      <Box
-        id="productsSection"
-        display={{ xs: "none", md: "block " }}
-        px={{ xs: "1rem", md: "110px" }}
-        mt={"140px"}
-      >
-        <Grid container spacing={"1.5rem"}>
-          {data.map((item) => {
-            return (
-              <Grid key={item?.documentId} item size={{ xs: 12, md: 4 }}>
-                <Card
-                  background={item?.backgroundColor}
-                  title={item?.name}
-                  img={item?.smallImage?.url}
-                  id={item?.documentId}
-                  description={item?.smallDescription}
-                />
-              </Grid>
-            );
-          })}
-        </Grid>
-      </Box>
-      <Box
-        display={{ xs: "flex", md: "none" }}
-        px={"1rem"}
-        sx={{ overflowX: "auto" }}
-        gap={"1rem"}
-        mt={"56px"}
-        className="hide-scrollbar"
-      >
+      <Box id="productsSection">
+        <Box
+          display={{ xs: "none", md: "block " }}
+          px={{ xs: "1rem", md: "110px" }}
+          mt={"140px"}
+        >
+          <Grid container spacing={"1.5rem"}>
+            {data.map((item) => {
+              return (
+                <Grid key={item?.documentId} item size={{ xs: 12, md: 4 }}>
+                  <Card
+                    background={item?.backgroundColor}
+                    title={item?.name}
+                    img={item?.smallImage?.url}
+                    id={item?.documentId}
+                    description={item?.smallDescription}
+                  />
+                </Grid>
+              );
+            })}
+          </Grid>
+        </Box>
+        <Box
+          display={{ xs: "flex", md: "none" }}
+          px={"1rem"}
+          sx={{ overflowX: "auto" }}
+          gap={"1rem"}
+          mt={"56px"}
+          className="hide-scrollbar"
+        >
         {data.map((item) => {
           return (
             <CardResp
@@ -151,6 +151,7 @@ const ChaiTypesSection = ({ data }) => {
             />
           );
         })}
+        </Box>
       </Box>
     </ContainerWrapper>
   );

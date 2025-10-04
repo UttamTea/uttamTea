@@ -122,8 +122,13 @@ const HeroSection = () => {
               onClick={() => {
                 const section = document.getElementById("productsSection");
                 if (section) {
-                  section.scrollIntoView({ behavior: "smooth" });
+                  section.scrollIntoView({ behavior: "smooth", block: "center" });
                 }
+              }}
+              sx={{
+                cursor: "pointer",
+                touchAction: "manipulation",
+                WebkitTapHighlightColor: "transparent",
               }}
             >
                 Shop Now

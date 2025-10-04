@@ -302,6 +302,21 @@ const Footer = () => {
                     item.key === "refund policy"
                   ) {
                     navigate(item.url);
+                  } else if (item.key === "about us") {
+                    const section = document.getElementById("meetTheManSection");
+                    if (section) {
+                      section.scrollIntoView({ behavior: "smooth", block: "center" });
+                    }
+                  } else if (item.key === "products") {
+                    const section = document.getElementById("productsSection");
+                    if (section) {
+                      section.scrollIntoView({ behavior: "smooth", block: "center" });
+                    }
+                  } else if (item.key === "faqs") {
+                    const section = document.getElementById("FAQSECTION");
+                    if (section) {
+                      section.scrollIntoView({ behavior: "smooth", block: "center" });
+                    }
                   }
                 }}
                 key={item.key}
@@ -341,6 +356,21 @@ const Footer = () => {
                   item.key === "refund policy"
                 ) {
                   navigate(item.url);
+                } else if (item.key === "about us") {
+                  const section = document.getElementById("meetTheManSection");
+                  if (section) {
+                    section.scrollIntoView({ behavior: "smooth", block: "center" });
+                  }
+                } else if (item.key === "products") {
+                  const section = document.getElementById("productsSection");
+                  if (section) {
+                    section.scrollIntoView({ behavior: "smooth", block: "center" });
+                  }
+                } else if (item.key === "faqs") {
+                  const section = document.getElementById("FAQSECTION");
+                  if (section) {
+                    section.scrollIntoView({ behavior: "smooth", block: "center" });
+                  }
                 }
               }}
             >
