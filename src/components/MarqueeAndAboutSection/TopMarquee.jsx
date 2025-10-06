@@ -4,9 +4,9 @@ import PACKAGE_ICON from "../../assets/icons/package.svg";
 const TopMarquee = () => {
   // Improved content structure with spans for better styling control
   const marqueeItems = [
-    { icon: PACKAGE_ICON, text: "Free Delivery Over Rs 1299" },
-    { icon: PACKAGE_ICON, text: "Free Delivery Over Rs 1299" },
-    { icon: PACKAGE_ICON, text: "Free Delivery Over Rs 1299" },
+    { icon: PACKAGE_ICON, text: "Free Delivery Over Rs 799" },
+    { icon: PACKAGE_ICON, text: "Free Delivery Over Rs 799" },
+    { icon: PACKAGE_ICON, text: "Free Delivery Over Rs 799" },
   ];
 
   // Create styled content with proper spacing
