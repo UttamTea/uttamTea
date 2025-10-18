@@ -51,7 +51,7 @@ const Footer = () => {
   return (
     <Box
       width={"100%"}
-      bgcolor={"#7F3B2D"}
+      bgcolor={"#027F3D"}
       sx={{ maxWidth: "100vw", overflowX: "hidden" }}
       px={{ xs: "1rem", md: "110px" }}
       py={{ xs: "2rem", md: "3.5rem" }}

@@ -44,7 +44,7 @@ const PersonalDetailsModal = ({ open, handleClose }) => {
 
   // Calculate delivery charge
   const DELIVERY_CHARGE = 99;
-  const FREE_DELIVERY_THRESHOLD = 799;
+  const FREE_DELIVERY_THRESHOLD = 399;
   const deliveryCharge = totalPrice >= FREE_DELIVERY_THRESHOLD ? 0 : DELIVERY_CHARGE;
   const finalTotal = totalPrice + deliveryCharge;
 

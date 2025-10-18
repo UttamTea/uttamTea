@@ -31,13 +31,13 @@ import React from "react";
 const HeaderMarquee = () => {
   // Improved content structure with spans for better styling control
   const marqueeItems = [
-     { icon: ".", text: "Trusted by Millions Tea Lovers Across India" },
-     { icon: ".", text: "Trusted by Millions Tea Lovers Across India" },
-     { icon: ".", text: "Trusted by Millions Tea Lovers Across India" },
-     { icon: ".", text: "Trusted by Millions Tea Lovers Across India" },
-     { icon: ".", text: "Trusted by Millions Tea Lovers Across India" },
-     { icon: ".", text: "Trusted by Millions Tea Lovers Across India" },
-     { icon: ".", text: "Trusted by Millions Tea Lovers Across India" },
+    { icon: ".", text: "Now Free Delivery over Rs 399/- 📦" },
+    { icon: ".", text: "Now Free Delivery over Rs 399/- 📦" },
+    { icon: ".", text: "Now Free Delivery over Rs 399/- 📦" },
+    { icon: ".", text: "Now Free Delivery over Rs 399/- 📦" },
+    { icon: ".", text: "Now Free Delivery over Rs 399/- 📦" },
+    { icon: ".", text: "Now Free Delivery over Rs 399/- 📦" },
+    { icon: ".", text: "Now Free Delivery over Rs 399/- 📦" },
   ];
 
   // Create styled content with proper spacing
@@ -45,7 +45,7 @@ const HeaderMarquee = () => {
     return marqueeItems.map((item, index) => (
       <span key={index} className="marquee-item_header">
         <span className="marquee-icon_header">{item.icon}</span>
-        <span className="marquee-text_header">{item.text}</span>
+        <span className="marquee-text_header" style={{ fontSize: "0.975rem" }}>{item.text}</span>
       </span>
     ));
   };

@@ -4,9 +4,9 @@ import PACKAGE_ICON from "../../assets/icons/package.svg";
 const TopMarquee = () => {
   // Improved content structure with spans for better styling control
   const marqueeItems = [
-    { icon: PACKAGE_ICON, text: "Free Delivery Over Rs 799" },
-    { icon: PACKAGE_ICON, text: "Free Delivery Over Rs 799" },
-    { icon: PACKAGE_ICON, text: "Free Delivery Over Rs 799" },
+    { icon: PACKAGE_ICON, text: "Trusted by Millions Tea Lovers Across India " },
+    { icon: PACKAGE_ICON, text: "Trusted by Millions Tea Lovers Across India " },
+    { icon: PACKAGE_ICON, text: "Trusted by Millions Tea Lovers Across India " },
   ];
 
   // Create styled content with proper spacing
@@ -14,7 +14,6 @@ const TopMarquee = () => {
     return marqueeItems.map((item, index) => (
       <span key={index} className="marquee-item">
         <span className="marquee-icon">
-          <img src={item.icon} alt={item.text} className="icon" />
         </span>
         <span className="marquee-text">{item.text}</span>
       </span>
