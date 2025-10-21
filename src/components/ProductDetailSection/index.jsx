@@ -165,11 +165,17 @@ const ProductDetailSection = ({ data = PRODUCT_DATA[0], details }) => {
                 alignItems={"center"}
                 justifyContent={"flex-start"}
                 gap={{ xs: "0.5rem", md: "0.75rem" }}
+                flexWrap={"wrap"}
               >
                 {details?.variants.map((item) => {
+                  // Check if this is a value pack (more than 1 pack)
+                  const packCount = parseInt(item.variantSmallDescription?.match(/\d+/)?.[0] || "1");
+                  const isValuePack = packCount > 1;
+                  
                   return (
                     <Box
                       key={item.id}
+                      position={"relative"}
                       px={{ xs: "1.25rem", md: "2.5rem" }}
                       py={"0.5rem"}
                       border={
@@ -182,12 +188,106 @@ const ProductDetailSection = ({ data = PRODUCT_DATA[0], details }) => {
                       bgcolor={
                         selectedPacking === item.id ? "#7F3B2D" : "transparent"
                       }
-                      sx={{ cursor: "pointer" }}
+                      sx={{ 
+                        cursor: "pointer",
+                        overflow: "visible",
+                      }}
                       onClick={() => {
                         setPackagingDetails(item);
                         setSelectedPackaging(item.id);
                       }}
                     >
+                      {isValuePack && (
+                        <Box
+                          position={"absolute"}
+                          top={"-14px"}
+                          left={"50%"}
+                          px={"10px"}
+                          py={"5px"}
+                          borderRadius={"8px"}
+                          bgcolor={"#027F3D"}
+                          boxShadow={"0 4px 16px rgba(2, 127, 61, 0.4)"}
+                          sx={{
+                            transform: 'translateX(-50%)',
+                            '@keyframes starPulse': {
+                              '0%': { 
+                                transform: 'translateX(-50%) scale(1)',
+                                boxShadow: '0 4px 16px rgba(2, 127, 61, 0.4)',
+                              },
+                              '50%': { 
+                                transform: 'translateX(-50%) scale(1.1)',
+                                boxShadow: '0 6px 24px rgba(2, 127, 61, 0.6)',
+                              },
+                              '100%': { 
+                                transform: 'translateX(-50%) scale(1)',
+                                boxShadow: '0 4px 16px rgba(2, 127, 61, 0.4)',
+                              },
+                            },
+                            '@keyframes sparkle': {
+                              '0%, 100%': { 
+                                filter: 'brightness(1) drop-shadow(0 0 2px rgba(255, 215, 0, 0))',
+                              },
+                              '20%': { 
+                                filter: 'brightness(1.3) drop-shadow(0 0 8px rgba(255, 215, 0, 0.8))',
+                              },
+                              '40%': { 
+                                filter: 'brightness(1) drop-shadow(0 0 2px rgba(255, 215, 0, 0))',
+                              },
+                              '60%': { 
+                                filter: 'brightness(1.3) drop-shadow(0 0 8px rgba(255, 215, 0, 0.8))',
+                              },
+                              '80%': { 
+                                filter: 'brightness(1) drop-shadow(0 0 2px rgba(255, 215, 0, 0))',
+                              },
+                            },
+                            animation: 'starPulse 2s ease-in-out infinite, sparkle 3s ease-in-out infinite',
+                            zIndex: 10,
+                            whiteSpace: 'nowrap',
+                          }}
+                        >
+                          <Box display="flex" alignItems="center" gap="4px">
+                            <Typography
+                              component="span"
+                              sx={{
+                                fontSize: "14px",
+                                lineHeight: "14px",
+                                '@keyframes twinkle': {
+                                  '0%, 100%': { opacity: 1, transform: 'rotate(0deg) scale(1)' },
+                                  '50%': { opacity: 0.7, transform: 'rotate(20deg) scale(1.2)' },
+                                },
+                                animation: 'twinkle 1.5s ease-in-out infinite',
+                              }}
+                            >
+                              ⭐
+                            </Typography>
+                            <Typography
+                              color={"#fff"}
+                              fontFamily={"Manrope"}
+                              fontWeight={700}
+                              fontSize={"11px"}
+                              lineHeight={"14px"}
+                              letterSpacing={"0.5px"}
+                              textTransform={"uppercase"}
+                            >
+                              Value Pack
+                            </Typography>
+                            <Typography
+                              component="span"
+                              sx={{
+                                fontSize: "14px",
+                                lineHeight: "14px",
+                                '@keyframes twinkle': {
+                                  '0%, 100%': { opacity: 1, transform: 'rotate(0deg) scale(1)' },
+                                  '50%': { opacity: 0.7, transform: 'rotate(-20deg) scale(1.2)' },
+                                },
+                                animation: 'twinkle 1.5s ease-in-out infinite 0.5s',
+                              }}
+                            >
+                              ⭐
+                            </Typography>
+                          </Box>
+                        </Box>
+                      )}
                       <Typography
                         color={selectedPacking === item.id ? "#fff" : "#383838"}
                         fontFamily={"Manrope"}
