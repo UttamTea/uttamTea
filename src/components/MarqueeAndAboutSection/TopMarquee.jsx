@@ -4,9 +4,9 @@ import PACKAGE_ICON from "../../assets/icons/package.svg";
 const TopMarquee = () => {
   // Improved content structure with spans for better styling control
   const marqueeItems = [
-    { icon: PACKAGE_ICON, text: "Trusted by Millions Tea Lovers Across India " },
-    { icon: PACKAGE_ICON, text: "Trusted by Millions Tea Lovers Across India " },
-    { icon: PACKAGE_ICON, text: "Trusted by Millions Tea Lovers Across India " },
+    { icon: PACKAGE_ICON, text: "Trusted by Millions Tea Lovers Across India..." },
+    { icon: PACKAGE_ICON, text: "Trusted by Millions Tea Lovers Across India..." },
+    { icon: PACKAGE_ICON, text: "Trusted by Millions Tea Lovers Across India..." },
   ];
 
   // Create styled content with proper spacing
