@@ -206,41 +206,18 @@ const ProductDetailSection = ({ data = PRODUCT_DATA[0], details }) => {
                           py={"5px"}
                           borderRadius={"8px"}
                           bgcolor={"#027F3D"}
-                          boxShadow={"0 4px 16px rgba(2, 127, 61, 0.4)"}
+                          boxShadow={"0 2px 8px rgba(255, 215, 0, 0.25)"}
                           sx={{
                             transform: 'translateX(-50%)',
-                            '@keyframes starPulse': {
-                              '0%': { 
-                                transform: 'translateX(-50%) scale(1)',
-                                boxShadow: '0 4px 16px rgba(2, 127, 61, 0.4)',
+                            '@keyframes gentleGlow': {
+                              '0%, 100%': { 
+                                boxShadow: '0 2px 8px rgba(255, 215, 0, 0.25)',
                               },
                               '50%': { 
-                                transform: 'translateX(-50%) scale(1.1)',
-                                boxShadow: '0 6px 24px rgba(2, 127, 61, 0.6)',
-                              },
-                              '100%': { 
-                                transform: 'translateX(-50%) scale(1)',
-                                boxShadow: '0 4px 16px rgba(2, 127, 61, 0.4)',
+                                boxShadow: '0 2px 12px rgba(255, 215, 0, 0.4)',
                               },
                             },
-                            '@keyframes sparkle': {
-                              '0%, 100%': { 
-                                filter: 'brightness(1) drop-shadow(0 0 2px rgba(255, 215, 0, 0))',
-                              },
-                              '20%': { 
-                                filter: 'brightness(1.3) drop-shadow(0 0 8px rgba(255, 215, 0, 0.8))',
-                              },
-                              '40%': { 
-                                filter: 'brightness(1) drop-shadow(0 0 2px rgba(255, 215, 0, 0))',
-                              },
-                              '60%': { 
-                                filter: 'brightness(1.3) drop-shadow(0 0 8px rgba(255, 215, 0, 0.8))',
-                              },
-                              '80%': { 
-                                filter: 'brightness(1) drop-shadow(0 0 2px rgba(255, 215, 0, 0))',
-                              },
-                            },
-                            animation: 'starPulse 2s ease-in-out infinite, sparkle 3s ease-in-out infinite',
+                            animation: 'gentleGlow 2s ease-in-out infinite',
                             zIndex: 10,
                             whiteSpace: 'nowrap',
                           }}
@@ -251,11 +228,6 @@ const ProductDetailSection = ({ data = PRODUCT_DATA[0], details }) => {
                               sx={{
                                 fontSize: "14px",
                                 lineHeight: "14px",
-                                '@keyframes twinkle': {
-                                  '0%, 100%': { opacity: 1, transform: 'rotate(0deg) scale(1)' },
-                                  '50%': { opacity: 0.7, transform: 'rotate(20deg) scale(1.2)' },
-                                },
-                                animation: 'twinkle 1.5s ease-in-out infinite',
                               }}
                             >
                               ⭐
@@ -276,11 +248,6 @@ const ProductDetailSection = ({ data = PRODUCT_DATA[0], details }) => {
                               sx={{
                                 fontSize: "14px",
                                 lineHeight: "14px",
-                                '@keyframes twinkle': {
-                                  '0%, 100%': { opacity: 1, transform: 'rotate(0deg) scale(1)' },
-                                  '50%': { opacity: 0.7, transform: 'rotate(-20deg) scale(1.2)' },
-                                },
-                                animation: 'twinkle 1.5s ease-in-out infinite 0.5s',
                               }}
                             >
                               ⭐
