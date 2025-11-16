@@ -6,8 +6,9 @@ import LADY_PLUCKING_IMG from "../../assets/ladypluckingtea.svg";
 import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
 
 import ArrowCircleRightOutlinedIcon from "@mui/icons-material/ArrowCircleRightOutlined";
+import { payloadBaseURL } from "../../axios/url";
 
-const data = [
+const STATIC_DATA = [
   {
     img: MR_UTTAM_IMG,
     name: "Mr. Uttam’s Story",
@@ -31,24 +32,87 @@ const data = [
   },
 ];
 
+const buildImageSrc = (fileObj) => {
+  if (!fileObj) return null;
+  
+  if (fileObj.url && fileObj.url.startsWith("http")) return fileObj.url;
+  
+  if (fileObj.url) {
+    const base = payloadBaseURL?.endsWith("/") ? payloadBaseURL.slice(0, -1) : payloadBaseURL;
+    return `${base}${fileObj.url}`;
+  }
+
+  return null;
+};
+
+const fallbackImgByIndex = (index) => {
+  if (index === 0) return MR_UTTAM_IMG;
+  if (index === 1) return PEOPLE_PLUCKING_IMG;
+  return LADY_PLUCKING_IMG;
+};
+
 const MeetTheManSection = () => {
   const [currentSelectedIndex, setCurrentSelectedIndex] = useState(0);
   const [fadeIn, setFadeIn] = useState(true);
   const [isHovered, setIsHovered] = useState(false);
+  const [slideData, setSlideData] = useState();
+  const [slideItems, setSlideItems] = useState(STATIC_DATA);
+  const [error, setError] = useState(null);
+
+   // re-run effect when hover state changes
 
   useEffect(() => {
-    if (isHovered) return; // pause auto-switching on hover
+      const fetchMeetTheManSection = async () => {
+        try {
+          const res = await fetch(`${payloadBaseURL}/api/globals/meet-the-man`);
+          if (!res.ok) throw new Error(`Network response was not ok (${res.status})`);
+          const data = await res.json();             
+          const SectionData = data?.docs?.[0] ?? data;
+          setSlideData(SectionData);
+          
+          const slidesArray = Array.isArray(SectionData?.slides) ? SectionData.slides : null;
+          if (!slidesArray || slidesArray.length === 0) {
+            // keep static fallback
+            console.warn("MeetTheMan: no slides found — using static fallback");
+            return;
+          }
+
+          const mapped = slidesArray.map((s, idx) => {
+            const imgSrc = buildImageSrc(s.image) ?? fallbackImgByIndex(idx);
+            return {
+              img: imgSrc,
+              name: s.name ?? "",
+              heading: s.heading ??  "",
+              description: s.description ?? "",
+              id: s.id ?? s._id ?? idx,
+            };
+          });
+
+          setSlideItems(mapped);
+          
+          setCurrentSelectedIndex((prev) => (mapped.length ? Math.min(prev, mapped.length - 1) : 0));
+        } catch (err) {
+          console.error("Error fetching hero section", err);
+          setError(err);
+        }
+      };
+  
+      fetchMeetTheManSection();
+    }, []);  
+
+  useEffect(() => {
+    if (isHovered || !slideItems || slideItems.length <= 1) return; 
 
     const interval = setInterval(() => {
       setFadeIn(false);
       setTimeout(() => {
-        setCurrentSelectedIndex((prev) => (prev + 1) % data.length);
+        setCurrentSelectedIndex((prev) => (prev + 1) % slideItems.length);
         setFadeIn(true);
       }, 500);
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [isHovered]); // re-run effect when hover state changes
+  }, [isHovered, slideItems?.length]);
 
   return (
     <Box
@@ -87,7 +151,7 @@ const MeetTheManSection = () => {
                     setFadeIn(false);
                     setTimeout(() => {
                       setCurrentSelectedIndex(
-                        (prev) => (prev + 1) % data.length
+                        (prev) => (prev + 1) % slideItems.length
                       );
                       setFadeIn(true);
                     }, 300);
@@ -96,8 +160,8 @@ const MeetTheManSection = () => {
                 />
               </Box>
               <img
-                src={data[currentSelectedIndex].img}
-                alt="person"
+                src={slideItems[currentSelectedIndex]?.img}
+                alt={slideItems[currentSelectedIndex]?.name || "person"}
                 style={{ maxWidth: "100%", height: "auto" }}
               />
             </Box>
@@ -118,7 +182,7 @@ const MeetTheManSection = () => {
                     fontWeight={400}
                     fontSize={"1rem"}
                   >
-                    {data[currentSelectedIndex].heading}
+                    {slideItems[currentSelectedIndex]?.heading}
                   </Typography>
                   <ArrowCircleRightOutlinedIcon
                     sx={{
@@ -129,7 +193,7 @@ const MeetTheManSection = () => {
                       setFadeIn(false);
                       setTimeout(() => {
                         setCurrentSelectedIndex(
-                          (prev) => (prev + 1) % data.length
+                          (prev) => (prev + 1) % slideItems.length
                         );
                         setFadeIn(true);
                       }, 300);
@@ -143,7 +207,7 @@ const MeetTheManSection = () => {
                   color="#121212"
                   my={{ xs: "0.75rem", md: "1.25rem" }}
                 >
-                  {data[currentSelectedIndex].name}
+                  {slideItems[currentSelectedIndex]?.name}
                 </Typography>
                 <Typography
                   maxWidth={520}
@@ -152,7 +216,7 @@ const MeetTheManSection = () => {
                   fontFamily={"Manrope"}
                   lineHeight={"26px"}
                 >
-                  {data[currentSelectedIndex].description}
+                  {slideItems[currentSelectedIndex]?.description}
                 </Typography>
               </Box>
               <Box
@@ -161,7 +225,7 @@ const MeetTheManSection = () => {
                 gap={"0.75rem"}
                 my={{ xs: "1.25rem", md: "0" }}
               >
-                {data.map((_, index) => (
+                {slideItems.map((_, index) => (
                   <Box
                     key={index}
                     sx={{ cursor: "pointer", transition: "all 0.3s" }}

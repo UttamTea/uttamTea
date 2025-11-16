@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ContainerWrapper from "../common/ContainerWrapper";
 import { Box, Button, Typography } from "@mui/material";
 import KASHMIRI_KAHRA from "../../assets/teas/Kashmiri.png";
@@ -7,6 +7,16 @@ import GREEN_TEA from "../../assets/teas/Green.png";
 import NOON_TEA from "../../assets/teas/Noon.png";
 import BLACK_TEA from "../../assets/teas/Black.png";
 import WHITE_TEA from "../../assets/teas/White.png";
+import { payloadBaseURL } from "../../axios/url";
+
+const STATIC_IMG_MAP = {
+  "Kashmiri Kahwa": KASHMIRI_KAHRA,
+  "Matcha Tea": MATCH_TEA,
+  "Green Tea": GREEN_TEA,
+  "Noon Chai": NOON_TEA,
+  "Black Tea": BLACK_TEA,
+  "White Tea": WHITE_TEA,
+};
 
 const DATA = [
   {
@@ -47,8 +57,34 @@ const DATA = [
     img: WHITE_TEA,
   },
 ];
-const SelectedTeaCard = ({ index }) => {
-  const itemData = DATA[index];
+
+
+const buildImageSrc = (fileObj) => {
+  if (!fileObj) return null;
+
+  if (typeof fileObj === "string") return fileObj;
+  
+  if (fileObj.url && fileObj.url.startsWith("http")) return fileObj.url;
+  
+  if (fileObj.url) {
+    const base = payloadBaseURL?.endsWith("/") ? payloadBaseURL.slice(0, -1) : payloadBaseURL;
+    return `${base}${fileObj.url}`;
+  }
+  
+  return null;
+};
+
+const findStaticImage = (title) => {
+  if (!title) return null;
+  return STATIC_IMG_MAP[title] || STATIC_IMG_MAP[title.trim()] || null;
+};
+
+
+const SelectedTeaCard = ({ index, list }) => {
+
+  const itemData = list?.[index] ?? DATA[index];
+  if (!itemData) return null;
+
   return (
     <Box
       display={"flex"}
@@ -100,6 +136,60 @@ const SelectedTeaCard = ({ index }) => {
 };
 const KnowYourTeasSection = () => {
   const [selectedTea, setSelectedTea] = useState(0);
+
+  const [teaData, setTeaData] = useState(DATA);
+  const [error, setError] = useState(null);
+  
+  useEffect(() => {
+    const fetchKnowYourTeasSection = async () => {
+      try {
+        const res = await fetch(`${payloadBaseURL}/api/know-your-teas`);
+        if (!res.ok) throw new Error(`Network response was not ok (${res.status})`);
+        const data = await res.json();             
+        const SectionData = data?.docs ?? data;
+
+        if (!SectionData || SectionData.length === 0) {
+          // nothing from payload — keep static DATA
+          console.warn("KnowYourTeas: no items found in response, keeping static DATA", data);
+          return;
+        }
+
+        const mapped = SectionData.map((item) => {
+          const title = item.name ?? "";
+          const description = item.description ?? "";
+          const imageObj = item.image ?? item.image?.[0] ?? null;
+
+          let imgSrc = buildImageSrc(imageObj);
+          if (!imgSrc) {
+            imgSrc = findStaticImage(title) ?? null;
+          }
+          return {
+            title,
+            description,
+            img: imgSrc,
+            id: item.id ?? item._id ?? undefined,
+          };
+        });
+
+        const finalList = mapped.slice().reverse();
+
+        setTeaData(finalList);
+        // console.log("know your teas Section Data", teaData);
+
+        setSelectedTea((prev) => {
+          if (finalList.length === 0) return 0;
+          return Math.min(prev, finalList.length - 1);
+        });
+
+      } catch (err) {
+        console.error("Error fetching hero section", err);
+        setError(err);
+      }
+    };
+
+    fetchKnowYourTeasSection();
+  }, []);
+
   return (
     <ContainerWrapper>
       <Box
@@ -132,7 +222,8 @@ const KnowYourTeasSection = () => {
             scrollPaddingLeft: "1rem", // ensures first item is visible
           }}
         >
-          {DATA.map((item, index) => {
+          {teaData?.map((item, index) => {
+            // console.log("Rendering tea item:", item, "at index:", index);
             return (
               <Box
                 key={item.id || index}
@@ -162,7 +253,7 @@ const KnowYourTeasSection = () => {
             );
           })}
         </Box>
-        <SelectedTeaCard index={selectedTea} />
+        <SelectedTeaCard index={selectedTea} list={teaData}/>
       </Box>
     </ContainerWrapper>
   );

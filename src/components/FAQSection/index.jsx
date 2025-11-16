@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ContainerWrapper from "../common/ContainerWrapper";
 import {
   Box,
@@ -11,8 +11,9 @@ import {
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
+import { payloadBaseURL } from "../../axios/url";
 
-const faqData = [
+const faqStaticData = [
   {
     question: "What makes your chai different from others on the market?",
     answer:
@@ -42,10 +43,53 @@ const faqData = [
 
 const FAQSection = () => {
   const [expanded, setExpanded] = useState("panel0");
+  const [faqData, setFaqData] = useState();
+  const [error, setError] = useState(null);
 
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
+
+  useEffect(() => {
+      const fetchFAQSection = async () => {
+        try {
+          const res = await fetch(`${payloadBaseURL}/api/faqs`);
+          if (!res.ok) throw new Error(`Network response was not ok (${res.status})`);
+          const data = await res.json();             
+          const raw = data?.docs ?? data;
+          
+          let itemsArray = null;
+          if (Array.isArray(raw)) itemsArray = raw;
+          else if (raw && typeof raw === "object") {
+            // try to pick a property that's an array of objects (defensive)
+            const possible = Object.values(raw).find((v) => Array.isArray(v) && v.length && typeof v[0] === "object");
+            itemsArray = possible ?? null;
+          }
+
+          if (!itemsArray || itemsArray.length === 0) {
+            // nothing useful returned — keep fallback static data
+            setFaqData(null);
+            return;
+          }
+
+          // Map each payload FAQ to the UI shape
+          const mapped = itemsArray.map((f) => ({
+            question: f.question ?? f.title ?? "",
+            answer: f.answer ?? f.content ?? "",
+            id: f.id ?? f._id ?? undefined,
+          })).reverse();
+
+          setFaqData(mapped);
+        } catch (err) {
+          console.error("Error fetching FAQs section", err);
+          setError(err);
+        }
+      };
+  
+      fetchFAQSection();
+    }, []);  
+
+    const list = faqData ?? faqStaticData;
 
   return (
     <ContainerWrapper>
@@ -83,7 +127,7 @@ const FAQSection = () => {
         </Typography>
 
         <Box maxWidth="928px" mx="auto" mt={{ xs: "40px", md: "72px" }}>
-          {faqData.map((faq, index) => (
+          {list.map((faq, index) => (
             <Accordion
               key={index}
               expanded={expanded === `panel${index}`}

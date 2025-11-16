@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ContainerWrapper from "../common/ContainerWrapper";
 import { Box, Button, Typography } from "@mui/material";
 import Star from "../common/Star";
 import { useNavigate } from "react-router-dom";
+import { payloadBaseURL } from "../../axios/url";
 
 const AmazonLogo = () => {
   return (
@@ -60,6 +61,28 @@ const AmazonLogo = () => {
 };
 const HeroSection = () => {
   const navigate = useNavigate();
+
+  const [heroSectionData, setHeroSectionData] = useState();
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+      const fetchHeroSection = async () => {
+        try {
+          const res = await fetch(`${payloadBaseURL}/api/globals/home-page-hero`);
+          if (!res.ok) throw new Error(`Network response was not ok (${res.status})`);
+          const data = await res.json();             
+          const hero = data?.docs?.[0] ?? data;
+          setHeroSectionData(hero);
+          // console.log("Hero Data", hero);
+        } catch (err) {
+          console.error("Error fetching hero section", err);
+          setError(err);
+        }
+      };
+  
+      fetchHeroSection();
+    }, []); 
+
   return (
     <ContainerWrapper>
       <Box
@@ -101,7 +124,7 @@ const HeroSection = () => {
               maxWidth={498}
               mt={{ xs: "0.5rem", md: "0" }}
             >
-              Brewing Bold Flavors Since 1983
+              {heroSectionData ? heroSectionData?.mainHeading : "Brewing Bold Flavors Since 1983"}
             </Typography>
             <Typography
               mt={"1.25rem"}
@@ -113,9 +136,7 @@ const HeroSection = () => {
               lineHeight={{ xs: "1.5rem", md: "150%" }}
               maxWidth={{ xs: 312, md: 489 }}
             >
-              Where bold Indian chai meets four decades of family tradition, 
-              blending pure ingredients, timeless recipes and the everyday joy 
-              of an authentic cup.
+              {heroSectionData ? heroSectionData?.subheading : "Where bold Indian chai meets four decades of family tradition, blending pure ingredients, timeless recipes and the everyday joy of an authentic cup."}
             </Typography>
             <Button
               variant="black"

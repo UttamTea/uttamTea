@@ -18,10 +18,13 @@ import HeroBgPhone from "../../assets/background/HeroSectionBgPhone.webp";
 import Footer from "../../components/Footer";
 import { fetchProducts } from "../../api";
 import FullScreenLoader from "../../components/FullScreenLoader/FullScreenLoader";
+import { payloadBaseURL } from "../../axios/url";
 
 const Home = () => {
   const [productsData, setProductsData] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [heroSectionData, setHeroSectionData] = useState();
+  const [error, setError] = useState(null);
 
   const getData = async () => {
     setLoading(true);
@@ -39,6 +42,34 @@ const Home = () => {
     getData();
   }, []);
 
+  useEffect(() => {
+    const fetchHeroSection = async () => {
+      try {
+        const res = await fetch(`${payloadBaseURL}/api/globals/home-page-hero`);
+        if (!res.ok) throw new Error(`Network response was not ok (${res.status})`);
+        const data = await res.json();             
+        const hero = data?.docs?.[0] ?? data;
+        setHeroSectionData(hero);
+        // console.log("Hero Data", hero);
+      } catch (err) {
+        console.error("Error fetching hero section", err);
+        setError(err);
+      }
+    };
+
+    fetchHeroSection();
+  }, []);  
+
+  // console.log("Hero Data state", heroSectionData);
+
+  const DesktopBgImage = heroSectionData?.backgroundImageDesktop?.url
+    ? `${payloadBaseURL}${heroSectionData?.backgroundImageDesktop.url}` 
+    : null;
+
+  const PhoneBgImage = heroSectionData?.backgroundImageMobile?.url
+    ? `${payloadBaseURL}${heroSectionData?.backgroundImageMobile.url}` 
+    : null;
+
   return (
     <>
       {/* Loader */}
@@ -47,7 +78,9 @@ const Home = () => {
       <HeaderMarquee />
       <Box
         sx={{
-          backgroundImage: { xs: `url(${HeroBgPhone})`, md: `url(${HeroBg})` },
+          backgroundImage: { 
+            xs: PhoneBgImage ? `url(${PhoneBgImage})` : `url(${HeroBgPhone})`, 
+            md: DesktopBgImage ? `url(${DesktopBgImage})` : `url(${HeroBg})` },
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
           backgroundPosition: { xs: "top", md: "center" },

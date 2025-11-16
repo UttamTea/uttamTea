@@ -1,14 +1,45 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import ContainerWrapper from "../common/ContainerWrapper";
 import { Box, Button, Typography } from "@mui/material";
 import BEST_SELLING from "../../assets/background/BestSelling.png";
 import BEST_SELLING_RESP from "../../assets/background/BestSellingResp.png";
+import { payloadBaseURL } from "../../axios/url";
 
 import { useNavigate } from "react-router-dom";
 const BestSellingProduct = ({ data }) => {
   const navigate = useNavigate();
   // Get the first product (Piyala Tea) documentId
   const piyalaTeaId = data?.[0]?.documentId || "brjod7y7iaipxrnaw01ytsc0";
+
+  const [backgroundImageData, setBackgroundImageData] = useState();
+  const [error, setError] = useState(null);
+  
+  useEffect(() => {
+    const fetchBestSellingProductSection = async () => {
+      try {
+        const res = await fetch(`${payloadBaseURL}/api/globals/best-selling-product`);
+        if (!res.ok) throw new Error(`Network response was not ok (${res.status})`);
+        const data = await res.json();             
+        const SectionData = data?.docs?.[0] ?? data;
+        setBackgroundImageData(SectionData);
+        // console.log("Best Selling Product Section Data", SectionData);
+      } catch (err) {
+        console.error("Error fetching hero section", err);
+        setError(err);
+      }
+    };
+
+    fetchBestSellingProductSection();
+  }, []); 
+
+  const DesktopBgImage = backgroundImageData?.backgroundImageDesktop?.url
+      ? `${payloadBaseURL}${backgroundImageData?.backgroundImageDesktop?.url}` 
+      : BEST_SELLING;
+  
+    const PhoneBgImage = backgroundImageData?.backgroundImageMobile?.url
+      ? `${payloadBaseURL}${backgroundImageData?.backgroundImageMobile?.url}` 
+      : BEST_SELLING_RESP;
+
   return (
     <ContainerWrapper>
       <Box
@@ -38,7 +69,7 @@ const BestSellingProduct = ({ data }) => {
           width={"100%"}
           display={{ xs: "none", md: "block" }}
         >
-          <img src={BEST_SELLING} alt="best selling" />
+          <img src={DesktopBgImage} alt="best selling" />
         </Box>
         <Box
           position={{ xs: "relative", md: "absolute" }}
@@ -49,7 +80,7 @@ const BestSellingProduct = ({ data }) => {
           display={{ xs: "block", md: "none" }}
         >
           <img
-            src={BEST_SELLING_RESP}
+            src={PhoneBgImage}
             alt="best selling"
             style={{ width: "100%", height: "auto" }}
           />
