@@ -17,24 +17,19 @@ import HeroBg from "../../assets/background/HeroSectionBg.webp";
 import HeroBgPhone from "../../assets/background/HeroSectionBgPhone.webp";
 import Footer from "../../components/Footer";
 import { fetchProducts } from "../../api";
-import FullScreenLoader from "../../components/FullScreenLoader/FullScreenLoader";
 import { payloadBaseURL } from "../../axios/url";
 
 const Home = () => {
   const [productsData, setProductsData] = useState([]);
-  const [loading, setLoading] = useState(false);
   const [heroSectionData, setHeroSectionData] = useState();
   const [error, setError] = useState(null);
 
   const getData = async () => {
-    setLoading(true);
     try {
       const products = await fetchProducts();
       setProductsData(products?.data || []);
     } catch (error) {
       console.error("Error fetching products:", error);
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -72,9 +67,6 @@ const Home = () => {
 
   return (
     <>
-      {/* Loader */}
-      <FullScreenLoader loading={loading} />
-
       <HeaderMarquee />
       <Box
         sx={{

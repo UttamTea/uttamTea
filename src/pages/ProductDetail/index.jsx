@@ -9,23 +9,18 @@ import { useParams } from "react-router-dom";
 import { PRODUCT_DATA } from "../../constant";
 import Footer from "../../components/Footer";
 import { fetchProductById } from "../../api";
-import FullScreenLoader from "../../components/FullScreenLoader/FullScreenLoader";
 
 const ProductDetailPage = () => {
   const { id } = useParams();
 
   const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(false);
 
   const getData = async () => {
-    setLoading(true);
     try {
       const productDetail = await fetchProductById(id);
       setData(productDetail?.data || null);
     } catch (error) {
       console.error("Error fetching product detail:", error);
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -47,9 +42,6 @@ const ProductDetailPage = () => {
 
   return (
     <>
-      {/* Loader */}
-      <FullScreenLoader loading={loading} />
-
       <HeaderMarquee />
       <HeaderNavBar />
       <ProductDetailSection details={data} />

@@ -167,7 +167,7 @@ const ProductDetailSection = ({ data = PRODUCT_DATA[0], details }) => {
                 gap={{ xs: "0.5rem", md: "0.75rem" }}
                 flexWrap={"wrap"}
               >
-                {details?.variants.map((item) => {
+                {details?.variants?.map((item) => {
                   // Check if this is a value pack (more than 1 pack)
                   const packCount = parseInt(item.variantSmallDescription?.match(/\d+/)?.[0] || "1");
                   const isValuePack = packCount > 1;

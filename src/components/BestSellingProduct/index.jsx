@@ -124,7 +124,7 @@ const BestSellingProduct = ({ data }) => {
             lineHeight={"120%"}
             fontSize={"1.75rem"}
           >
-            Piyala Chai
+            Pyala Chai
           </Typography>
           <Typography
             my={"0.75rem"}
@@ -189,7 +189,7 @@ const BestSellingProduct = ({ data }) => {
             lineHeight={"28px"}
             fontFamily={"Literata"}
           >
-            Piyala Chai
+            Pyala Chai
           </Typography>
           <Typography
             maxWidth={317}
