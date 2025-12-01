@@ -19,6 +19,34 @@ import { useDispatch } from "react-redux";
 import { addToCart } from "../../features/cart/cartSlice";
 import Cart from "../Cart";
 
+const isValuePackVariant = (productName = "", variantDesc = "", sizeLabel = "") => {
+  const normalizedProduct = productName.toLowerCase();
+  const normalizedVariant = (variantDesc ?? "").toLowerCase();
+
+  // Extract pack count from "250g x 3 pack" format - get the number after "x"
+  const packMatch = normalizedVariant.match(/x\s*(\d+)\s*pack/);
+  const packCount = packMatch ? parseInt(packMatch[1], 10) : 1;
+  
+  // Garden Fresh Assam Tea - Pack of 3
+  const isGardenFreshAssamCombo =
+    normalizedProduct.includes("garden") &&
+    normalizedProduct.includes("assam") &&
+    packCount === 3;
+
+  // Natural Green Tea - Pack of 3
+  const isNaturalGreenTeaCombo =
+    normalizedProduct.includes("green") &&
+    normalizedProduct.includes("tea") &&
+    packCount === 3;
+
+  // Pyala - Pack of 5
+  const isPyalaCombo =
+    normalizedProduct.includes("pyala") &&
+    packCount === 5;
+
+  return isGardenFreshAssamCombo || isNaturalGreenTeaCombo || isPyalaCombo;
+};
+
 const ProductDetailSection = ({ data = PRODUCT_DATA[0], details }) => {
   const theme = useTheme();
   const dispatch = useDispatch();
@@ -168,9 +196,11 @@ const ProductDetailSection = ({ data = PRODUCT_DATA[0], details }) => {
                 flexWrap={"wrap"}
               >
                 {details?.variants?.map((item) => {
-                  // Check if this is a value pack (more than 1 pack)
-                  const packCount = parseInt(item.variantSmallDescription?.match(/\d+/)?.[0] || "1");
-                  const isValuePack = packCount > 1;
+                  const isValuePack = isValuePackVariant(
+                    details?.name,
+                    item?.variantSmallDescription,
+                    item?.size
+                  );
                   
                   return (
                     <Box
