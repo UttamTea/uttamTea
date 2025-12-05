@@ -28,6 +28,13 @@ const FOOTER_TABS_ITEMS = [
     key: "contact us",
     url: "/contact-us",
   },
+  
+  {
+    title: "shipping policy",
+    key: "shipping policy",
+    url: "/shipping-policy",
+  },
+  
   {
     title: "refund policy",
     key: "refund policy",
@@ -299,7 +306,8 @@ const Footer = () => {
                   if (
                     item.key === "terms & conditions" ||
                     item.key === "privacy policy" ||
-                    item.key === "refund policy"
+                    item.key === "refund policy" ||
+                    item.key === "shipping policy"
                   ) {
                     navigate(item.url);
                   } else if (item.key === "about us") {
@@ -353,7 +361,8 @@ const Footer = () => {
                 if (
                   item.key === "terms & conditions" ||
                   item.key === "privacy policy" ||
-                  item.key === "refund policy"
+                  item.key === "refund policy" ||
+                  item.key === "shipping policy"
                 ) {
                   navigate(item.url);
                 } else if (item.key === "about us") {

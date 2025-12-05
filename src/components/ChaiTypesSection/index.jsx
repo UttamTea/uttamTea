@@ -28,7 +28,14 @@ const Card = ({
     >
       <Box className="card_internal_box">
         <Box>
-          <img src={img} alt={title} className="h-auto w-100" loading="lazy" style={{ objectFit: 'contain', maxHeight: '300px' }} />
+          <img 
+            src={img} 
+            alt={title} 
+            className="h-auto w-100" 
+            loading="lazy" 
+            decoding="async"
+            style={{ objectFit: 'contain', maxHeight: '300px', width: '100%', height: 'auto' }} 
+          />
           <Typography
             fontSize={"2rem"}
             color="#121212"
@@ -78,7 +85,14 @@ const CardResp = ({
       }}
       borderRadius={"12px"}
     >
-      <img src={img} alt={title} className="h-auto w-100" loading="lazy" style={{ objectFit: 'contain', maxHeight: '250px' }} />
+      <img 
+        src={img} 
+        alt={title} 
+        className="h-auto w-100" 
+        loading="lazy" 
+        decoding="async"
+        style={{ objectFit: 'contain', maxHeight: '250px', width: '100%', height: 'auto' }} 
+      />
       <Box textAlign={"center"}>
         <Typography fontSize={"1.5rem"} fontWeight={400} lineHeight={"28px"}>
           {title}

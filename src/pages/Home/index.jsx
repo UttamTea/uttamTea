@@ -23,13 +23,17 @@ const Home = () => {
   const [productsData, setProductsData] = useState([]);
   const [heroSectionData, setHeroSectionData] = useState();
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   const getData = async () => {
     try {
+      setLoading(true);
       const products = await fetchProducts();
       setProductsData(products?.data || []);
     } catch (error) {
       console.error("Error fetching products:", error);
+    } finally {
+      setLoading(false);
     }
   };
 

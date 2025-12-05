@@ -8,6 +8,7 @@ import Success from "./pages/Success";
 import TermsAndCondition from "./pages/TermsAndCondition";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import RefundPolicy from "./pages/RefundPolicy";
+import ShippingPolicy from "./pages/ShippingPolicy";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/terms-and-conditions" element={<TermsAndCondition />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/refund-policy" element={<RefundPolicy />} />
+        <Route path="/shipping-policy" element={<ShippingPolicy />} />
       </Routes>
     </>
   );

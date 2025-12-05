@@ -7,7 +7,13 @@ const BASE_URL = "https://amazing-moonlight-9222a198d9.strapiapp.com/api"; // Re
 export const fetchProducts = async () => {
   try {
     const response = await axiosInstance.get(
-      `${BASE_URL}${API_URLS.GET_PRODUCTS}`
+      `${BASE_URL}${API_URLS.GET_PRODUCTS}`,
+      {
+        params: {
+          populate: 'smallImage',
+          fields: ['documentId', 'name', 'smallDescription', 'backgroundColor']
+        }
+      }
     );
     return response.data;
   } catch (error) {
