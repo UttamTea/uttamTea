@@ -8,8 +8,8 @@ const CartTotalPaymentDetails = ({ setOpenDetailModal }) => {
   const totalPrice = useSelector((state) => state.cart.totalPrice);
   const cartItemsInStore = useSelector((state) => state.cart.cartItems);
   
-    // Delivery charge logic: ₹40 for orders below ₹399, free for orders ≥ ₹399
-  const DELIVERY_CHARGE = 40;
+    // Delivery charge logic: ₹1 for orders below ₹399, free for orders ≥ ₹399
+    const DELIVERY_CHARGE = 1;
     const FREE_DELIVERY_THRESHOLD = 399;
   const deliveryCharge = totalPrice >= FREE_DELIVERY_THRESHOLD ? 0 : DELIVERY_CHARGE;
   const finalTotal = totalPrice + deliveryCharge;
