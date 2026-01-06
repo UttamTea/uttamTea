@@ -10,10 +10,10 @@ export const handlePayment = async (finalTotal, subtotal, deliveryCharge, cartIt
       }
     );
 
-    const { order } = res.data;
+    const { order, key_id } = res.data;
 
     const options = {
-      key: "rzp_live_R5b1AJOzDL4GMz",
+      key: key_id,
       amount: order.amount,
       currency: order.currency,
       name: "Uttam Tea",
@@ -62,9 +62,9 @@ export const handlePayment = async (finalTotal, subtotal, deliveryCharge, cartIt
         }
       },
       prefill: {
-        name: "Rohit Maheshwari",
-        email: "test@example.com",
-        contact: "9999999999",
+        name: `${personalDetails?.firstName || ""} ${personalDetails?.lastName || ""}`.trim(),
+        email: personalDetails?.email || "",
+        contact: personalDetails?.phone || "",
       },
       theme: {
         color: "#3f704d",
