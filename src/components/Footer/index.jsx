@@ -138,10 +138,10 @@ const Footer = () => {
                   fontSize={"0.875rem"}
                   fontWeight={400}
                   component="a"
-                  href="tel:+919313633232"
+                  href="tel:+919811723424"
                   sx={{ textDecoration: "none", color: "#E4D7D4" }}
                 >
-                  +91 93136 33232
+                  +91 9811723424
                 </Typography>
             </Box>
             <Box
@@ -187,7 +187,7 @@ const Footer = () => {
                 fontSize={"0.875rem"}
                 fontWeight={400}
               >
-                info@uttamtea.com
+                info@uttamtea.in
               </Typography>
             </Box>
           </Box>
